@@ -1,0 +1,18 @@
+.mainPage{
+  width: 100%;
+  
+}
+.mainContainer{
+  display: flex;
+  justify-content: space-around;
+}
+
+.mainMessage p{ 
+  width: 400px;
+  font-size: 50px;
+  color: #FFFD24;
+  text-transform: uppercase;  
+}
+.mainMessage p span{
+  color: #F0F2F2;
+}

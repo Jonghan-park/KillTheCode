@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 3px solid white;
+  border-bottom: 3px solid #F0F2F2;
   border-width: 10%;
 }
 .logo{
@@ -16,7 +16,7 @@
   list-style: none;
 }
 .navbarLink a{
-  color: white;
+  color: #F0F2F2;
   text-decoration: none;
   
 }

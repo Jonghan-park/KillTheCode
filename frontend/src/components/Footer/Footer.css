@@ -6,7 +6,7 @@
   width: 98%;
   padding: 0.5rem;
   text-align: center;
-  border-top: 3px solid white;
+  border-top: 3px solid #F0F2F2;
 }
 .footerRow{
   display: flex;
@@ -15,6 +15,6 @@
 }
 .footerContactUs a{
   text-decoration: none;
-  color: white;
+  color: #F0F2F2;
   font-size: 25px;
 }
