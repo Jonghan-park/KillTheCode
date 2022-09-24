@@ -1,8 +1,5 @@
 body {
   background-color: #2B3135;
+  font-family: 'Cabin', sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
