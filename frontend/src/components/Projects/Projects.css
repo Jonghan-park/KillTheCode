@@ -2,8 +2,8 @@
   background-color: #aaaaaa;
   margin-top: 5px;
   width: auto;
- height: auto;
   text-align: center;
+  min-height: calc(100vh - 124px - 140px);
 }
 .ProjectsTitle{
   font-size: 60px;
