@@ -4,7 +4,7 @@
 }
 .mainContainer{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
 }
 
 .mainMessage p{ 
@@ -15,4 +15,19 @@
 }
 .mainMessage p span{
   color: #F0F2F2;
+}
+.leftIcon img{
+  margin-top: 180px;
+  width: 250px;
+  
+}
+.leftIcon img:hover{
+  
+}
+.rightIcon img{
+  margin-top: 20px;
+  width: 250px;
+}
+.rightIcon img:hover{
+  
 }
