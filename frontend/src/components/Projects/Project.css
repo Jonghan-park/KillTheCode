@@ -1,0 +1,22 @@
+.project{
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.projectItem{
+  padding: 1rem;
+  margin: 40px;
+  text-align: left;
+  border-radius: 15px;
+  background-color: #2B3135;
+}
+.projectItem img{
+  margin-left: 20px;
+}
+.projectInfo li{
+  color: #F0F2F2;
+  font-size: 20px;
+  list-style: none;
+  text-align: left;
+  margin-right: 20px;
+}
