@@ -1,7 +1,24 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import logo from "../../assets/InvertedLogo.png";
+import "./Footer.css";
 
 const Footer = () => {
-  return <div>Footer</div>;
+  return (
+    <footer className="footer">
+      <div className="footerRow">
+        <div className="footerLogo">
+          <img src={logo} alt="Footer logo" />
+        </div>
+        <div className="footerContactUs">
+          <Link to="#">Contact Us</Link>
+        </div>
+      </div>
+      <div className="copyRight">
+        <p> copyright &copy;2022 Team KillTheCode</p>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

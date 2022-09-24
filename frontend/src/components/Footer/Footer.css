@@ -1,0 +1,20 @@
+.footer{
+  position: absolute;
+  right: 1;
+  bottom: 0;
+  left: 1;
+  width: 98%;
+  padding: 0.5rem;
+  text-align: center;
+  border-top: 3px solid white;
+}
+.footerRow{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.footerContactUs a{
+  text-decoration: none;
+  color: white;
+  font-size: 25px;
+}
