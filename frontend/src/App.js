@@ -6,6 +6,8 @@ import Main from "./components/Main/Main";
 import About from "./components/About/About";
 import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer/Footer";
+import SignIn from "./components/SignIn/SignIn";
+import JoinUs from "./components/JoinUs/JoinUs";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/about" element={<About />} />
           <Route path="/projects" element={<Projects />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/joinus" element={<JoinUs />} />
         </Routes>
         <Footer />
       </Router>
