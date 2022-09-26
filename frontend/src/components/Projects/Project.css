@@ -1,7 +1,9 @@
 .project{
-  height: auto;
+  /* height: auto; */
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  min-height: 60vh;
 }
 .projectItem{
   padding: 1rem;
