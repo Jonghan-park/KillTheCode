@@ -10,13 +10,11 @@ const Main = () => {
   const [rightMessageIsShown, setRightMessageIsShown] = useState(false);
 
   const leftIconHandler = () => {
-    setLeftIconClicked("leftIcon");
     if (leftIconClicked === "leftIcon") {
       window.location.href = "http://localhost:3000/projects";
     }
   };
   const rightIconHandler = () => {
-    setRightIconClicked("rightIcon");
     if (rightIconClicked === "rightIcon") {
       window.location.href = "http://localhost:3000/about";
     }
@@ -24,8 +22,10 @@ const Main = () => {
   const InvisibleIcon = (e) => {
     e.target.style.opacity = "0";
     if (e.target.alt === "Left message") {
+      setLeftIconClicked("leftIcon");
       setLeftMessageIsShown(true);
     } else if (e.target.alt === "Right message") {
+      setRightIconClicked("rightIcon");
       setRightMessageIsShown(true);
     }
   };
