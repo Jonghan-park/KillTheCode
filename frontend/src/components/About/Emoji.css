@@ -1,9 +1,9 @@
-.EmojiContainer{
+.emojiContainer{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-.Emoji{
+.emoji{
   background-color: white;
   border-radius: 50%;
   display: flex;
@@ -14,4 +14,5 @@
   height: 180px;
   align-items: center;
   font-size: 140px;
+  cursor: pointer;
 }

@@ -21,4 +21,9 @@
   list-style: none;
   text-align: left;
   margin-right: 20px;
+  padding: 10px;
+}
+.noProject{
+  padding: 2rem;
+  font-size: 50px;
 }

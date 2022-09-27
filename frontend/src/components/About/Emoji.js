@@ -6,10 +6,10 @@ const Emoji = ({ emojis }) => {
     console.log(index + 1);
   };
   return (
-    <div className="EmojiContainer">
+    <div className="emojiContainer">
       {emojis.map((emoji, index) => {
         return (
-          <div className="Emoji" onClick={() => emojiHandler(index)}>
+          <div className="emoji" onClick={() => emojiHandler(index)}>
             {emoji}
           </div>
         );
