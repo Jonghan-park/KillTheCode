@@ -25,15 +25,22 @@ main{
 .leftIcon img{
   margin-top: 180px;
   width: 250px;
-  
+
+  cursor: pointer;
 }
-.leftIcon img:hover{
-  
+.leftIconMessage{
+  color: #FFFD24;
+  font-size: 30px;
+  margin-top: -150px;
+
 }
 .rightIcon img{
+  cursor: pointer;
   margin-top: 20px;
   width: 250px;
 }
-.rightIcon img:hover{
-  
+.rightIconMessage{
+  color: #FFFD24;
+  font-size: 30px;
+  margin-top: -150px;
 }

@@ -1,5 +1,7 @@
 .EmojiContainer{
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .Emoji{
   background-color: white;
