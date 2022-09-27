@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Emoji from "./Emoji";
 import "./About.css";
 
 const About = () => {
+  const [emoji, setEmoji] = useState(["👦🏼", "👩🏻", "🧑🏻‍🦱", "👱🏻‍♂️", "👱🏻‍♀️"]);
   return (
     <div className="aboutContainer">
       <div className="aboutTitle">
@@ -19,7 +20,7 @@ const About = () => {
           <span className="highlight">innovative ideas.</span>{" "}
         </p>
       </div>
-      <Emoji />
+      <Emoji emojis={emoji} />
     </div>
   );
 };
