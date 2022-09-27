@@ -21,6 +21,33 @@ const project = [
     contributor: "Name1, Name2, Name3",
     link: "http://www.weather.ca",
   },
+  {
+    id: 3,
+    title: "Weather application",
+    type: "Web application",
+    language: "React, NodeJS, Express, MongoDB",
+    period: "Oct 30, 2022",
+    contributor: "Name1, Name2, Name3",
+    link: "http://www.weather.ca",
+  },
+  {
+    id: 4,
+    title: "Weather application",
+    type: "Web application",
+    language: "React, NodeJS, Express, MongoDB",
+    period: "Oct 30, 2022",
+    contributor: "Name1, Name2, Name3",
+    link: "http://www.weather.ca",
+  },
+  {
+    id: 5,
+    title: "Weather application",
+    type: "Web application",
+    language: "React, NodeJS, Express, MongoDB",
+    period: "Oct 30, 2022",
+    contributor: "Name1, Name2, Name3",
+    link: "http://www.weather.ca",
+  },
 ];
 
 const Projects = () => {
