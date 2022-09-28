@@ -1,16 +1,17 @@
 import React from "react";
 import "./Emoji.css";
 
-const Emoji = ({ emojis }) => {
+const Emoji = ({ users }) => {
   const emojiHandler = (index) => {
-    console.log(index + 1);
+    console.log(users[index]);
   };
   return (
     <div className="emojiContainer">
-      {emojis.map((emoji, index) => {
+      {users.map((user, index) => {
+        const { name, skill, linkedIn, github, email, emojiInUser } = user;
         return (
           <div className="emoji" onClick={() => emojiHandler(index)}>
-            {emoji}
+            {emojiInUser}
           </div>
         );
       })}

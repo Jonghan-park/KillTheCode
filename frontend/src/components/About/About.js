@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Emoji from "./Emoji";
 import "./About.css";
 
@@ -45,12 +45,7 @@ const users = [
   },
 ];
 
-const emojis = users.map((user) => {
-  return user.emojiInUser;
-});
-
 const About = () => {
-  const [emoji, setEmoji] = useState(emojis);
   return (
     <div className="aboutContainer">
       <div className="aboutTitle">
@@ -67,7 +62,7 @@ const About = () => {
           <span className="highlight">innovative ideas.</span>{" "}
         </p>
       </div>
-      <Emoji emojis={emoji} />
+      <Emoji users={users} />
     </div>
   );
 };
