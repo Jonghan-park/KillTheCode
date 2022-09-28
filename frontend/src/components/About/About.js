@@ -3,18 +3,51 @@ import Emoji from "./Emoji";
 import "./About.css";
 
 const users = [
-  { name: "Joseph", emojiInUser: "👦🏼" },
-  { name: "Eunji", emojiInUser: "👩🏻‍🦰" },
-  { name: "Louren", emojiInUser: "👱🏻‍♀️" },
-  { name: "Kai", emojiInUser: "👱🏻" },
-  { name: "Jihoon", emojiInUser: "👱🏻‍♂️" },
+  {
+    name: "Joseph",
+    skill: "JS, HTML, CSS, React, NodeJS, MongoDB",
+    linkedIn: "www.linkedin.com",
+    github: "https://github.com/Jonghan-park",
+    email: "pjh843@gmail.com",
+    emojiInUser: "👦🏼",
+  },
+  {
+    name: "Eunji",
+    skill: "JS, HTML, CSS, React, NodeJS, MongoDB",
+    linkedIn: "www.linkedin.com",
+    github: "www.github.com",
+    email: "abc123@gmail.com",
+    emojiInUser: "👩🏻‍🦰",
+  },
+  {
+    name: "Louren",
+    skill: "JS, HTML, CSS, React, NodeJS, MongoDB",
+    linkedIn: "www.linkedin.com",
+    github: "www.github.com",
+    email: "abc123@gmail.com",
+    emojiInUser: "👱🏻‍♀️",
+  },
+  {
+    name: "Kai",
+    skill: "JS, HTML, CSS, React, NodeJS, MongoDB",
+    linkedIn: "www.linkedin.com",
+    github: "www.github.com",
+    email: "abc123@gmail.com",
+    emojiInUser: "👱🏻",
+  },
+  {
+    name: "Jihoon",
+    skill: "JS, HTML, CSS, React, NodeJS, MongoDB",
+    linkedIn: "www.linkedin.com",
+    github: "www.github.com",
+    email: "abc123@gmail.com",
+    emojiInUser: "👱🏻‍♂️",
+  },
 ];
 
-const emojis = [
-  users.map((user) => {
-    return user.emojiInUser;
-  }),
-];
+const emojis = users.map((user) => {
+  return user.emojiInUser;
+});
 
 const About = () => {
   const [emoji, setEmoji] = useState(emojis);

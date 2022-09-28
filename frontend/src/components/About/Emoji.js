@@ -7,7 +7,7 @@ const Emoji = ({ emojis }) => {
   };
   return (
     <div className="emojiContainer">
-      {emojis[0].map((emoji, index) => {
+      {emojis.map((emoji, index) => {
         return (
           <div className="emoji" onClick={() => emojiHandler(index)}>
             {emoji}
