@@ -2,17 +2,21 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 .emoji{
-  background-color: white;
-  border-radius: 50%;
+  
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin: 50px;
-  width: 180px;
-  height: 180px;
   align-items: center;
   font-size: 140px;
   cursor: pointer;
+  background-color: white;
+  border-radius: 50%;
+  width: 180px;
+  height: 180px;
 }
+
