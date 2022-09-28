@@ -70,14 +70,7 @@ const Projects = () => {
   return (
     <div className="ProjectsContainer">
       <div className="ProjectsTitle">PROJECTs</div>
-
-      {projects ? (
-        <Project projects={projects} />
-      ) : (
-        <div className="noProject">
-          We are just about to start working on a project.
-        </div>
-      )}
+      <Project projects={projects} />
     </div>
   );
 };
