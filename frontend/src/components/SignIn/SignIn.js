@@ -2,13 +2,18 @@ import React from "react";
 import "./SignIn.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faSolid } from "@fortawesome/free-solid-svg-icons";
 function SignIn() {
   return (
-    <div className="containerBody">
-      <div className="container">
+    <div className="container">
+      <div className="formBox">
         <div className="signIn">
-          <Form>
+          <form>
+            <FontAwesomeIcon icon="fa-solid fa-user" />
+            <FontAwesomeIcon icon="fa-regular fa-user" />
+          </form>
+          {/* <Form>
             <h2>Sign In</h2>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
@@ -28,9 +33,19 @@ function SignIn() {
             <Button variant="primary" type="submit">
               Sign In
             </Button>
-          </Form>
+          </Form> */}
+          <div className="panelContainer">
+            <h1>
+              WE ARE
+              <br />
+              MORE THAN
+              <br />
+              JUST
+              <br />A TEAM
+              <br />
+            </h1>
+          </div>
         </div>
-        <div className="panelContainer"></div>
       </div>
     </div>
   );
