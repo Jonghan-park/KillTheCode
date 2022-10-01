@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import quotation from "../../assets/quotation.svg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper";
@@ -8,12 +8,10 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 const Project = ({ projects }) => {
-  const [swiperRef, setSwiperRef] = useState(null);
   return (
     <div className="project">
       {projects ? (
         <Swiper
-          onSwiper={setSwiperRef}
           slidesPerView={3}
           centeredSlides={true}
           spaceBetween={30}

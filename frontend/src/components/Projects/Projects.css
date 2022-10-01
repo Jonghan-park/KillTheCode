@@ -6,5 +6,6 @@
   min-height: calc(100vh - 124px - 149px);
 }
 .ProjectsTitle{
+  color: black;
   font-size: 60px;
 }

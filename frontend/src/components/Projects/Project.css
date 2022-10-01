@@ -35,9 +35,9 @@
 .swiper-button-prev {
     background-color: white;
     background-color: rgba(255, 255, 255, 0.5);
-    right:10px;
-    padding: 10px;
+    right:30px;
+    padding: 25px;
     color: #000 !important;
-    fill: black !important;
+    fill: rgb(29, 9, 9) !important;
     stroke: black !important;
 }
