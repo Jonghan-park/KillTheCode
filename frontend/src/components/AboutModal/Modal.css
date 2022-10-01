@@ -37,18 +37,23 @@
   font-size: 20px;
   padding: 10px;
 }
+.modalBody p {
+  color: black;
+}
 .modalEmoji{
   font-size: 200px;
   display: flex;
   justify-content: center;
 }
 .modalHello{
+  color: black;
   font-size: 30px;
   padding-bottom: 20px;
   display: flex;
   justify-content: center;
 }
 .modalButton{
+  color: black;
   padding: 10px;
   font-size: 30px;
   border-radius: 10px;
