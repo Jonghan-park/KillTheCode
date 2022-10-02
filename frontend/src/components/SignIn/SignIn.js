@@ -3,51 +3,67 @@ import "./SignIn.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faSolid } from "@fortawesome/free-solid-svg-icons";
+
+import {
+  faUser,
+  faEnvelope,
+  faKey,
+  faCheckCircle,
+} from "@fortawesome/free-solid-svg-icons";
 function SignIn() {
   return (
-    <div className="container">
-      <div className="formBox">
-        <div className="signIn">
+    <>
+      <div className="container">
+        <div className="signInForm">
+          <div className="title">REGISTER</div>
           <form>
-            <FontAwesomeIcon icon="fa-solid fa-user" />
-            <FontAwesomeIcon icon="fa-regular fa-user" />
+            <div className="inputGrop">
+              <FontAwesomeIcon icon={faUser} className="signInIcon" />
+              <input type="text" className="inputField" placeholder="User ID" />
+            </div>
+            <div className="inputGrop">
+              <FontAwesomeIcon icon={faEnvelope} className="signInIcon" />
+              <input type="text" className="inputField" placeholder="Email" />
+            </div>
+            <div className="inputGrop">
+              <FontAwesomeIcon icon={faKey} className="signInIcon" />
+              <input
+                type="password"
+                className="inputField"
+                placeholder="Password"
+              />
+            </div>
+            <div className="inputGrop">
+              <FontAwesomeIcon icon={faCheckCircle} className="signInIcon" />
+              <input
+                icon={faCheckCircle}
+                type="text"
+                className="inputField"
+                placeholder="Confirm Password"
+              />
+            </div>
+            <button type="submit" className="signUpBtn">
+              SIGN UP
+            </button>
           </form>
-          {/* <Form>
-            <h2>Sign In</h2>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
-              <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
-              </Form.Text>
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Sign In
-            </Button>
-          </Form> */}
-          <div className="panelContainer">
-            <h1>
-              WE ARE
-              <br />
-              MORE THAN
-              <br />
-              JUST
-              <br />A TEAM
-              <br />
-            </h1>
+          <div className="existAccount">
+            <h2>Already have an account?</h2>
+            <div className="loginBtn">LOGIN NOW</div>
           </div>
         </div>
+        <div className="panelContainer">
+          <h1>
+            WE ARE
+            <br />
+            <span className="more">MORE THAN</span>
+            <br />
+            JUST
+            <br />A TEAM
+            <br />
+          </h1>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
