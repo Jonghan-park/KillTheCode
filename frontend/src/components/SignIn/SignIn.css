@@ -91,5 +91,47 @@ form{
 }
 
 .signUpBtn{
+width:150px;
+height:40px;
+border:none;
+border-radius: 50px;
+background-color:#AAAAAA;
+color:white;
+font-weight: 600;
+margin:10px 0;
+}
 
+.signUpBtn:hover{
+    background-color:#414141;
+}
+
+.existAccount{
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction:column;
+}
+
+.existAccount h2{
+    font-size: 1.3rem;
+    padding-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color:#AAAAAA;
+}
+
+a:hover{
+    color:#414141;
+}
+
+.panelContainer{
+    font-size:2rem;
+    letter-spacing: 5px;
+    color:yellow;
+}
+
+.more{
+    color:white;
 }

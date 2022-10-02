@@ -3,7 +3,7 @@ import "./SignIn.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import { Link } from "react-router-dom";
 import {
   faUser,
   faEnvelope,
@@ -48,7 +48,7 @@ function SignIn() {
           </form>
           <div className="existAccount">
             <h2>Already have an account?</h2>
-            <div className="loginBtn">LOGIN NOW</div>
+            <Link to="/joinUs">LOGIN NOW</Link>
           </div>
         </div>
         <div className="panelContainer">
