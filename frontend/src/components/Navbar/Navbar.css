@@ -55,6 +55,7 @@
   .navbarSmallscreen{
     display: flex;
     margin-right: 2rem;
+    cursor: pointer;
   }
   .navHamburger{
     font-size: 40px;

@@ -41,6 +41,7 @@ const Navbar = () => {
           icon={faBars}
         />
       </div>
+      {toggleMenu && <div className="navbarSmallscreenToggle"></div>}
     </nav>
   );
 };
