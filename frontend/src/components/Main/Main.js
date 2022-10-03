@@ -45,6 +45,7 @@ const Main = () => {
               src={leftMouseOver}
               onMouseOver={InvisibleIcon}
               onMouseOut={VisibleIcon}
+              onClick={leftIconHandler}
               alt="Left mouse over"
             />
           ) : (
@@ -52,7 +53,6 @@ const Main = () => {
               src={leftIcon}
               onMouseOver={InvisibleIcon}
               onMouseOut={VisibleIcon}
-              onClick={leftIconHandler}
               alt="Left message"
             />
           )}
@@ -70,6 +70,7 @@ const Main = () => {
               src={rightMouseOver}
               onMouseOver={InvisibleIcon}
               onMouseOut={VisibleIcon}
+              onClick={rightIconHandler}
               alt="Left mouse over"
             />
           ) : (
@@ -77,7 +78,6 @@ const Main = () => {
               src={rightIcon}
               onMouseOver={InvisibleIcon}
               onMouseOut={VisibleIcon}
-              onClick={rightIconHandler}
               alt="Right message"
             />
           )}
