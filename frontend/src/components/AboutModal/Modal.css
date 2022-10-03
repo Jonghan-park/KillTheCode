@@ -11,12 +11,10 @@
   z-index: 2;
 }
 .modalContent{
-
   width: 500px;
   border-radius: 15px;
-  background-color: white;
+  background-color: #F0F2F2;
   font-size: 20px;
-
 }
 .modalHeader{
   display: flex;
@@ -32,13 +30,13 @@
 .modalBody{
   display: flex;
   flex-direction: column;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+  border-top: 1px solid #2B3135;
+  border-bottom: 1px solid #2B3135;
   font-size: 20px;
   padding: 10px;
 }
 .modalBody p {
-  color: black;
+  color: #2B3135;
 }
 .modalEmoji{
   font-size: 200px;
@@ -53,13 +51,27 @@
   justify-content: center;
 }
 .modalButton{
-  color: black;
+  color: #2B3135;
   padding: 10px;
   font-size: 30px;
   border-radius: 10px;
   cursor: pointer;
 }
 .modalButton:hover{
-  color: white;
-  background-color: black;
+  color: #F0F2F2;
+  background-color: #2B3135;
+}
+
+@media screen and (max-width: 1024px){
+
+}
+
+
+@media screen and (max-width: 600px){
+.modalContent{
+  width: 400px;
+}
+.modalBody{
+  padding: 20px;
+}
 }
