@@ -28,19 +28,25 @@ main{
 
   cursor: pointer;
 }
-.leftIconMessage{
-  color: #FFFD24;
-  font-size: 30px;
-  margin-top: -150px;
 
-}
 .rightIcon img{
   cursor: pointer;
   margin-top: 20px;
   width: 250px;
 }
-.rightIconMessage{
-  color: #FFFD24;
-  font-size: 30px;
-  margin-top: -150px;
-}
+
+
+@media screen and (max-width: 920px){
+  .mainContainer{
+    display: flex;
+    flex-direction: column;
+  }
+  .leftIcon img{
+    margin-top: 80px;
+    width: 250px;
+  }
+  }
+  
+  
+  @media screen and (max-width: 600px){
+  }

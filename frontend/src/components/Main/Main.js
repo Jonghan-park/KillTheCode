@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import leftIcon from "../../assets/leftMessage.png";
+import leftMouseOver from "../../assets/leftMouseOver.png";
 import rightIcon from "../../assets/rightMessage.png";
+import rightMouseOver from "../../assets/rightMouseOver.png";
+
 import "./Main.css";
 
 const Main = () => {
@@ -20,7 +23,6 @@ const Main = () => {
     }
   };
   const InvisibleIcon = (e) => {
-    e.target.style.opacity = "0";
     if (e.target.alt === "Left message") {
       setLeftIconClicked("leftIcon");
       setLeftMessageIsShown(true);
@@ -30,7 +32,6 @@ const Main = () => {
     }
   };
   const VisibleIcon = (e) => {
-    e.target.style.opacity = "1";
     setLeftMessageIsShown(false);
     setRightMessageIsShown(false);
   };
@@ -38,15 +39,22 @@ const Main = () => {
     <main className="mainPage">
       <div className="mainContainer">
         <div className="leftIcon">
-          <img
-            src={leftIcon}
-            onMouseOver={InvisibleIcon}
-            onMouseOut={VisibleIcon}
-            onClick={leftIconHandler}
-            alt="Left message"
-          />
-          {leftMessageIsShown && (
-            <p className="leftIconMessage">Go To Project</p>
+          {leftMessageIsShown ? (
+            <img
+              className="leftIconMessage"
+              src={leftMouseOver}
+              onMouseOver={InvisibleIcon}
+              onMouseOut={VisibleIcon}
+              alt="Left mouse over"
+            />
+          ) : (
+            <img
+              src={leftIcon}
+              onMouseOver={InvisibleIcon}
+              onMouseOut={VisibleIcon}
+              onClick={leftIconHandler}
+              alt="Left message"
+            />
           )}
         </div>
         <div className="mainMessage">
@@ -56,15 +64,22 @@ const Main = () => {
           </p>
         </div>
         <div className="rightIcon">
-          <img
-            src={rightIcon}
-            onMouseOver={InvisibleIcon}
-            onMouseOut={VisibleIcon}
-            onClick={rightIconHandler}
-            alt="Right message"
-          />
-          {rightMessageIsShown && (
-            <p className="rightIconMessage">Go To About</p>
+          {rightMessageIsShown ? (
+            <img
+              className="rightIconMessage"
+              src={rightMouseOver}
+              onMouseOver={InvisibleIcon}
+              onMouseOut={VisibleIcon}
+              alt="Left mouse over"
+            />
+          ) : (
+            <img
+              src={rightIcon}
+              onMouseOver={InvisibleIcon}
+              onMouseOut={VisibleIcon}
+              onClick={rightIconHandler}
+              alt="Right message"
+            />
           )}
         </div>
       </div>
