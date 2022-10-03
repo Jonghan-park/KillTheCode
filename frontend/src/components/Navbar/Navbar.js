@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/logo.png";
+
 import "./Navbar.css";
 
 const Navbar = () => {
+  const [toggleMenu, setToggleMenu] = useState(false);
   return (
     <nav className="navbar">
       <div className="logoAndMainLinks">
@@ -28,6 +32,14 @@ const Navbar = () => {
         <div className="navbarLink">
           <Link to="/joinus">Join Us</Link>
         </div>
+      </div>
+
+      <div className="navbarSmallscreen">
+        <FontAwesomeIcon
+          className="navHamburger"
+          onClick={() => setToggleMenu(true)}
+          icon={faBars}
+        />
       </div>
     </nav>
   );
