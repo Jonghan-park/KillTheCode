@@ -37,11 +37,13 @@ const Navbar = () => {
       <div className="navbarSmallscreen">
         <FontAwesomeIcon
           className="navHamburger"
-          onClick={() => setToggleMenu(true)}
+          onClick={() => setToggleMenu(() => !toggleMenu)}
           icon={faBars}
         />
       </div>
-      {toggleMenu && <div className="navbarSmallscreenToggle"></div>}
+      {toggleMenu && (
+        <div className="navbarSmallscreenToggle">Toggle opened</div>
+      )}
     </nav>
   );
 };
