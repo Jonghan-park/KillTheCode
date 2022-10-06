@@ -40,10 +40,29 @@ const Navbar = () => {
           onClick={() => setToggleMenu(() => !toggleMenu)}
           icon={faBars}
         />
+
+        {toggleMenu && (
+          <div
+            className="navbarSmallscreenToggle"
+            onClick={() => setToggleMenu(false)}
+          >
+            <ul className="navbarSmallscreenLinks">
+              <li className="navbarItem" onClick={() => setToggleMenu(false)}>
+                <Link to="/about">About</Link>
+              </li>
+              <li className="navbarItem" onClick={() => setToggleMenu(false)}>
+                <Link to="/projects">Projects</Link>
+              </li>
+              <li className="navbarItem" onClick={() => setToggleMenu(false)}>
+                <Link to="/signin">Sign In</Link>
+              </li>
+              <li className="navbarItem" onClick={() => setToggleMenu(false)}>
+                <Link to="/joinus">Join Us</Link>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
-      {toggleMenu && (
-        <div className="navbarSmallscreenToggle">Toggle opened</div>
-      )}
     </nav>
   );
 };
