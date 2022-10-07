@@ -1,0 +1,27 @@
+.workingContainer{
+  margin-left: 8%;
+  margin-right: 8%;
+}
+.workingTitle{
+  text-align: center;
+  color: #F0F2F2;
+  font-size: 50px;
+  padding: 1rem;
+}
+.toGithub{
+  color: #F0F2F2;
+  font-size: 33px;
+}
+.calendarContainer{
+  width: 100%;
+}
+.chattingContainer{
+  width: 100%;
+}
+
+@media screen and (max-width: 1400px){
+  .workingContainer{
+    margin-left: 3%;
+    margin-right: 3%;
+  }
+}
