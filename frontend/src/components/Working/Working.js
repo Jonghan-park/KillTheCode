@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
-// import Calendar from "../Calendar/Calendar";
+import Calendar from "../Calendar/Calendar";
 import Chatting from "../Chatting/Chatting";
 import "./Working.css";
 
@@ -25,7 +25,9 @@ const Working = () => {
         </a>
       </div>
       <Row className="mx-2 mx-xl-5">
-        <Col lg="7">{/* <Calendar /> */}</Col>
+        <Col lg="7">
+          <Calendar />
+        </Col>
         <Col lg="5">
           <Chatting />
         </Col>
