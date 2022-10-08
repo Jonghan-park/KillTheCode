@@ -1,9 +1,11 @@
 .ProjectsContainer{
+  position: relative;
   background-color: #aaaaaa;
   margin-top: 5px;
   width: auto;
   text-align: center;
   min-height: calc(100vh - 120px - 105px);
+  overflow: hidden;
 }
 .ProjectsTitle{
   color: black;

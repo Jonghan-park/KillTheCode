@@ -1,9 +1,9 @@
 .project{
-
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   min-height: 60vh;
+  /* overflow-x: hidden; */
+  scroll-behavior: smooth;
 }
 .projectItem{
 
@@ -28,22 +28,4 @@
   padding: 2rem;
   font-size: 50px;
 }
-.swiper {
-  width: 100%;
-  height: 100%;
-}
 
-.swiper-wrapper{
-  width: 100%;
-}
-
-.swiper-button-next,
-.swiper-button-prev {
-    background-color: #F0F2F2;
-    background-color: rgba(255, 255, 255, 0.5);
-    right:30px;
-    padding: 25px;
-    color: #000 !important;
-    fill: rgb(29, 9, 9) !important;
-    stroke: black !important;
-}

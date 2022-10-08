@@ -50,7 +50,7 @@ const About = () => {
     <div className="aboutContainer">
       <div className="aboutTitle">
         <p>
-          <span className="highlight">Let</span> We{" "}
+          <span className="highlight">Let</span> Us{" "}
           <span className="highlight">Introduce</span>
         </p>
       </div>
