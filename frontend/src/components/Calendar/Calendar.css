@@ -1,0 +1,71 @@
+.calendarContainer{
+  background-color: #F0F2F2;
+  border-radius: 10px;
+  position: relative;
+}
+.calendarHeader{
+  height: 35px;
+}
+.month{
+  float: left;
+  margin: 8px 0 0 5%;
+  font-size: 25px;
+}
+.calendarButton{
+  width: 80px;
+  float: right;
+  margin: 10px 5% 0 0;
+  padding: 3px 0;
+  background-color: #2B3135;
+  border: 1px solid #2B3135;
+  color: #F0F2F2;
+}
+.calendarButton:last-child{
+  margin-right: 5px;
+}
+.calendarButton:hover{
+  background-color: #F0F2F2;
+  color: #2B3135; 
+}
+.calendar{
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 5px auto;
+  padding-bottom: 15px;
+}
+.calendarCell{
+  width: calc(100% / 7);
+  padding: 2px 0 55px 5px;
+  display: flex;
+  flex-direction: column;
+  border: 0.5px solid #2B3135;
+}
+.weeks{
+  padding: 5px;
+  text-align: center;
+}
+.calendarCtrl{
+  width: 30px;
+  height: 30px;
+  background-color: #2B3135;
+  border-radius: 50%;
+  color: #F0F2F2;
+  font-size: 25px;
+  text-align: center;
+  line-height: 25px;
+  position: absolute;
+  top: 45%;
+}
+.calendarCtrl:hover{
+  cursor: pointer;
+  background-color: #F0F2F2;
+  border: 1px solid #2B3135;
+  color: #2B3135;
+}
+.prevMonth{
+  left: 3px;
+}
+.nextMonth{
+  right: 3px;
+}
