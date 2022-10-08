@@ -70,12 +70,15 @@ const Projects = () => {
   return (
     <div className="ProjectsContainer">
       <div className="ProjectsTitle">PROJECTs</div>
-      <button className="preBtnProject">
-        <p>&lt;</p>
-      </button>
-      <button className="nextBtnProject">
-        <p>&gt;</p>
-      </button>
+      <div className="projectButtonContainer">
+        <button className="preBtnProject">
+          <p>&lt;</p>
+        </button>
+        <button className="nextBtnProject">
+          <p>&gt;</p>
+        </button>
+      </div>
+
       <Project projects={projects} />
     </div>
   );
