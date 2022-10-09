@@ -1,11 +1,12 @@
 .project{
   display: flex;
   min-height: 60vh;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
   scroll-behavior: smooth;
+  padding-left: 1rem;
+
 }
 .projectItem{
-
   padding: 1rem;
   margin: 40px;
   text-align: left;
