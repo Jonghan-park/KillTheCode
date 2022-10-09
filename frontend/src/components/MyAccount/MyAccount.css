@@ -1,0 +1,47 @@
+.myAccountContainer{
+    width: auto;
+    background-color: azure;
+}
+
+.title{
+    font-size: 60px;
+    text-align: center;
+}
+
+.myAccountPhoto{
+    width: 50%;
+    height: 500px;
+    background-color: cornflowerblue;
+    /* float:left */
+    display: inline-block;
+    vertical-align: top;
+}
+
+.myAccountPhotoAdd{
+    margin: 25% 25% 25% 25%;
+    border: 2px solid black;
+    width: 300px;
+    height: 100px;
+}
+
+.myAccountForm{
+    width: 50%;
+    height:500px;
+    background-color: coral;
+    /* float:left */
+    display: inline-block;
+
+}
+
+.myAccountInfoGroup{
+
+    margin: 25% 25% 25% 25%;
+    /* display:flex; */
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+
+
+}
+
+
