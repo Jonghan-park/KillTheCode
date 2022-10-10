@@ -29,7 +29,9 @@ const Admin = () => {
     <div className="adminWrapper">
       <div className="title">Admin</div>
       <div className="userWrapper">
-        <button className="manageBtn">Manage User</button>
+        <a className="manageBtn" href="/admin">
+          Manage User
+        </a>
         <div className="userTable">
           <UserList users={users} />
           <button className="saveBtn">SAVE</button>
