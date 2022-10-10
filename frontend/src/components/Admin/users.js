@@ -11,10 +11,12 @@ const UserList = ({ users }) => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-          </tr>
+          {users.map((user) => (
+            <tr>
+              <td>{user.name}</td>
+              <td>{user.iscooperation}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </>

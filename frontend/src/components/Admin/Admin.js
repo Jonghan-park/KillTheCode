@@ -1,5 +1,5 @@
 import "./admin.css";
-import React from "react";
+import React, { useState } from "react";
 import UserList from "./users";
 
 const userList = [
@@ -22,14 +22,16 @@ const userList = [
     id: "kSEMggm",
   },
 ];
+
 const Admin = () => {
+  const [users, setUsers] = useState(userList);
   return (
     <div className="adminWrapper">
       <div className="title">Admin</div>
       <div className="userWrapper">
         <button className="manageBtn">Manage User</button>
         <div className="userTable">
-          <UserList userlist={userList.name} />
+          <UserList users={users} />
           <button className="saveBtn">SAVE</button>
         </div>
       </div>
