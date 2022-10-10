@@ -1,33 +1,52 @@
+/* Color: Primary(#2B3135) 
+Second(#F0F2F2) 
+Title(#FFFD24) */
+
 .myAccountContainer{
-    width: auto;
-    background-color: azure;
+    height: auto;
+  
+    background-color: #F0F2F2;
 }
 
 .title{
-    font-size: 60px;
+    font-size: 5rem;
     text-align: center;
+    padding-top: 2%;
 }
 
 .myAccountPhoto{
-    width: 50%;
-    height: 500px;
-    background-color: cornflowerblue;
+    width: 38%;
+    /* height: 500px; */
+    /* background-color: cornflowerblue; */
     /* float:left */
     display: inline-block;
     vertical-align: top;
 }
 
 .myAccountPhotoAdd{
-    margin: 25% 25% 25% 25%;
-    border: 2px solid black;
-    width: 300px;
-    height: 100px;
+    margin: 12% 10% 50% 70%;
+    /* border: 2px solid rgb(212, 25, 25); */
+    background-color: white;
+    width: 35vh;
+    height: 35vh;
+    border-radius: 20px;
+}
+
+.myAccountPh{
+    font-size: 4rem;
+    text-align: center;
+   padding-top:30%;
+}
+
+.myAccountImage{
+    margin-top: 5%;
+    margin-left: 20%;
 }
 
 .myAccountForm{
-    width: 50%;
+    width: 60%;
     height:500px;
-    background-color: coral;
+    /* background-color: coral; */
     /* float:left */
     display: inline-block;
 
@@ -35,13 +54,61 @@
 
 .myAccountInfoGroup{
 
-    margin: 25% 25% 25% 25%;
+    margin: 10% 25% 25% 10%;
     /* display:flex; */
     justify-content: center;
     align-items: center;
-    border: 2px solid black;
-
-
+    /* border: 2px solid black; */
+    width: 60%;
+    height: 16rem;
 }
 
+.myAccountLabel{
+    font-size: 2rem;
+    display: inline-block;
+    width: 22%;
+    margin-bottom: 0.8rem;
+    margin-left: 2rem;
+}
 
+/* placeholder 색깔바꾸기 input::input-placeholder {color:white;} */
+
+
+
+input{
+    text-align:center;
+    /* margin-left: 10%;  */
+    /* vertical-align: left; */
+}
+
+::placeholder { 
+    color: white;
+    opacity: 1; 
+  }
+
+.myAcountFistname, .myAcountLastname, .myAcountPassword, .myAcountEmail{
+    margin-left: 2rem;
+    /* font-weight: bold; */
+    background-color: #2B3135;
+    color: white;
+    width: 70%;
+    height: 21%;
+    font-size: 1.5rem;
+    border-radius: 2rem;
+}
+
+.button{
+    background-color: #2B3135;
+    color: white;
+    margin: 80%;
+    width: 12%;
+    height: 20%;
+    border-radius: 2rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.button:hover {
+    color:#FFFD24;
+    /* transition: 0.7s; */
+}

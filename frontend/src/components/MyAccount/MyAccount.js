@@ -10,30 +10,33 @@ function MyAccount(){
 
                 <div className="myAccountPhoto">
                     <div className="myAccountPhotoDisplay">
-                    <input className="myAccountPhotoAdd" type="file" accept="image/png, image/jpg"></input>
+                        <div className="myAccountPhotoAdd">
+                            <p className="myAccountPh">Photo  </p>
+                    <input  className="myAccountImage" type="file" accept="image/png, image/jpg"></input>
+                        </div>
                     </div>  
                 </div>
 
                 <form className="myAccountForm">
                     <div className="myAccountInfo">
                         <div className="myAccountInfoGroup">                       
-                        <label>First Name</label>
-                        <input type="text" className="myAcountFistname"  placeholder="First Name"></input>
+                        <label className="myAccountLabel">First Name</label>
+                        <input type="text" className="myAcountFistname mt-3"  placeholder="First Name"></input>
                         <br></br>
 
-                        <label>Last Name</label>
-                        <input type="text"  className="myAcountLastname"  placeholder="Last Name"></input>
+                        <label className="myAccountLabel">Last Name</label>
+                        <input type="text"  className="myAcountLastname  mt-3"  placeholder="Last Name"></input>
                         <br></br>
 
-                        <label>Password</label>
-                        <input type="password" className="myAcountPassword"  placeholder="Password"></input>
+                        <label className="myAccountLabel">Password</label>
+                        <input type="password" className="myAcountPassword  mt-3"  placeholder="Password"></input>
                         <br></br>
 
-                        <label>Email</label>
-                        <input type="email" className="myAcountEmail"  placeholder="Email"></input>
+                        <label className="myAccountLabel">Email</label>
+                        <input type="email" className="myAcountEmail  mt-3"  placeholder="Email"></input>
                         <br></br>
 
-                        <button>SAVE</button>
+                        <button className="button mt-5">SAVE</button>
                   
                     </div>
                   </div>
