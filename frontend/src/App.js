@@ -8,7 +8,8 @@ import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer/Footer";
 import SignIn from "./components/SignIn/SignIn";
 import JoinUs from "./components/JoinUs/JoinUs";
-import Myaccount from "./components/MyAccount/MyAccount"
+import Myaccount from "./components/MyAccount/MyAccount";
+import Admin from "./components/Admin/Admin";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/myaccount" element={<Myaccount />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/joinus" element={<JoinUs />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
         <Footer />
       </Router>
