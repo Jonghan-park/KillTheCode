@@ -4,7 +4,6 @@ Title(#FFFD24) */
 
 .myAccountContainer{
     height: auto;
-  
     background-color: #F0F2F2;
 }
 
@@ -53,7 +52,6 @@ Title(#FFFD24) */
 }
 
 .myAccountInfoGroup{
-
     margin: 10% 25% 25% 10%;
     /* display:flex; */
     justify-content: center;
@@ -70,10 +68,6 @@ Title(#FFFD24) */
     margin-bottom: 0.8rem;
     margin-left: 2rem;
 }
-
-/* placeholder 색깔바꾸기 input::input-placeholder {color:white;} */
-
-
 
 input{
     text-align:center;
@@ -112,3 +106,123 @@ input{
     color:#FFFD24;
     /* transition: 0.7s; */
 }
+
+
+/* media queries */
+/* 세로모드 모바일 디바이스 (가로 해상도가 576px 보다 작은 화면에 적용) */
+@media (max-width: 575px) {
+
+    .title{
+        font-size: 1.5rem;
+        text-align: center;
+        padding-top: 2%;
+    }
+    
+    .myAccountPhoto{
+        width: 20;
+        display: inline-block;
+        vertical-align: top;
+    }
+    
+    .myAccountPhotoAdd{
+        margin: 12% 10% 50% 70%;
+        /* border: 2px solid rgb(212, 25, 25); */
+        background-color: white;
+        width: 35vh;
+        height: 35vh;
+        border-radius: 20px;
+    }
+    
+    .myAccountPh{
+        font-size: 4rem;
+        text-align: center;
+       padding-top:30%;
+    }
+    
+    .myAccountImage{
+        margin-top: 5%;
+        margin-left: 20%;
+    }
+    
+    .myAccountForm{
+        width: 60%;
+        height:500px;
+        /* background-color: coral; */
+        /* float:left */
+        display: inline-block;
+    
+    }
+    
+    .myAccountInfoGroup{
+    
+        margin: 10% 25% 25% 10%;
+        /* display:flex; */
+        justify-content: center;
+        align-items: center;
+        /* border: 2px solid black; */
+        width: 60%;
+        height: 16rem;
+    }
+    
+    .myAccountLabel{
+        font-size: 2rem;
+        display: inline-block;
+        width: 22%;
+        margin-bottom: 0.8rem;
+        margin-left: 2rem;
+    }
+    
+    /* placeholder 색깔바꾸기 input::input-placeholder {color:white;} */
+    
+    
+    
+    input{
+        text-align:center;
+        /* margin-left: 10%;  */
+        /* vertical-align: left; */
+    }
+    
+    ::placeholder { 
+        color: white;
+        opacity: 1; 
+      }
+    
+    .myAcountFistname, .myAcountLastname, .myAcountPassword, .myAcountEmail{
+        margin-left: 2rem;
+        /* font-weight: bold; */
+        background-color: #2B3135;
+        color: white;
+        width: 70%;
+        height: 21%;
+        font-size: 1.5rem;
+        border-radius: 2rem;
+    }
+    
+    .button{
+        background-color: #2B3135;
+        color: white;
+        margin: 80%;
+        width: 12%;
+        height: 20%;
+        border-radius: 2rem;
+        font-size: 1.5rem;
+        cursor: pointer;
+    }
+    
+    .button:hover {
+        color:#FFFD24;
+        /* transition: 0.7s; */
+    }
+} 
+ 
+/* 가로모드 모바일 디바이스 (가로 해상도가 576px보다 크고 768px 보다 작은 화면에 적용)  */
+/* @media (min-width: 576px) and (max-width: 767px) {...} */
+ 
+/*태블릿 디바이스 (가로 해상도가 768px보다 크고 991px 보다 작은 화면에 적용)  */
+/* @media (min-width: 768px) and (max-width: 991px) {...}  */
+ 
+/* 데스크탑 (가로 해상도가 992px보다 크고 1199px 보다 작은 화면에 적용)  */
+/* @media (min-width: 992px) and (max-width: 1199px) {...}  */
+ 
+/* 큰화면 데스크탑 (가로 해상도가 1200px 보다 큰 화면에 적용)  */
+/* @media (min-width: 1200px) {...} */
