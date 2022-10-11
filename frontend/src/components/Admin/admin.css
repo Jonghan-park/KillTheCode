@@ -57,7 +57,10 @@ position:relative;
     border-bottom: 1px solid #cbcdcd;
 }
 
-
+tbody tr td input{
+margin-right: 20px;
+margin-left: 20px;
+}
 .saveBtn{
   position:absolute;
   right:30px;

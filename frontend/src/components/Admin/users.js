@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./admin.css";
 
 const UserList = ({ users }) => {
+  // const [userCooperate, setCooperate] = useState;
   return (
     <>
       <table className="userTable">
