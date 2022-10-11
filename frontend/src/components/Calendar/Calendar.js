@@ -1,4 +1,5 @@
 import { useCallback, useMemo, useState } from "react";
+import useCalendarPrint from "./useCalendarPrint";
 import "./Calendar.css";
 
 const schedule = [
@@ -74,6 +75,13 @@ const Calendar = () => {
   const [currentMonth, setCurrentMonth] = useState(today.month);
   const [schedules, setSchedules] = useState(schedule);
   const [meetings, setMeetings] = useState(meeting);
+  const displayCalendar = useCalendarPrint({
+    weeks,
+    currentYear,
+    currentMonth,
+    schedules,
+    meetings,
+  });
 
   const prevMonth = useCallback(() => {
     if (currentMonth === 1) {
@@ -91,99 +99,6 @@ const Calendar = () => {
       setCurrentMonth(currentMonth + 1);
     }
   }, [currentMonth, currentYear]);
-  const displayCalendar = useCallback(() => {
-    const lastDate = new Date(currentYear, currentMonth, 0).getDate();
-    const firstDay = new Date(currentYear, currentMonth - 1, 1).getDay();
-    const lastDay = new Date(currentYear, currentMonth - 1, lastDate).getDay();    
-    let calendarCells = [];
-
-    for (const day of weeks) {
-      if (weeks[firstDay] === day) {
-        for (let i = 1; i <= lastDate; i++) {
-          const nowDay = new Date(currentYear, currentMonth - 1, i).getDay();
-          let scheduled = false;
-
-          for (const schedule of schedules) {
-            const fromDay = 
-              new Date(currentYear, currentMonth - 1, schedule.fromDate).getDay();
-
-            if (schedule.fromYear === currentYear &&
-                schedule.fromMonth === currentMonth &&
-                schedule.toMonth === schedule.fromMonth &&
-                (i >= schedule.fromDate && i <= schedule.toDate)) {
-              scheduled = true;
-            } else if (schedule.fromYear === currentYear &&
-                schedule.fromMonth === currentMonth &&
-                schedule.toMonth !== schedule.fromMonth &&
-                (i >= schedule.fromDate && i <= lastDate)) {
-              scheduled = true;
-            } else if (schedule.fromYear === currentYear &&
-                schedule.toMonth === currentMonth &&
-                schedule.toMonth !== schedule.fromMonth &&
-                (i >= 1 && i <= schedule.toDate)) {
-              scheduled = true;
-            } else if (schedule.toYear === currentYear &&
-                schedule.toMonth === currentMonth &&
-                schedule.toMonth !== schedule.fromMonth &&
-                (i >= 1 && i <= schedule.toDate)) {
-              scheduled = true;
-            }
-
-            if (scheduled) {
-              const issued =
-                (schedule.fromDate === i && fromDay !== 6) ||
-                (fromDay === 6 && nowDay === 0);
-
-              calendarCells.push(
-                <div key={i} className="calendarCell">
-                  {i}
-                  <div
-                    className={
-                      "schedule" +
-                      (schedule.fromDate === i ? " startSchedule" : "") +
-                      (schedule.toDate === i ? " endSchedule" : "") +
-                      (issued ? " issue" : "")
-                    }
-                    style={{
-                      backgroundColor: schedule.color,
-                    }}
-                  >
-                    <span>
-                      {issued && schedule.issue}
-                    </span>
-                  </div>
-                </div>
-              );
-
-              break;
-            }
-          }
-
-          if (!scheduled) {
-            calendarCells.push(
-              <div key={i} className="calendarCell">{i}</div>
-            );
-          }
-        }
-
-        break;
-      } else {
-        calendarCells.push(
-          <div key={day} className="calendarCell"></div>
-        );
-      }
-    }
-
-    if (lastDay !== 6) {
-      for (let i = lastDay + 1; i <= 6; i++) {
-        calendarCells.push(
-          <div key={i * 100} className="calendarCell"></div>
-        );
-      }
-    }
-
-    return calendarCells;
-  }, [weeks, currentYear, currentMonth, schedules]);;
   return (
     <div className="calendarContainer">
       <div className="calendarHeader">
@@ -197,7 +112,7 @@ const Calendar = () => {
             <div key={week} className="calendarCell weeks">{week}</div>
           );
         })}
-        {displayCalendar()}
+        {displayCalendar}
       </div>
       <div className="calendarCtrl prevMonth" onClick={prevMonth}>&lt;</div>
       <div className="calendarCtrl nextMonth" onClick={nextMonth}>&gt;</div>

@@ -44,12 +44,16 @@
   position: relative;
   box-sizing: border-box;
 }
+.weeks{
+  padding: 5px;
+  text-align: center;
+}
 .schedule{
   width: 102%;
   height: 23px;
   position: absolute;
   top: 25px;
-  left: -1%;
+  left: -1.3%;
   white-space: nowrap;
 }
 .schedule span{
@@ -62,11 +66,19 @@
   border-radius: 0 5px 5px 0;
 }
 .issue {
+  line-height: 23px;
   z-index: 100;
 }
-.weeks{
-  padding: 5px;
+.meeting{
+  width: 100%;
+  height: 23px;
+  background-color: #FFFD24;
+  position: absolute;
+  top: 52px;
+  left: 0;
+  border-radius: 5px;
   text-align: center;
+  line-height: 23px;
 }
 .calendarCtrl{
   width: 30px;
@@ -91,4 +103,47 @@
 }
 .nextMonth{
   right: 3px;
+}
+
+@media screen and (max-width: 586px){
+  .schedule{
+    width: 102.3%;
+  }
+  .calendarCtrl{
+    width: 25px;
+    height: 25px;
+    font-size: 18px;
+    line-height: 22px;
+    top: 47%;
+  }
+  .prevMonth{
+    left: 1.5px;
+  }
+  .nextMonth{
+    right: 1.5px;
+  }
+}
+
+@media screen and (max-width: 520px){
+  .calendarCell{
+    font-size: 13px;
+  }
+  .schedule{
+    width: 102.5%;
+  }
+}
+
+@media screen and (max-width: 460px){
+  .month{
+    font-size: 20px;
+  }
+  .calendarButton{
+    width: 66px;
+    margin-top: 7px;
+    font-size: 14px;
+  }
+  .schedule{
+    width: 102.6%;
+    left: -1.5%;
+  }
 }
