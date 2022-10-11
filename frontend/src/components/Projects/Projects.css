@@ -1,7 +1,5 @@
 .ProjectsContainer{
   position: relative;
-
-
   background-color: #aaaaaa;
   margin-top: 5px;
   width: auto;
@@ -12,19 +10,22 @@
 .ProjectsTitle{
   color: black;
   font-size: 60px;
+  display: flex;
+  justify-content: center;
 }
 .projectButtonContainer{
   display: flex;
   justify-content: space-between;
+
 }
 .preBtnProject, .nextBtnProject{
   border: none;
   border-radius: 50%;
+  width: 50px;
+  height: 50px;
   font-size: 50px;
-  width: 60px;
-  height: 60px;
   position: absolute;
-  top: 0;
+  top: 27rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,3 +33,4 @@
 .nextBtnProject{
   right: 0;
 }
+

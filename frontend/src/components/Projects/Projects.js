@@ -53,6 +53,8 @@ const project = [
 const Projects = () => {
   const [projects, setProjects] = useState(project);
 
+  const preBtnHandler = () => {};
+  const nextBtnHandler = () => {};
   // Get projects
 
   // const getProjects = async () => {
@@ -71,10 +73,10 @@ const Projects = () => {
     <div className="ProjectsContainer">
       <div className="ProjectsTitle">PROJECTs</div>
       <div className="projectButtonContainer">
-        <button className="preBtnProject">
+        <button className="preBtnProject" onClick={preBtnHandler}>
           <p>&lt;</p>
         </button>
-        <button className="nextBtnProject">
+        <button className="nextBtnProject" onClick={nextBtnHandler}>
           <p>&gt;</p>
         </button>
       </div>
