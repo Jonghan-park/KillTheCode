@@ -56,9 +56,17 @@ position:relative;
 .userTable tbody tr{
     border-bottom: 1px solid #cbcdcd;
 }
+
+
 .saveBtn{
   position:absolute;
   right:30px;
-  bottom:30px 
+  bottom:30px;
+  background-color:#2B3135;
+  color:white;
+  padding:10px;
+  border-radius:10px;
+
+
 }
 
