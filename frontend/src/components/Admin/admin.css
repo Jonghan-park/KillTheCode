@@ -24,3 +24,41 @@ justify-content: center;
 
 
 }
+
+.userTableWrapper{
+/* margin:auto; */
+width: 85%;
+min-height:50vh;
+background-color:#F0F2F2;
+color:black;
+border-radius:15px;
+margin-bottom: 30px;
+position:relative;
+}
+
+
+.userTable{
+    table-layout:fixed;
+    width: 80%;
+    height:40vh;
+ border-collapse: collapse;
+    margin:auto;
+    margin-top:5%;
+    font-size:1.5rem;
+    /* position: relative; */
+
+}
+
+.tableTitle {
+    background-color:#cbcdcd;
+}
+
+.userTable tbody tr{
+    border-bottom: 1px solid #cbcdcd;
+}
+.saveBtn{
+  position:absolute;
+  right:30px;
+  bottom:30px 
+}
+

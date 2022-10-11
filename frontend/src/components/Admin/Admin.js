@@ -21,6 +21,12 @@ const userList = [
     iscooperation: "true",
     id: "kSEMggm",
   },
+  {
+    name: "Jhon",
+    email: "jhon@test.com",
+    iscooperation: "false",
+    id: "4",
+  },
 ];
 
 const Admin = () => {
@@ -32,8 +38,11 @@ const Admin = () => {
         <a className="manageBtn" href="/admin">
           Manage User
         </a>
-        <div className="userTable">
-          <UserList users={users} />
+        <div className="userTableWrapper">
+          <div className="tableWrap">
+            <UserList users={users} />
+          </div>
+
           <button className="saveBtn">SAVE</button>
         </div>
       </div>

@@ -6,7 +6,7 @@ const UserList = ({ users }) => {
     <>
       <table className="userTable">
         <thead>
-          <tr>
+          <tr className="tableTitle">
             <th>Name</th>
             <th>Participation</th>
           </tr>
@@ -15,7 +15,22 @@ const UserList = ({ users }) => {
           {users.map((user) => (
             <tr>
               <td>{user.name}</td>
-              <td>{user.iscooperation}</td>
+              <td>
+                <input
+                  type="radio"
+                  name="isCooperat"
+                  value={true}
+                  checked={user.iscooperation}
+                ></input>
+                True
+                <input
+                  type="radio"
+                  name="isCooperat"
+                  value={false}
+                  checked={user.iscooperation}
+                ></input>
+                False
+              </td>
             </tr>
           ))}
         </tbody>
