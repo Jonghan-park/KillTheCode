@@ -11,9 +11,88 @@
   z-index: 3;
 }
 .scheduleModal{
+  width: 400px;
+  padding: 20px 55px 30px;
   background-color: #F0F2F2;
   position: absolute;
   border-radius: 10px;
-  width: 400px;
-  height: 200px;
+  font-size: 20px;
+}
+.scheduleModal form {
+  /* init css */
+  display: initial;
+  justify-content: initial;
+  align-items: initial;
+  flex-direction: initial;
+}
+.scheduleModal label{
+  margin-top: 10px;
+  padding-left: 3px;
+  display: block;
+}
+.scheduleModal input{
+  width: 300px;
+  height: 35px;
+  padding: 0 3px;
+  /* init css */
+  display: block;
+  text-align: initial;
+}
+#color{
+  padding: 0;
+  border: none;
+}
+.modalBtns{
+  margin-top: 40px;
+}
+.modalBtns button{
+  width: 75px;
+  padding: 3px 0;
+  border-radius: 7px;  
+  border: 1px solid #2B3135;
+}
+.modalLeftBtn{
+  float: left;
+  background-color: #F0F2F2;
+  color: #2B3135; 
+}
+.modalLeftBtn:hover{
+  background-color: #2B3135;
+  color: #F0F2F2;
+}
+.modalRightBtn{
+  float: right;
+  margin-right: -8px;
+  background-color: #2B3135;
+  border: 1px solid #2B3135;
+  color: #F0F2F2;
+}
+.modalRightBtn:last-child{
+  margin-right: 5px;
+}
+.modalRightBtn:hover{
+  background-color: #F0F2F2;
+  color: #2B3135;
+}
+
+@media screen and (max-width: 600px){
+  .scheduleModal{
+    width: 300px;
+    padding: 20px 25px 30px;   
+    font-size: 18px;
+  }
+  .scheduleModal input{
+    width: 250px;
+    height: 30px;
+  }
+  .modalBtns button{
+    width: 70px;
+    padding: 2px 0;
+  }
+  .modalRightBtn{
+    margin-right: 0px;
+  }
+  .modalRightBtn:last-child{
+    margin-right: 3px;
+  }
 }
