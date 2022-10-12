@@ -9,14 +9,10 @@ const useCalendarPrint = ({
   isUserAdmin,
   setShowScheduleModal,
   setShowMeetingModal,
+  setScheduleInfo,
+  setMeetingInfo,
 }) => {
   return useMemo(() => {
-    const openScheduleModal = () => {
-      setShowScheduleModal(true);
-    };
-    const openMeetingModal = () => {
-      setShowMeetingModal(true);
-    };
     const lastDate = new Date(currentYear, currentMonth, 0).getDate();
     const firstDay = new Date(currentYear, currentMonth - 1, 1).getDay();
     const lastDay = new Date(currentYear, currentMonth - 1, lastDate).getDay();    
@@ -84,7 +80,23 @@ const useCalendarPrint = ({
                     style={{
                       backgroundColor: schedule.color,
                     }}
-                    onClick={isUserAdmin && openScheduleModal}
+                    onClick={
+                      isUserAdmin && (() => {
+                        const scheduleInfo = {
+                          fromDateInfo:
+                            schedule.fromYear + "-" +
+                            (schedule.fromMonth < 10 ? "0" + schedule.fromMonth : schedule.fromMonth) + "-" +
+                            (schedule.fromDate < 10 ? "0" + schedule.fromDate : schedule.fromDate),
+                          toDateInfo:
+                            schedule.toYear + "-" +
+                            (schedule.toMonth < 10 ? "0" + schedule.toMonth : schedule.toMonth) + "-" +
+                            (schedule.toDate < 10 ? "0" + schedule.toDate : schedule.toDate),
+                          issue: schedule.issue,
+                          color: schedule.color,
+                        };
+                        setShowScheduleModal(true);
+                        setScheduleInfo(scheduleInfo);
+                      })}
                   >
                     {issued && <span>{schedule.issue}</span>}
                   </div>
@@ -94,7 +106,17 @@ const useCalendarPrint = ({
                         "meeting" +
                         (isUserAdmin ? " canClick" : "")
                       }
-                      onClick={isUserAdmin && openMeetingModal}
+                      onClick={isUserAdmin && (() => {
+                        const meetingInfo = {
+                          dateInfo:
+                            currentYear + "-" +
+                            (currentMonth < 10 ? "0" + currentMonth : currentMonth) + "-" +
+                            (i < 10 ? "0" + i : i),
+                          attendees: attendees,
+                        };
+                        setShowMeetingModal(true);
+                        setMeetingInfo(meetingInfo);
+                      })}
                     >
                       Meeting
                     </div>
@@ -138,7 +160,9 @@ const useCalendarPrint = ({
     meetings,
     isUserAdmin,
     setShowScheduleModal,
-    setShowMeetingModal
+    setShowMeetingModal,
+    setScheduleInfo,
+    setMeetingInfo
   ]);
 };
 

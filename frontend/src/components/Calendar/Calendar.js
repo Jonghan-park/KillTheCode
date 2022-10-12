@@ -95,12 +95,24 @@ const Calendar = () => {
   const months = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
   const weeks = ["SUN", "MON", "TUE", "WED", "THUR", "FRI", "SAT"];
+  const initSchedule = {
+    fromDateInfo: "",
+    toDateInfo: "",
+    issue: "",
+    color: "",
+  };
+  const initMeeting = {    
+    dateInfo: "",
+    attendees: "",
+  };
   const [currentYear, setCurrentYear] = useState(today.year);
   const [currentMonth, setCurrentMonth] = useState(today.month);
   const [schedules, setSchedules] = useState(schedule);
   const [meetings, setMeetings] = useState(meeting);
   const [showScheduleModal, setShowScheduleModal] = useState(false);
   const [showMeetingModal, setShowMeetingModal] = useState(false);
+  const [scheduleInfo, setScheduleInfo] = useState(initSchedule);
+  const [meetingInfo, setMeetingInfo] = useState(initMeeting);
   // The temporary state for the calendar based on a user information
   const [isUserAdmin, setIsUserAdmin] = useState(true);
   const displayCalendar = useCalendarPrint({
@@ -112,6 +124,8 @@ const Calendar = () => {
     isUserAdmin,
     setShowScheduleModal,
     setShowMeetingModal,
+    setScheduleInfo,
+    setMeetingInfo,
   });
 
   const openScheduleModal = () => {
@@ -165,18 +179,18 @@ const Calendar = () => {
       <div className="calendarCtrl nextMonth" onClick={nextMonth}>&gt;</div>
       {showScheduleModal &&
         <ScheduleModal
-          fromDateInfo = ""
-          toDateInfo = ""
-          issue = ""
-          color = ""
+          initSchedule={initSchedule}
+          scheduleInfo = {scheduleInfo}
           setShowScheduleModal={setShowScheduleModal}
+          setScheduleInfo={setScheduleInfo}
         />
       }
       {showMeetingModal && 
         <MeetingModal
-          dateInfo = ""
-          attendees = ""
+          initMeeting={initMeeting}
+          meetingInfo={meetingInfo}
           setShowMeetingModal={setShowMeetingModal}
+          setMeetingInfo={setMeetingInfo}
         />
       }
     </div>
