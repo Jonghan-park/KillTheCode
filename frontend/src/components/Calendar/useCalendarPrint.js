@@ -6,8 +6,17 @@ const useCalendarPrint = ({
   currentMonth,
   schedules,
   meetings,
+  isUserAdmin,
+  setShowScheduleModal,
+  setShowMeetingModal,
 }) => {
   return useMemo(() => {
+    const openScheduleModal = () => {
+      setShowScheduleModal(true);
+    };
+    const openMeetingModal = () => {
+      setShowMeetingModal(true);
+    };
     const lastDate = new Date(currentYear, currentMonth, 0).getDate();
     const firstDay = new Date(currentYear, currentMonth - 1, 1).getDay();
     const lastDay = new Date(currentYear, currentMonth - 1, lastDate).getDay();    
@@ -69,15 +78,27 @@ const useCalendarPrint = ({
                       "schedule" +
                       (schedule.fromDate === i ? " startSchedule" : "") +
                       (schedule.toDate === i ? " endSchedule" : "") +
-                      (issued ? " issue" : "")
+                      (issued ? " issue" : "") +
+                      (isUserAdmin ? " canClick" : "")
                     }
                     style={{
                       backgroundColor: schedule.color,
                     }}
+                    onClick={isUserAdmin && openScheduleModal}
                   >
                     {issued && <span>{schedule.issue}</span>}
                   </div>
-                  {met && <div className="meeting">Meeting</div>}
+                  {met &&
+                    <div
+                      className={
+                        "meeting" +
+                        (isUserAdmin ? " canClick" : "")
+                      }
+                      onClick={isUserAdmin && openMeetingModal}
+                    >
+                      Meeting
+                    </div>
+                  }
                 </div>
               );
 
@@ -109,7 +130,16 @@ const useCalendarPrint = ({
     }
 
     return calendarCells;
-  }, [weeks, currentYear, currentMonth, schedules, meetings]);
+  }, [
+    weeks,
+    currentYear,
+    currentMonth,
+    schedules,
+    meetings,
+    isUserAdmin,
+    setShowScheduleModal,
+    setShowMeetingModal
+  ]);
 };
 
 export default useCalendarPrint;
