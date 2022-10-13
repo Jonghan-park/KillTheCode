@@ -2,7 +2,6 @@
   position: relative;
   background-color: #aaaaaa;
   margin-top: 5px;
-  width: auto;
 
   min-height: calc(100vh - 120px - 105px);
   overflow: hidden;
@@ -33,4 +32,14 @@
 .nextBtnProject{
   right: 0;
 }
+.preBtnProject:hover{
+  color: #F0F2F2;
+  background-color: #2B3135;
+  border: 1px solid #F0F2F2;
+}
 
+.nextBtnProject:hover{
+  color: #F0F2F2;
+  background-color: #2B3135;
+  border: 1px solid #F0F2F2;
+}
