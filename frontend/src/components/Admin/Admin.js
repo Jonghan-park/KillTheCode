@@ -4,25 +4,25 @@ import UserList from "./users";
 
 const userList = [
   {
-    id: "1",
-    name: "Adam",
+    username: "Adam",
     email: "adam@test.com",
     iscooperation: "true",
+    id: "1",
   },
   {
-    id: "2",
-    name: "Hong",
+    username: "Hong",
     email: "hong@test.com",
     iscooperation: "false",
+    id: "2",
   },
   {
-    name: "dony",
+    username: "dony",
     email: "dony@test.com",
     iscooperation: "true",
     id: "kSEMggm",
   },
   {
-    name: "Jhon",
+    username: "Jhon",
     email: "jhon@test.com",
     iscooperation: "false",
     id: "4",

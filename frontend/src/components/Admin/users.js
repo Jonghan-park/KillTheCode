@@ -13,22 +13,23 @@ const UserList = ({ users }) => {
           </tr>
         </thead>
         <tbody>
-          {users.map((user) => (
+          {users.map((user, i) => (
             <tr>
-              <td>{user.name}</td>
+              <td>{user.username}</td>
               <td>
+                {user.iscooperation} :
                 <input
                   type="radio"
-                  name="isCooperat"
-                  value={true}
-                  checked={user.iscooperation}
+                  name={i}
+                  value="true"
+                  checked={user.iscooperation == "true"}
                 ></input>
                 True
                 <input
                   type="radio"
-                  name="isCooperat"
-                  value={false}
-                  checked={user.iscooperation}
+                  name={i}
+                  value="false"
+                  checked={user.iscooperation == "false"}
                 ></input>
                 False
               </td>
