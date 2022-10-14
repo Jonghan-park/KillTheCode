@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import "./MyAccount.css";
 
+const usersInfo=[
+    {
+        firstName: "S",
+        lastName: "Lauren",
+        password: "********",
+        email:"test@test.com",
+    },
+];
 
-function MyAccount(){
+
+const MyAccount=() => {
+    const [userInfo, setUserInfo] = useState(usersInfo);
+
+    const handleChange = event => {
+        setUserInfo(event.target.value);
+    
+        console.log('value is:', event.target.value);
+      };
+
+
     return(
 
         <div className="myAccountContainer" >
@@ -21,19 +39,20 @@ function MyAccount(){
                     <div className="myAccountInfo">
                         <div className="myAccountInfoGroup">                       
                         <label className="myAccountLabel">First Name</label>
-                        <input type="text" className="myAcountFistname mt-3"  placeholder="First Name"></input>
+                        <input type="text" className="myAcountFistname mt-3"  onChange={handleChange}  placeholder={userInfo[0].firstName}></input>
                         <br></br>
 
+
                         <label className="myAccountLabel">Last Name</label>
-                        <input type="text"  className="myAcountLastname  mt-3"  placeholder="Last Name"></input>
+                        <input type="text"  className="myAcountLastname  mt-3"  placeholder={userInfo[0].lastName}></input>
                         <br></br>
 
                         <label className="myAccountLabel">Password</label>
-                        <input type="password" className="myAcountPassword  mt-3"  placeholder="Password"></input>
+                        <input type="password" className="myAcountPassword  mt-3"  placeholder={userInfo[0].password}></input>
                         <br></br>
 
                         <label className="myAccountLabel">Email</label>
-                        <input type="email" className="myAcountEmail  mt-3"  placeholder="Email"></input>
+                        <input type="email" className="myAcountEmail  mt-3" placeholder={userInfo[0].email}></input>
                         <br></br>
 
                         <button className="button mt-5">SAVE</button>
