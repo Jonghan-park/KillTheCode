@@ -1,19 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import lightThemeLogo from "../../assets/lightLogo.png";
 import logo from "../../assets/logo.png";
-
+import { LightThemeContext } from "../../context/LightThemeContext";
 import "./Navbar.css";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const { lightTheme } = useContext(LightThemeContext);
   return (
     <nav className="navbar">
       <div className="logoAndMainLinks">
         <div className="logo">
           <Link to="/">
-            <img src={logo} alt="logo" />
+            {lightTheme ? (
+              <img src={lightThemeLogo} alt="Nav light theme logo" />
+            ) : (
+              <img src={logo} alt="Nav logo" />
+            )}
           </Link>
         </div>
         <div className="mainLinks">
