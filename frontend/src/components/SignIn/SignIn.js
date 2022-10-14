@@ -2,23 +2,26 @@ import React from "react";
 import "./SignIn.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import {
-  faUser,
-  faEnvelope,
-  faKey,
-  faCheckCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 function SignIn() {
   return (
     <>
       <div className="container">
+        <div className="panelContainerSign">
+          <h1>
+            WE ARE
+            <br />
+            <span className="more">MORE THAN</span>
+            <br />
+            JUST
+            <br />A TEAM
+            <br />
+          </h1>
+        </div>
+
         <div className="signInForm">
-          <div className="title">REGISTER</div>
+          <div className="title">LOGIN</div>
           <form>
-            <div className="inputGrop">
-              <FontAwesomeIcon icon={faUser} className="signInIcon" />
-              <input type="text" className="inputField" placeholder="User ID" />
-            </div>
             <div className="inputGrop">
               <FontAwesomeIcon icon={faEnvelope} className="signInIcon" />
               <input type="text" className="inputField" placeholder="Email" />
@@ -31,34 +34,15 @@ function SignIn() {
                 placeholder="Password"
               />
             </div>
-            <div className="inputGrop">
-              <FontAwesomeIcon icon={faCheckCircle} className="signInIcon" />
-              <input
-                icon={faCheckCircle}
-                type="text"
-                className="inputField"
-                placeholder="Confirm Password"
-              />
-            </div>
+
             <button type="submit" className="signUpBtn">
-              SIGN UP
+              LOGIN
             </button>
           </form>
           <div className="existAccount">
-            <h2>Already have an account?</h2>
-            <Link to="/joinUs">LOGIN NOW</Link>
+            <h2>Don't have an account?</h2>
+            <Link to="/joinUs">REGISTER NOW</Link>
           </div>
-        </div>
-        <div className="panelContainer">
-          <h1>
-            WE ARE
-            <br />
-            <span className="more">MORE THAN</span>
-            <br />
-            JUST
-            <br />A TEAM
-            <br />
-          </h1>
         </div>
       </div>
     </>

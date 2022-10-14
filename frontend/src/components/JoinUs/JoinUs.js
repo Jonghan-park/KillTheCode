@@ -1,10 +1,18 @@
 import React from "react";
-
+import "./JoinUs.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
+import {
+  faUser,
+  faEnvelope,
+  faKey,
+  faCheckCircle,
+} from "@fortawesome/free-solid-svg-icons";
 function JoinUs() {
   return (
     <>
-      {/* <div className="container">
-        <div className="signInForm">
+      <div className="container">
+        <div className="joinInForm">
           <div className="title">REGISTER</div>
           <form>
             <div className="inputGrop">
@@ -33,15 +41,15 @@ function JoinUs() {
               />
             </div>
             <button type="submit" className="signUpBtn">
-              SIGN UP
+              JOIN US
             </button>
           </form>
           <div className="existAccount">
             <h2>Already have an account?</h2>
-            <Link to="/joinUs">LOGIN NOW</Link>
+            <Link to="/signin">LOGIN NOW</Link>
           </div>
         </div>
-        <div className="panelContainer">
+        <div className="panelContainerJoin">
           <h1>
             WE ARE
             <br />
@@ -52,7 +60,7 @@ function JoinUs() {
             <br />
           </h1>
         </div>
-      </div> */}
+      </div>
     </>
   );
 }

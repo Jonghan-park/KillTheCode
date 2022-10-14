@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Project from "../Projects/Project";
 import "./Projects.css";
 
@@ -52,9 +52,29 @@ const project = [
 
 const Projects = () => {
   const [projects, setProjects] = useState(project);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slideRef = useRef(null);
+  const TOTAL_SLIDES = projects.length;
 
-  const preBtnHandler = () => {};
-  const nextBtnHandler = () => {};
+  useEffect(() => {
+    slideRef.current.style.transition = "all 0.5s ease-in-out";
+    slideRef.current.style.transform = `translate(-${currentSlide * 2}0%)`;
+  }, [currentSlide]);
+
+  const nextBtnHandler = () => {
+    if (currentSlide >= TOTAL_SLIDES) {
+      setCurrentSlide(0);
+    } else {
+      setCurrentSlide(currentSlide + 1);
+    }
+  };
+  const preBtnHandler = () => {
+    if (currentSlide === 0) {
+      setCurrentSlide(TOTAL_SLIDES);
+    } else {
+      setCurrentSlide(currentSlide - 1);
+    }
+  };
   // Get projects
 
   // const getProjects = async () => {
@@ -80,8 +100,9 @@ const Projects = () => {
           <p>&gt;</p>
         </button>
       </div>
-
-      <Project projects={projects} />
+      <div className="sliderContainer" ref={slideRef}>
+        <Project projects={projects} />
+      </div>
     </div>
   );
 };

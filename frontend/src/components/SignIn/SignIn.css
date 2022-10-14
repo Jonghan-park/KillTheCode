@@ -20,6 +20,7 @@
     margin:10vh auto 10vh auto;
     height: 60vh;
     width:60%;
+    padding-right: 0;
    
     /* background: linear-gradient(
     to right, 
@@ -43,8 +44,8 @@
     flex-direction:column;
     justify-content:center;
     align-items: center;
-    border-top-left-radius: 18px;
-    border-bottom-left-radius: 18px;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
     gap: 10px 40px;
 
 }
@@ -64,7 +65,7 @@ form{
     padding-bottom: 10px;
 }
 
-.panelContainer {
+.panelContainerSign {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -126,7 +127,7 @@ a:hover{
     color:#414141;
 }
 
-.panelContainer{
+.panelContainerSign{
     font-size:2rem;
     letter-spacing: 5px;
     color:yellow;
