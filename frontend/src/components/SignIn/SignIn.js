@@ -13,7 +13,7 @@ function SignIn() {
     <>
       <div className="container">
         <div className="signInForm">
-          <div className="title">REGISTER</div>
+          <div className="title">LOGIN</div>
           <form>
             <div className="inputGrop">
               <FontAwesomeIcon icon={faUser} className="signInIcon" />

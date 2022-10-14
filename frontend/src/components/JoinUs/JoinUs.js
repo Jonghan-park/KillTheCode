@@ -1,9 +1,17 @@
 import React from "react";
-
-function JoinUs() {
+import "./JoinUs.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
+import {
+  faUser,
+  faEnvelope,
+  faKey,
+  faCheckCircle,
+} from "@fortawesome/free-solid-svg-icons";
+function SignIn() {
   return (
     <>
-      {/* <div className="container">
+      <div className="container">
         <div className="signInForm">
           <div className="title">REGISTER</div>
           <form>
@@ -52,9 +60,9 @@ function JoinUs() {
             <br />
           </h1>
         </div>
-      </div> */}
+      </div>
     </>
   );
 }
 
-export default JoinUs;
+export default SignIn;
