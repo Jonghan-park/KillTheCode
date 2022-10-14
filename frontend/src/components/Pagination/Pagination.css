@@ -1,0 +1,24 @@
+.paginationContainer ul,
+.paginationContainer li{
+  padding: 0;
+  list-style: none;
+}
+.paginationUl{
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+.paginationBtn{
+  margin: 0 10px;
+  cursor: pointer;
+  text-align: center;
+}
+.paginationBtn:hover{
+  font-weight: bold;
+}
+.pageArrow{
+  font-size: 17px;
+}
+.currentPage{
+  font-weight: bold;
+}
