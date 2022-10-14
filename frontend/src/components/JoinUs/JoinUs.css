@@ -20,6 +20,7 @@
     margin:10vh auto 10vh auto;
     height: 60vh;
     width:60%;
+    padding-left: 0;
    
     /* background: linear-gradient(
     to right, 
@@ -35,7 +36,7 @@
    
 }
 
-.signInForm{
+.joinInForm{
     width:50%;
     height: 100%;
     background-color:white;
@@ -64,7 +65,7 @@ form{
     padding-bottom: 10px;
 }
 
-.panelContainer {
+.panelContainerJoin {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -126,7 +127,7 @@ a:hover{
     color:#414141;
 }
 
-.panelContainer{
+.panelContainerJoin{
     font-size:2rem;
     letter-spacing: 5px;
     color:yellow;

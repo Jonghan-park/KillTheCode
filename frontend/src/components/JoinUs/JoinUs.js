@@ -8,11 +8,11 @@ import {
   faKey,
   faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
-function SignIn() {
+function JoinUs() {
   return (
     <>
       <div className="container">
-        <div className="signInForm">
+        <div className="joinInForm">
           <div className="title">REGISTER</div>
           <form>
             <div className="inputGrop">
@@ -41,15 +41,15 @@ function SignIn() {
               />
             </div>
             <button type="submit" className="signUpBtn">
-              SIGN UP
+              JOIN US
             </button>
           </form>
           <div className="existAccount">
             <h2>Already have an account?</h2>
-            <Link to="/joinUs">LOGIN NOW</Link>
+            <Link to="/signin">LOGIN NOW</Link>
           </div>
         </div>
-        <div className="panelContainer">
+        <div className="panelContainerJoin">
           <h1>
             WE ARE
             <br />
@@ -65,4 +65,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default JoinUs;
