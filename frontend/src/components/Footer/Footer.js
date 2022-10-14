@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import { LightThemeContext } from "../../context/LightThemeContext";
 import "./Footer.css";
 
 const Footer = () => {

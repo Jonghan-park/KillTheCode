@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // import components
@@ -12,24 +13,31 @@ import JoinUs from "./components/JoinUs/JoinUs";
 import Myaccount from "./components/MyAccount/MyAccount";
 import Admin from "./components/Admin/Admin";
 
+// import context
+import { LightThemeContext } from "./context/LightThemeContext";
+
 function App() {
+  const [lightTheme, setLightTheme] = useState(false);
+
   return (
-    <div className="App">
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/notice" element={<Notice />} />
-          <Route path="/myaccount" element={<Myaccount />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/joinus" element={<JoinUs />} />
-          <Route path="/admin" element={<Admin />} />
-        </Routes>
-        <Footer />
-      </Router>
-    </div>
+    <LightThemeContext.Provider value={{ lightTheme, setLightTheme }}>
+      <div className="App">
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/notice" element={<Notice />} />
+            <Route path="/myaccount" element={<Myaccount />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/joinus" element={<JoinUs />} />
+            <Route path="/admin" element={<Admin />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </div>
+    </LightThemeContext.Provider>
   );
 }
 
