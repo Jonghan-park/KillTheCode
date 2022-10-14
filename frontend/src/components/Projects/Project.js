@@ -4,7 +4,7 @@ import "./Project.css";
 
 const Project = ({ projects }) => {
   return (
-    <div className="project">
+    <>
       {projects ? (
         projects.map((project) => {
           const { id, title, type, language, period, contributor, link } =
@@ -40,7 +40,7 @@ const Project = ({ projects }) => {
           We are just about to start working on a project.
         </div>
       )}
-    </div>
+    </>
   );
 };
 
