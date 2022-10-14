@@ -1,21 +1,38 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png";
+import lightThemeLogo from "../../assets/lightLogo.png";
 import { LightThemeContext } from "../../context/LightThemeContext";
 import "./Footer.css";
 
 const Footer = () => {
+  const { lightTheme } = useContext(LightThemeContext);
+
   return (
-    <footer>
+    <footer
+      style={{
+        backgroundColor: lightTheme ? "#F0F2F2" : "",
+        borderTopColor: lightTheme ? "black" : "#F0F2F2",
+      }}
+    >
       <div className="footerRow">
         <div className="footerLogo">
-          <img src={logo} alt="Footer logo" />
+          {lightTheme ? (
+            <img src={lightThemeLogo} alt="Footer light theme logo" />
+          ) : (
+            <img src={logo} alt="Footer logo" />
+          )}
         </div>
         <div className="footerContactUs">
-          <Link to="#">Contact Us</Link>
+          <Link style={{ color: lightTheme ? "black" : "#F0F2F2" }} to="#">
+            Contact Us
+          </Link>
         </div>
       </div>
-      <div className="copyRight">
+      <div
+        className="copyRight"
+        style={{ color: lightTheme ? "black" : "#F0F2F2" }}
+      >
         <p> copyright &copy;2022 Team KillTheCode</p>
       </div>
     </footer>
