@@ -1,17 +1,17 @@
-.project{
-  /* display: flex; */
+/* .project{
+  display: flex;
   min-height: 60vh;
   overflow: hidden;
   scroll-behavior: smooth;
   padding-left: 1rem;
-}
+} */
 .projectItem{
-  padding: 1rem;
-  margin: 40px;
-  width: 600px;
+  padding: 0.5rem;
+  margin: 30px;
+
   border-radius: 30px;
   background-color: #2B3135;
-  width: 500px;
+  min-width: 450px;
 }
 .projectItem img{
   margin-left: 20px;

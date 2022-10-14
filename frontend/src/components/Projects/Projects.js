@@ -54,11 +54,11 @@ const Projects = () => {
   const [projects, setProjects] = useState(project);
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef(null);
-  const TOTAL_SLIDES = projects.length;
+  const TOTAL_SLIDES = projects.length - 1;
 
   useEffect(() => {
     slideRef.current.style.transition = "all 0.5s ease-in-out";
-    slideRef.current.style.transform = `translate(-${currentSlide * 2}0%)`;
+    slideRef.current.style.transform = `translate(-${currentSlide * 510}px)`;
   }, [currentSlide]);
 
   const nextBtnHandler = () => {

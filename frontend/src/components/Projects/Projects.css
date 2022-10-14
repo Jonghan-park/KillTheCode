@@ -2,9 +2,8 @@
   position: relative;
   background-color: #aaaaaa;
   margin-top: 5px;
-
   min-height: calc(100vh - 120px - 105px);
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 .ProjectsTitle{
   color: black;
@@ -47,5 +46,7 @@
 }
 .sliderContainer{
   display: flex;
-  width: 100%;
+  
+  scroll-behavior: smooth;
+  
 }
