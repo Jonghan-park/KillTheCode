@@ -17,7 +17,7 @@ import Admin from "./components/Admin/Admin";
 import { LightThemeContext } from "./context/LightThemeContext";
 
 function App() {
-  const [lightTheme, setLightTheme] = useState(true);
+  const [lightTheme, setLightTheme] = useState(false);
 
   return (
     <LightThemeContext.Provider value={{ lightTheme, setLightTheme }}>
