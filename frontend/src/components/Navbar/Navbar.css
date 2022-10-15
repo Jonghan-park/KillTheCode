@@ -85,6 +85,7 @@
     display: flex;
     margin-right: 2rem;
     cursor: pointer;
+    z-index: 20;
   }
   .navHamburger{
     font-size: 40px;

@@ -10,8 +10,14 @@ import "./Navbar.css";
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const { lightTheme } = useContext(LightThemeContext);
+
+  const linksStyle = { color: lightTheme ? "black" : "#F0F2F2" };
+  const backgroundStyle = {
+    backgroundColor: lightTheme ? "#F0F2F2" : "",
+    borderBottomColor: lightTheme ? "black" : "#F0F2F2",
+  };
   return (
-    <nav className="navbar">
+    <nav className="navbar" style={backgroundStyle}>
       <div className="logoAndMainLinks">
         <div className="logo">
           <Link to="/">
@@ -24,19 +30,27 @@ const Navbar = () => {
         </div>
         <div className="mainLinks">
           <div className="navbarLink">
-            <Link to="/about">About</Link>
+            <Link style={linksStyle} to="/about">
+              About
+            </Link>
           </div>
           <div className="navbarLink">
-            <Link to="/projects">Projects</Link>
+            <Link style={linksStyle} to="/projects">
+              Projects
+            </Link>
           </div>
         </div>
       </div>
       <div className="signInLinks">
         <div className="navbarLink">
-          <Link to="/signin">Sign In</Link>
+          <Link style={linksStyle} to="/signin">
+            Sign In
+          </Link>
         </div>
         <div className="navbarLink">
-          <Link to="/joinus">Join Us</Link>
+          <Link style={linksStyle} to="/joinus">
+            Join Us
+          </Link>
         </div>
       </div>
 
@@ -45,6 +59,7 @@ const Navbar = () => {
           className="navHamburger"
           onClick={() => setToggleMenu(() => !toggleMenu)}
           icon={faBars}
+          style={linksStyle}
         />
 
         {toggleMenu && (

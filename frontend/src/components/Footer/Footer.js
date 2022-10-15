@@ -7,14 +7,13 @@ import "./Footer.css";
 
 const Footer = () => {
   const { lightTheme } = useContext(LightThemeContext);
-
+  const linksStyle = { color: lightTheme ? "black" : "#F0F2F2" };
+  const backgroundStyle = {
+    backgroundColor: lightTheme ? "#F0F2F2" : "",
+    borderBottomColor: lightTheme ? "black" : "#F0F2F2",
+  };
   return (
-    <footer
-      style={{
-        backgroundColor: lightTheme ? "#F0F2F2" : "",
-        borderTopColor: lightTheme ? "black" : "#F0F2F2",
-      }}
-    >
+    <footer style={backgroundStyle}>
       <div className="footerRow">
         <div className="footerLogo">
           {lightTheme ? (
@@ -24,15 +23,12 @@ const Footer = () => {
           )}
         </div>
         <div className="footerContactUs">
-          <Link style={{ color: lightTheme ? "black" : "#F0F2F2" }} to="#">
+          <Link style={linksStyle} to="#">
             Contact Us
           </Link>
         </div>
       </div>
-      <div
-        className="copyRight"
-        style={{ color: lightTheme ? "black" : "#F0F2F2" }}
-      >
+      <div className="copyRight" style={linksStyle}>
         <p> copyright &copy;2022 Team KillTheCode</p>
       </div>
     </footer>
