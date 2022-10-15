@@ -1,0 +1,107 @@
+.editNoticeForm{
+  width: 80%;
+  margin: 10px auto 0;
+}
+.editNoticeForm form{
+  /* init css */
+  display: initial;
+  justify-content: initial;
+  align-items: initial;
+  flex-direction: initial;
+}
+.editNoticeForm label{
+  width: 15%;
+  text-align: center;
+}
+.editNoticeForm input{
+  width: 80%;
+  /* init css */
+  display: inline;
+  text-align: initial;
+}
+.noticeTexts{
+  width: 95%;
+  height: 50vh;
+  margin: 20px 2.5% 0;
+}
+.noticeBtns{
+  width: 80%;
+  height: 30px;
+  margin: 15px auto;
+  padding: 0 10px;
+}
+.noticeBtns button{
+  width: 75px;
+  padding: 3px 0;
+  border-radius: 7px;
+  border: 1px solid #2B3135;
+}
+.noticeLeftBtn{
+  float: left;
+  background-color: #F0F2F2;
+}
+.noticeLeftBtn:hover{
+  background-color: #2B3135;
+  color: #F0F2F2;
+}
+.noticeRightBtn{
+  float: right;
+  background-color: #2B3135;
+  color: #F0F2F2;
+}
+.noticeRightBtn:last-child{
+  margin-right: 5px;
+}
+.noticeRightBtn:hover{
+  background-color: #F0F2F2;
+  color: black;
+}
+.editBtns{
+  width: 95%;
+}
+.noticeContentHeader{
+  width: 80%;
+  margin: 10px auto 0;
+  padding: 10px;
+  background-color: #bebebe;
+  font-size: 20px;
+}
+.noticeContentTitle{
+  padding-left: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.noticeContent{
+  width: 80%;
+  margin: 15px auto 55px;
+  padding: 10px;
+  font-family: 'Cabin', sans-serif;
+  font-size: 17px;
+  white-space: initial;
+}
+
+@media screen and (max-width: 716px){
+  .noticeContentHeader{
+    font-size: 17px;
+  }
+  .noticeContent{
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 575px){
+  .noticeBtns button{
+    width: 65px;
+    font-size: 15px;
+  }
+  .noticeContentTitle{
+    padding-left: 10px;
+  }
+}
+
+@media screen and (max-width: 410px){  
+  .noticeRightBtn:last-child{
+    margin-right: 2px;
+  }
+}
