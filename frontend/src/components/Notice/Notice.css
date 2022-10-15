@@ -25,9 +25,8 @@
   font-size: 17px;
   text-align: center;
   box-shadow: 3px 3px 3px #bebebe;
-}
-.notice:hover{
   cursor: pointer;
+  color: black;
 }
 .noticeTitle{
   overflow: hidden;
