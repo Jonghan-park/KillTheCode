@@ -10,7 +10,7 @@ const Footer = () => {
   const linksStyle = { color: lightTheme ? "black" : "#F0F2F2" };
   const backgroundStyle = {
     backgroundColor: lightTheme ? "#F0F2F2" : "",
-    borderBottomColor: lightTheme ? "black" : "#F0F2F2",
+    borderTopColor: lightTheme ? "black" : "#F0F2F2",
   };
   return (
     <footer style={backgroundStyle}>
