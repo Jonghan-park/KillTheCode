@@ -4,7 +4,7 @@
     height: 95%;
     margin: 2% 0% 5% 7%;
     /* text-align:center; */
-    border: 2px solid rgb(245, 242, 242);
+    /* border: 2px solid rgb(245, 242, 242); */
     }
     
     .chat-body{
@@ -24,7 +24,7 @@
 
     .text-box{
         margin-left: 2%;
-        padding: 3%;
+        padding: 2%;
         background-color: aquamarine;
         color:#2B3135;
         border-radius: 5%;
