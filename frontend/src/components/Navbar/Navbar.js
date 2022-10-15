@@ -16,6 +16,7 @@ const Navbar = () => {
     backgroundColor: lightTheme ? "#F0F2F2" : "",
     borderBottomColor: lightTheme ? "black" : "#F0F2F2",
   };
+
   return (
     <nav className="navbar" style={backgroundStyle}>
       <div className="logoAndMainLinks">

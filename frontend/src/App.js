@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // import components
@@ -17,8 +17,17 @@ import Admin from "./components/Admin/Admin";
 import { LightThemeContext } from "./context/LightThemeContext";
 
 function App() {
-  const [lightTheme, setLightTheme] = useState(true);
+  const [lightTheme, setLightTheme] = useState(false);
 
+  useEffect(() => {
+    console.log(window.location.pathname);
+    if (window.location.pathname === "/admin") {
+      setLightTheme(true);
+    }
+    // } else if (!location.pathname === "/admin") {
+    //   setLightTheme(false);
+    // }
+  }, [window.location.pathname]);
   return (
     <LightThemeContext.Provider value={{ lightTheme, setLightTheme }}>
       <div className="App">
