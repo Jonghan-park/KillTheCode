@@ -20,8 +20,8 @@ function SignIn() {
         </div>
 
         <div className="signInForm">
-          <div className="title">LOGIN</div>
-          <form>
+          <div className="loginTitle">LOGIN</div>
+          <form className="loginForm">
             <div className="inputGrop">
               <FontAwesomeIcon icon={faEnvelope} className="signInIcon" />
               <input type="text" className="inputField" placeholder="Email" />

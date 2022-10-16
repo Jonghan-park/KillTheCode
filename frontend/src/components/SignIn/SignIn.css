@@ -55,10 +55,10 @@ form{
     align-items: center;
     flex-direction:column;
 }
-.title{
-    font-size:3rem;
+.loginTitle{
+    font-size:4em;
     margin-top:0;
-    /* margin-bottom:5vh; */
+    margin-bottom:5vh;
 }
 
 .inputGrop{
@@ -143,3 +143,28 @@ margin:10px 0;
 .more{
     color:white;
 }
+
+
+@media screen and (max-width: 753px){
+    .loginTitle{
+        font-size:2em;
+    }
+    .panelContainerSign{
+       display:inline-block;
+       margin-top:30vh;
+       padding-left: 40px;
+
+    }
+   
+  }
+
+  @media screen and (max-width:680){
+    /* *{
+        background-color:aquamarine;
+    } */
+
+    /* .container{
+       display:none;
+    } */
+ 
+  }
