@@ -40,8 +40,10 @@ function SignIn() {
             </button>
           </form>
           <div className="existAccount">
-            <h2>Don't have an account?</h2>
-            <Link to="/joinUs">REGISTER NOW</Link>
+            <h2 className="findPwd">Forgot Password</h2>
+            <h2 className="toJoinUs">
+              <Link to="/joinUs">Don't have an account?</Link>
+            </h2>
           </div>
         </div>
       </div>
