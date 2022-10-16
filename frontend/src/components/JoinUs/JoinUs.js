@@ -13,7 +13,7 @@ function JoinUs() {
     <>
       <div className="container">
         <div className="joinInForm">
-          <div className="title">REGISTER</div>
+          <div className="titleJoin">REGISTER</div>
           <form>
             <div className="inputGrop">
               <FontAwesomeIcon icon={faUser} className="signInIcon" />
@@ -49,6 +49,7 @@ function JoinUs() {
             <Link to="/signin">LOGIN NOW</Link>
           </div>
         </div>
+
         <div className="panelContainerJoin">
           <h1>
             WE ARE
