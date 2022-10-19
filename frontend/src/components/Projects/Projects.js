@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import ProjectModal from "../ProjectModal/ProjectModal";
 import Project from "../Projects/Project";
 import "./Projects.css";
 
@@ -57,7 +58,7 @@ const project = [
 
 const Projects = () => {
   const [admin, setAdmin] = useState(true);
-  const [addProjectModal, setAddProjectModal] = useState(true);
+  const [addProjectModal, setAddProjectModal] = useState(false);
   const [projects, setProjects] = useState(project);
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef(null);
@@ -113,7 +114,12 @@ const Projects = () => {
       </div>
 
       {addProjectModal && admin && (
-        <div className="projectModalContainer">modal </div>
+        <div className="projectModalContainer">
+          <ProjectModal
+            closeModal={addProjectModal}
+            setCloseModal={setAddProjectModal}
+          />
+        </div>
       )}
 
       <div className="projectButtonContainer">
