@@ -99,10 +99,10 @@ const Projects = () => {
       <div className="ProjectsTitle">PROJECTs</div>
       <div className="projectButtonContainer">
         <button className="preBtnProject" onClick={preBtnHandler}>
-          <p>&lt;</p>
+          <div className="preProject">&lt;</div>
         </button>
         <button className="nextBtnProject" onClick={nextBtnHandler}>
-          <p>&gt;</p>
+          <div className="nextProject">&gt;</div>
         </button>
       </div>
       <div className="sliderContainer" ref={slideRef}>
