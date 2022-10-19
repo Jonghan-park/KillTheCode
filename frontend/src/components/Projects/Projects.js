@@ -10,6 +10,7 @@ const project = [
     language: "React, NodeJS, Express, MongoDB",
     period: "Sep 24, 2022",
     contributor: "Name1, Name2, Name3",
+    github: "https://github.com/example1",
     link: "http://www.google.ca",
   },
   {
@@ -19,6 +20,7 @@ const project = [
     language: "React, NodeJS, Express, MongoDB",
     period: "Oct 30, 2022",
     contributor: "Name1, Name2, Name3",
+    github: "https://github.com/example1",
     link: "http://www.weather.ca",
   },
   {
@@ -28,6 +30,7 @@ const project = [
     language: "React, NodeJS, Express, MongoDB",
     period: "Oct 30, 2022",
     contributor: "Name1, Name2, Name3",
+    github: "https://github.com/example1",
     link: "http://www.weather.ca",
   },
   {
@@ -37,6 +40,7 @@ const project = [
     language: "React, NodeJS, Express, MongoDB",
     period: "Oct 30, 2022",
     contributor: "Name1, Name2, Name3",
+    github: "https://github.com/example1",
     link: "http://www.weather.ca",
   },
   {
@@ -46,6 +50,7 @@ const project = [
     language: "React, NodeJS, Express, MongoDB",
     period: "Oct 30, 2022",
     contributor: "Name1, Name2, Name3",
+    github: "https://github.com/example1",
     link: "http://www.weather.ca",
   },
 ];

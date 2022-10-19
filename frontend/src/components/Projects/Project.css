@@ -24,6 +24,14 @@
   margin-right: 20px;
   padding: 10px;
 }
+.projectLink{
+  cursor: pointer;
+}
+.projectLink:hover{
+  font-size: 20px;
+  color: yellow;
+  font-weight: 700;
+}
 .noProject{
   padding: 2rem;
   font-size: 50px;

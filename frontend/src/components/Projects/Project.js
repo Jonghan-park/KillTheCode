@@ -3,12 +3,23 @@ import quotation from "../../assets/quotation.svg";
 import "./Project.css";
 
 const Project = ({ projects }) => {
+  const openLink = (link) => {
+    window.open(link, "_blank");
+  };
   return (
     <>
       {projects ? (
         projects.map((project) => {
-          const { id, title, type, language, period, contributor, link } =
-            project;
+          const {
+            id,
+            title,
+            type,
+            language,
+            period,
+            contributor,
+            github,
+            link,
+          } = project;
           return (
             <div key={id} className="projectItem">
               <img src={quotation} alt="Quotation mark" />
@@ -29,7 +40,10 @@ const Project = ({ projects }) => {
                   <p>Contributor: {contributor}</p>
                 </li>
                 <li className="projectLink">
-                  <p>Link: {link}</p>
+                  <p onClick={() => openLink(github)}>Github: {github}</p>
+                </li>
+                <li className="projectLink">
+                  <p onClick={() => openLink(link)}>Link: {link}</p>
                 </li>
               </ul>
             </div>
