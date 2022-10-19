@@ -5,6 +5,7 @@
   scroll-behavior: smooth;
   padding-left: 1rem;
 } */
+
 .projectItem{
   padding: 0.5rem;
   margin: 30px;
@@ -12,6 +13,7 @@
   border-radius: 30px;
   background-color: #2B3135;
   min-width: 450px;
+  z-index: 5;
 }
 .projectItem img{
   margin-left: 20px;
@@ -23,6 +25,7 @@
   text-align: left;
   margin-right: 20px;
   padding: 10px;
+  
 }
 .projectLink{
   cursor: pointer;

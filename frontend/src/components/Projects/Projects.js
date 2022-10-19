@@ -56,6 +56,8 @@ const project = [
 ];
 
 const Projects = () => {
+  const [admin, setAdmin] = useState(true);
+  const [addProjectModal, setAddProjectModal] = useState(true);
   const [projects, setProjects] = useState(project);
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef(null);
@@ -65,6 +67,9 @@ const Projects = () => {
     slideRef.current.style.transition = "all 0.5s ease-in-out";
     slideRef.current.style.transform = `translate(-${currentSlide * 510}px)`;
   }, [currentSlide]);
+  const openModal = () => {
+    setAddProjectModal(true);
+  };
 
   const nextBtnHandler = () => {
     if (currentSlide >= TOTAL_SLIDES) {
@@ -95,8 +100,22 @@ const Projects = () => {
   //   getProjects();
   // }, []);
   return (
-    <div className="ProjectsContainer">
-      <div className="ProjectsTitle">PROJECTs</div>
+    <div className="projectsContainer">
+      <div className="projectsTitleContainer">
+        <div className="projectsTitle">PROJECTs</div>
+        {admin && (
+          <div className="addProject">
+            <button className="addProjectBtn" onClick={openModal}>
+              Add project
+            </button>
+          </div>
+        )}
+      </div>
+
+      {addProjectModal && admin && (
+        <div className="projectModalContainer">modal </div>
+      )}
+
       <div className="projectButtonContainer">
         <button className="preBtnProject" onClick={preBtnHandler}>
           <div className="preProject">&lt;</div>
@@ -105,6 +124,7 @@ const Projects = () => {
           <div className="nextProject">&gt;</div>
         </button>
       </div>
+
       <div className="sliderContainer" ref={slideRef}>
         <Project projects={projects} />
       </div>

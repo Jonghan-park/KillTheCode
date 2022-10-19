@@ -1,15 +1,21 @@
-.ProjectsContainer{
+.projectsContainer{
   position: relative;
   background-color: #aaaaaa;
   margin-top: 5px;
   min-height: calc(100vh - 120px - 105px);
   overflow: hidden;
 }
-.ProjectsTitle{
+.projectsTitle{
   color: black;
   font-size: 60px;
   display: flex;
   justify-content: center;
+}
+
+.addProject{
+  display: flex;
+  justify-content: flex-end;
+  padding: 1rem;
 }
 
 .preBtnProject, .nextBtnProject{
@@ -22,7 +28,7 @@
   height: 50px;
   font-size: 50px;
   position: absolute;
-  top: 25rem; 
+top: 55%;
   cursor: pointer;
   z-index: 10;
 }
@@ -44,7 +50,22 @@
   display: flex;
   
   scroll-behavior: smooth;
-  
+  z-index: 5;
 }
 
 
+.addProjectBtn{
+  width:150px;
+height:40px;
+border:none;
+border-radius: 50px;
+background-color:#2B3135;
+color:#F0F2F2;
+font-weight: 600;
+margin:10px 0;
+}
+
+.addProjectBtn:hover{
+  color: #2B3135;
+  background-color: #F0F2F2;
+}
