@@ -90,7 +90,6 @@ const Calendar = () => {
   const today = {
     year: new Date().getFullYear(),
     month: new Date().getMonth() + 1,
-    date: new Date().getDate(),
   };
   const months = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
@@ -115,6 +114,7 @@ const Calendar = () => {
   const [meetingInfo, setMeetingInfo] = useState(initMeeting);
   // The temporary state for the calendar based on a user information
   const [isUserAdmin, setIsUserAdmin] = useState(true);
+  // Display the value returned by the useCalendarPrint hook
   const displayCalendar = useCalendarPrint({
     weeks,
     currentYear,
@@ -173,11 +173,11 @@ const Calendar = () => {
             <div key={week} className="calendarCell weeks">{week}</div>
           );
         })}
-        {displayCalendar}
+        {displayCalendar} {/* Display the value returned by the useCalendarPrint hook */}
       </div>
       <div className="calendarCtrl prevMonth" onClick={prevMonth}>&lt;</div>
       <div className="calendarCtrl nextMonth" onClick={nextMonth}>&gt;</div>
-      {showScheduleModal &&
+      {showScheduleModal && // When clicking "Schedule" btn or colored schedules in calendar cells
         <ScheduleModal
           initSchedule={initSchedule}
           scheduleInfo = {scheduleInfo}
@@ -185,7 +185,7 @@ const Calendar = () => {
           setScheduleInfo={setScheduleInfo}
         />
       }
-      {showMeetingModal && 
+      {showMeetingModal && // When clicking "Meeting" btn or yellow meetings in calendar cells
         <MeetingModal
           initMeeting={initMeeting}
           meetingInfo={meetingInfo}
