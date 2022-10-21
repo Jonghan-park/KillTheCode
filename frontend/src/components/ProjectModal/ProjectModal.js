@@ -90,21 +90,21 @@ const ProjectModal = ({ closeModal, setCloseModal }) => {
                   value={link}
                   onChange={(e) => setLink(e.target.value)}
                 />
+                <div className="projectModalButtons">
+                  <button
+                    className="projectModalButton"
+                    onClick={() => setCloseModal(false)}
+                  >
+                    Add
+                  </button>
+                  <button
+                    className="projectModalButton"
+                    onClick={() => setCloseModal(false)}
+                  >
+                    Close
+                  </button>
+                </div>
               </form>
-              <div className="projectModalButtons">
-                <button
-                  className="projectModalButton"
-                  onClick={() => setCloseModal(false)}
-                >
-                  Add
-                </button>
-                <button
-                  className="projectModalButton"
-                  onClick={() => setCloseModal(false)}
-                >
-                  Close
-                </button>
-              </div>
             </div>
           </div>
         </div>
