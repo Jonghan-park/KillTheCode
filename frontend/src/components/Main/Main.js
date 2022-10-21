@@ -12,7 +12,7 @@ const Main = () => {
   const [leftMessageIsShown, setLeftMessageIsShown] = useState(false);
   const [rightMessageIsShown, setRightMessageIsShown] = useState(false);
   // The temporary state for displaying a working page based on a user information
-  const [userLogin, setUserLogin] = useState(false);
+  const [userLogin, setUserLogin] = useState(true);
 
   const leftIconHandler = () => {
     if (leftIconClicked === "leftIcon") {
