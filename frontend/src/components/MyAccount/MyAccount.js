@@ -22,47 +22,48 @@ const MyAccount=() => {
 
 
     return(
+<>
+        <div className="title">My Account</div>
 
         <div className="myAccountContainer" >
-                <div className="title">My Account</div>
-
                 <div className="myAccountPhoto">
-                    <div className="myAccountPhotoDisplay">
+                    
                         <div className="myAccountPhotoAdd">
-                            <p className="myAccountPh">Photo  </p>
-                    <input  className="myAccountImage" type="file" accept="image/png, image/jpg"></input>
+                            
                         </div>
-                    </div>  
+                    <input  className="myAccountImage" type="file" accept="image/png, image/jpg"/>
+                      
                 </div>
 
                 <form className="myAccountForm">
                     <div className="myAccountInfo">
                         <div className="myAccountInfoGroup">                       
                         <label className="myAccountLabel">First Name</label>
-                        <input type="text" className="myAcountFistname mt-3"  onChange={handleChange}  placeholder={userInfo[0].firstName}></input>
+                        <input type="text" className="myAcountFistname"  onChange={handleChange}  placeholder={userInfo[0].firstName}></input>
                         <br></br>
 
 
-                        <label className="myAccountLabel">Last Name</label>
-                        <input type="text"  className="myAcountLastname  mt-3"  placeholder={userInfo[0].lastName}></input>
+                        <label className="myAccountLabel mt-3">Last Name</label>
+                        <input type="text"  className="myAcountLastname"  placeholder={userInfo[0].lastName}></input>
                         <br></br>
 
-                        <label className="myAccountLabel">Password</label>
-                        <input type="password" className="myAcountPassword  mt-3"  placeholder={userInfo[0].password}></input>
+                        <label className="myAccountLabel  mt-3">Password</label>
+                        <input type="password" className="myAcountPassword"  placeholder={userInfo[0].password}></input>
                         <br></br>
 
-                        <label className="myAccountLabel">Email</label>
-                        <input type="email" className="myAcountEmail  mt-3" placeholder={userInfo[0].email}></input>
+                        <label className="myAccountLabel  mt-3">Email</label>
+                        <input type="email" className="myAcountEmail" placeholder={userInfo[0].email}></input>
                         <br></br>
 
-                        <button className="button mt-5">SAVE</button>
                   
                     </div>
+                        <button className="myAccountbutton">SAVE</button>
                   </div>
                 <div className="clear"></div>
                 </form>
 
         </div>
+        </>
     
     )
 
