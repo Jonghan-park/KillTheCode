@@ -33,11 +33,14 @@ const userList = [
 const Admin = () => {
   const [users, setUsers] = useState(userList);
   const { setLightTheme } = useContext(LightThemeContext);
+
   useEffect(() => {
     console.log(window.location.pathname);
     if (window.location.pathname === "/admin") {
       setLightTheme(true);
     }
+
+    useEffect(() => {});
   }, [window.location.pathname]);
   return (
     <div className="adminWrapper">
