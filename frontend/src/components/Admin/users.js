@@ -14,7 +14,7 @@ const UserList = ({ users }) => {
         </thead>
         <tbody>
           {users.map((user, i) => (
-            <tr>
+            <tr key={user.id}>
               <td>{user.username}</td>
               <td>
                 {user.iscooperation} :
