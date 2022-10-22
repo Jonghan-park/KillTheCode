@@ -57,7 +57,7 @@ const Navbar = () => {
           </div>
           <div className="navbarLink">
             <Link
-              onClick={() => setLightTheme(false)}
+              onClick={() => setLightTheme(true)}
               style={linksStyle}
               to="/projects"
             >
@@ -104,7 +104,7 @@ const Navbar = () => {
               <li className="navbarItem" onClick={() => setToggleAndTheme()}>
                 <Link to="/about">About</Link>
               </li>
-              <li className="navbarItem" onClick={() => setToggleAndTheme()}>
+              <li className="navbarItem" onClick={() => setLightTheme(true)}>
                 <Link to="/projects">Projects</Link>
               </li>
               <li className="navbarItem" onClick={() => setToggleAndTheme()}>
