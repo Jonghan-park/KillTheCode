@@ -31,23 +31,10 @@ const userList = [
 
 const Admin = () => {
   const [users, setUsers] = useState(userList);
-<<<<<<< HEAD
-  const { setLightTheme } = useContext(LightThemeContext);
 
-  useEffect(() => {
-    console.log(window.location.pathname);
-    if (window.location.pathname === "/admin") {
-      setLightTheme(true);
-    }
-
-    useEffect(() => {});
-  }, [window.location.pathname]);
-=======
-
->>>>>>> ca1f23d2df48dea58503d2af7a3e394d7f44cca5
   return (
     <div className="adminWrapper">
-      <div className="title">Admin</div>
+      <div className="titleAdmin">Admin</div>
       <div className="userWrapper">
         <a className="manageBtn" href="/admin">
           Manage User
