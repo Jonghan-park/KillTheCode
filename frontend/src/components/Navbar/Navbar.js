@@ -24,7 +24,7 @@ const Navbar = () => {
 
   useEffect(() => {
     console.log(window.location.pathname);
-    if (window.location.pathname === "/admin" || "/myaccount") {
+    if (window.location.pathname === "/admin") {
       setLightTheme(true);
     } else {
       setLightTheme(false);
