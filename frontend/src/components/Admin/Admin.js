@@ -31,7 +31,6 @@ const userList = [
 
 const Admin = () => {
   const [users, setUsers] = useState(userList);
-
   return (
     <div className="adminWrapper">
       <div className="titleAdmin">Admin</div>
