@@ -26,6 +26,8 @@ const Navbar = () => {
     console.log(window.location.pathname);
     if (window.location.pathname === "/admin") {
       setLightTheme(true);
+    } else if (window.location.pathname === "/myaccount") {
+      setLightTheme(true);
     } else {
       setLightTheme(false);
     }
