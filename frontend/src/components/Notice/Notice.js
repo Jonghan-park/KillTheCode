@@ -40,17 +40,36 @@ Facilisis evertitur scriptorem te pri, melius urbanitas quo id. Tibique mediocri
 ];
 
 const Notice = () => {
+  const initNotice = {
+    title: "",
+    content: "",
+  };
   const PAGE_SIZE = 10;
   const navigate = useNavigate();
   const [notices, setNotices] = useState(noticeList.slice(0).reverse());
+  const [writeMode, setWriteMode] = useState(false);
+  const [newNotice, setNewNotice] = useState(initNotice);
   const [currentPage, setCurrentPage] = useState(1);
   // The temporary state for displaying a working page based on a user information
   const [userLogin, setUserLogin] = useState(true);
+  // The temporary state for the calendar based on a user information
+  const [isUserAdmin, setIsUserAdmin] = useState(true);
   const currentPaginationData = useMemo(() => {
     const offset = (currentPage - 1) * PAGE_SIZE;
     return notices.slice(offset, offset + PAGE_SIZE);
   }, [notices, currentPage]);
   
+  const newNoticeChange = (e) => {
+    const { name, value } = e.target;
+    setNewNotice({
+      ...newNotice,
+      [name]: value,
+    })
+  };
+  const onCancle = () => {
+    setNewNotice(initNotice);
+    setWriteMode(false);
+  };
   const updatePage = (pageChange) => {
     setCurrentPage(pageChange);
   };
@@ -62,33 +81,67 @@ const Notice = () => {
   return (
     <div className="noticeContainer">
       <div className="noticePageTitle">NOTICE</div>
-      <Row className="noticeHeader">
-        <Col xs="1">No.</Col>
-        <Col xs="5" lg="7">Title</Col>
-        <Col xs="3" lg="2">Admin</Col>
-        <Col xs="3" lg="2">Date</Col>
-      </Row>
-      {currentPaginationData.map((notice) => {
-        return (
-          <Link key={notice.id} to={"/notice/"+notice.id}>
-            <Row className="notice">
-              <Col xs="1">{notice.id}</Col>
-              <Col xs="5" lg="7" className="noticeTitle">{notice.title}</Col>
-              <Col xs="3" lg="2">
-                {notice.admin}
-                <FontAwesomeIcon icon={faCrown} className="crown" />
-              </Col>
-              <Col xs="3" lg="2">{notice.date}</Col>
-            </Row>
-          </Link>
-        );
-      })}
-      <Pagination
-        currentPage={currentPage}
-        totalCount={notices.length}
-        pageSize={PAGE_SIZE}
-        onPageChange={updatePage}
-      />
+      {writeMode ? (
+        <div className="newNoticeForm">
+          <form>
+            <label htmlFor="noticeTitle">Title</label>
+            <input
+              type="text"
+              required
+              name="title"
+              id="noticeTitle"
+              value={newNotice.title}
+              onChange={newNoticeChange}
+            />
+            <textarea
+              className="noticeTexts"
+              required
+              name="content"
+              value={newNotice.content}
+              onChange={newNoticeChange}
+            />
+            <div className="noticeBtns">
+              <button className="noticeRightBtn" onClick={onCancle}>Cancle</button>
+              <button className="noticeRightBtn">Write</button>
+            </div>
+          </form>
+        </div>
+      ) : (
+        <>
+        <Row className="noticeHeader">
+          <Col xs="1">No.</Col>
+          <Col xs="5" lg="7">Title</Col>
+          <Col xs="3" lg="2">Admin</Col>
+          <Col xs="3" lg="2">Date</Col>
+        </Row>
+        {currentPaginationData.map((notice) => {
+          return (
+            <Link key={notice.id} to={"/notice/"+notice.id}>
+              <Row className="notice">
+                <Col xs="1">{notice.id}</Col>
+                <Col xs="5" lg="7" className="noticeTitle">{notice.title}</Col>
+                <Col xs="3" lg="2">
+                  {notice.admin}
+                  <FontAwesomeIcon icon={faCrown} className="crown" />
+                </Col>
+                <Col xs="3" lg="2">{notice.date}</Col>
+              </Row>
+            </Link>
+          );
+        })}
+        {isUserAdmin &&
+          <div className="noticeWriteBtn">
+            <button onClick={() => setWriteMode(true)}>Write</button>
+          </div>
+        }
+        <Pagination
+          currentPage={currentPage}
+          totalCount={notices.length}
+          pageSize={PAGE_SIZE}
+          onPageChange={updatePage}
+        />
+        </>
+      )}
     </div>
   );
 };

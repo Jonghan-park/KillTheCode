@@ -87,7 +87,7 @@ const NoticeView = () => {
               value={noticeContent.content}
               onChange={onNoticeChange}
             />
-            <div className="noticeBtns editBtns">
+            <div className="noticeBtns">
               <button className="noticeRightBtn" onClick={goNotice}>Cancle</button>
               <button className="noticeRightBtn">Update</button>
             </div>
@@ -102,7 +102,7 @@ const NoticeView = () => {
           <Col sm="3" lg="2">{noticeContent.date}</Col>
         </Row>
         <pre className="noticeContent">{noticeContent.content}</pre>
-        <div className="noticeBtns">
+        <div className="noticeBtns noticeViewBtns">
           {isUserAdmin &&
             <button className="noticeLeftBtn">Delete</button>
           }

@@ -10,6 +10,58 @@
   font-size: 50px;
   text-align: center;
 }
+.newNoticeForm{
+  width: 80%;
+  margin: 10px auto 0;
+}
+.newNoticeForm form{
+  /* init css */
+  display: initial;
+  justify-content: initial;
+  align-items: initial;
+  flex-direction: initial;
+}
+.newNoticeForm label{
+  width: 15%;
+  text-align: center;
+}
+.newNoticeForm input{
+  width: 80%;
+  padding: 3px 5px;
+  /* init css */
+  display: inline;
+  text-align: initial;
+}
+.noticeTexts{
+  width: 95%;
+  height: 50vh;
+  margin: 20px 2.5% 0;
+  padding: 3px 5px;
+}
+.noticeBtns{
+  width: 95%;
+  height: 30px;
+  margin: 15px auto;
+  padding: 0 10px;
+}
+.noticeBtns button{
+  width: 75px;
+  padding: 3px 0;
+  border-radius: 7px;
+  border: 1px solid #2B3135;
+}
+.noticeRightBtn{
+  float: right;
+  background-color: #2B3135;
+  color: #F0F2F2;
+}
+.noticeRightBtn:last-child{
+  margin-right: 5px;
+}
+.noticeRightBtn:hover{
+  background-color: #F0F2F2;
+  color: black;
+}
 .noticeHeader{
   width: 80%;
   margin: 10px auto 0;
@@ -37,6 +89,24 @@
   margin-left: 5px;
   color: #F0CB39;
 }
+.noticeWriteBtn{
+  width: 80%;
+  height: 30px;
+  margin: 25px auto;
+}
+.noticeWriteBtn button{
+  width: 75px;
+  background-color: #2B3135;
+  padding: 3px 0;
+  border-radius: 7px;
+  border: 1px solid #2B3135;
+  float: right;
+  color: #F0F2F2;
+}
+.noticeWriteBtn button:hover{
+  background-color: #F0F2F2;
+  color: black;
+}
 
 @media screen and (max-width: 716px){
   .noticeHeader{
@@ -44,5 +114,18 @@
   }
   .notice{
     font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 575px){
+  .noticeBtns button{
+    width: 65px;
+    font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 410px){  
+  .noticeRightBtn:last-child{
+    margin-right: 2px;
   }
 }

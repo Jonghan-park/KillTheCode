@@ -20,47 +20,6 @@
   display: inline;
   text-align: initial;
 }
-.noticeTexts{
-  width: 95%;
-  height: 50vh;
-  margin: 20px 2.5% 0;
-  padding: 3px 5px;
-}
-.noticeBtns{
-  width: 80%;
-  height: 30px;
-  margin: 15px auto;
-  padding: 0 10px;
-}
-.noticeBtns button{
-  width: 75px;
-  padding: 3px 0;
-  border-radius: 7px;
-  border: 1px solid #2B3135;
-}
-.noticeLeftBtn{
-  float: left;
-  background-color: #F0F2F2;
-}
-.noticeLeftBtn:hover{
-  background-color: #2B3135;
-  color: #F0F2F2;
-}
-.noticeRightBtn{
-  float: right;
-  background-color: #2B3135;
-  color: #F0F2F2;
-}
-.noticeRightBtn:last-child{
-  margin-right: 5px;
-}
-.noticeRightBtn:hover{
-  background-color: #F0F2F2;
-  color: black;
-}
-.editBtns{
-  width: 95%;
-}
 .noticeContentHeader{
   width: 80%;
   margin: 10px auto 0;
@@ -82,6 +41,17 @@
   font-size: 17px;
   white-space: initial;
 }
+.noticeViewBtns{
+  width: 80%;
+}
+.noticeLeftBtn{
+  float: left;
+  background-color: #F0F2F2;
+}
+.noticeLeftBtn:hover{
+  background-color: #2B3135;
+  color: #F0F2F2;
+}
 
 @media screen and (max-width: 716px){
   .noticeContentHeader{
@@ -93,17 +63,7 @@
 }
 
 @media screen and (max-width: 575px){
-  .noticeBtns button{
-    width: 65px;
-    font-size: 15px;
-  }
   .noticeContentTitle{
     padding-left: 10px;
-  }
-}
-
-@media screen and (max-width: 410px){  
-  .noticeRightBtn:last-child{
-    margin-right: 2px;
   }
 }
