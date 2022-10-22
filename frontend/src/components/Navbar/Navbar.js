@@ -23,8 +23,10 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    console.log(window.location.pathname);
-    if (window.location.pathname === "/myaccount") {
+    if (
+      window.location.pathname === "/myaccount" ||
+      window.location.pathname === "/projects"
+    ) {
       setLightTheme(true);
     } else {
       setLightTheme(false);
