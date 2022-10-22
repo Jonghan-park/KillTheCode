@@ -1,7 +1,6 @@
 import "./admin.css";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import UserList from "./users";
-import { LightThemeContext } from "../../context/LightThemeContext";
 
 const userList = [
   {
@@ -32,6 +31,7 @@ const userList = [
 
 const Admin = () => {
   const [users, setUsers] = useState(userList);
+<<<<<<< HEAD
   const { setLightTheme } = useContext(LightThemeContext);
 
   useEffect(() => {
@@ -42,6 +42,9 @@ const Admin = () => {
 
     useEffect(() => {});
   }, [window.location.pathname]);
+=======
+
+>>>>>>> ca1f23d2df48dea58503d2af7a3e394d7f44cca5
   return (
     <div className="adminWrapper">
       <div className="title">Admin</div>

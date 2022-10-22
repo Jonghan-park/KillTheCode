@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import Emoji from "./Emoji";
 import "./About.css";
+import { LightThemeContext } from "../../context/LightThemeContext";
 
 const users = [
   {
@@ -46,6 +47,12 @@ const users = [
 ];
 
 const About = () => {
+  const { setLightTheme } = useContext(LightThemeContext);
+  useEffect(() => {
+    if (window.location.pathname !== "/admin") {
+      setLightTheme(false);
+    }
+  }, [window.location.pathname]);
   return (
     <div className="aboutContainer">
       <div className="aboutTitle">

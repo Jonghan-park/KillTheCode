@@ -13,7 +13,7 @@ const Footer = () => {
     borderTopColor: lightTheme ? "black" : "#F0F2F2",
   };
   return (
-    <footer style={backgroundStyle}>
+    <footer className="footerContainer" style={backgroundStyle}>
       <div className="footerRow">
         <div className="footerLogo">
           {lightTheme ? (

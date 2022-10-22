@@ -13,21 +13,22 @@ const useCalendarPrint = ({
   setMeetingInfo,
 }) => {
   return useMemo(() => {
+    // Last date of the current month (ex: 28, 30, 31, ect.)
     const lastDate = new Date(currentYear, currentMonth, 0).getDate();
+    // First day of the week of the current month (ex: SUN, MON, TUE, ect.)
     const firstDay = new Date(currentYear, currentMonth - 1, 1).getDay();
-    const lastDay = new Date(currentYear, currentMonth - 1, lastDate).getDay();    
+    // Last day of the week of the current month (ex: SUN, MON, TUE, ect.)
+    const lastDay = new Date(currentYear, currentMonth - 1, lastDate).getDay();   
+    
     let calendarCells = [];
 
     for (const day of weeks) {
       if (weeks[firstDay] === day) {
+        // Insert cells containing the numbers of dates of the current month
         for (let i = 1; i <= lastDate; i++) {
-          const nowDay = new Date(currentYear, currentMonth - 1, i).getDay();
+          // Check if there is a schedule on this date
           let scheduled = false;
-
           for (const schedule of schedules) {
-            const fromDay = 
-              new Date(currentYear, currentMonth - 1, schedule.fromDate).getDay();
-
             if (schedule.fromYear === currentYear &&
                 schedule.fromMonth === currentMonth &&
                 schedule.toMonth === schedule.fromMonth &&
@@ -51,12 +52,20 @@ const useCalendarPrint = ({
             }
 
             if (scheduled) {
+              // Day of the week when the schedule starts
+              const fromDay = 
+                new Date(currentYear, currentMonth - 1, schedule.fromDate).getDay();
+              // Day of the week of this date
+              const nowDay = new Date(currentYear, currentMonth - 1, i).getDay();
+              // Value to display an issue of this schedule
+              // If the schedule starts on Saturday, the issue will be printed on Sunday
               const issued =
                 (schedule.fromDate === i && fromDay !== 6) ||
                 (fromDay === 6 && nowDay === 0);
+
+              // Check if there is a meeting on this date
               let met = false;
               let attendees = "";
-
               for (const meeting of meetings) {
                 if (meeting.meetingYear === currentYear &&
                     meeting.meetingMonth === currentMonth &&
@@ -124,6 +133,7 @@ const useCalendarPrint = ({
                 </div>
               );
 
+              // If matching a schedule and this date, end searching schedules and move to the next date
               break;
             }
           }
@@ -135,14 +145,17 @@ const useCalendarPrint = ({
           }
         }
 
+        // If finishing printing numbers for all dates, end the day of the weeks cycle
         break;
       } else {
+        // Insert blank cells before meeting the day of the week of the 1st of the current month
         calendarCells.push(
           <div key={day} className="calendarCell"></div>
         );
       }
     }
 
+    // Insert blank cells from the last date of the current month to Saturday
     if (lastDay !== 6) {
       for (let i = lastDay + 1; i <= 6; i++) {
         calendarCells.push(

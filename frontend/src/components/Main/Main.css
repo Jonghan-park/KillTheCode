@@ -1,8 +1,9 @@
-main{
+.mainPage{
   display: flex;
   align-items: center;
   text-align: center;
   justify-content: center;
+  margin-top: 130px;
   min-height: calc(100vh - 124px - 149px);
   /* min-height: 80vh; */
 }
@@ -37,6 +38,9 @@ main{
 
 
 @media screen and (max-width: 920px){
+  .mainPage{
+    margin-top: 10px;
+  }
   .mainContainer{
     display: flex;
     flex-direction: column;

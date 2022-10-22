@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import ProjectModal from "../ProjectModal/ProjectModal";
 import Project from "../Projects/Project";
 import "./Projects.css";
 
@@ -10,6 +11,7 @@ const project = [
     language: "React, NodeJS, Express, MongoDB",
     period: "Sep 24, 2022",
     contributor: "Name1, Name2, Name3",
+    github: "https://github.com/example1",
     link: "http://www.google.ca",
   },
   {
@@ -19,6 +21,7 @@ const project = [
     language: "React, NodeJS, Express, MongoDB",
     period: "Oct 30, 2022",
     contributor: "Name1, Name2, Name3",
+    github: "https://github.com/example1",
     link: "http://www.weather.ca",
   },
   {
@@ -28,6 +31,7 @@ const project = [
     language: "React, NodeJS, Express, MongoDB",
     period: "Oct 30, 2022",
     contributor: "Name1, Name2, Name3",
+    github: "https://github.com/example1",
     link: "http://www.weather.ca",
   },
   {
@@ -37,6 +41,7 @@ const project = [
     language: "React, NodeJS, Express, MongoDB",
     period: "Oct 30, 2022",
     contributor: "Name1, Name2, Name3",
+    github: "https://github.com/example1",
     link: "http://www.weather.ca",
   },
   {
@@ -46,11 +51,14 @@ const project = [
     language: "React, NodeJS, Express, MongoDB",
     period: "Oct 30, 2022",
     contributor: "Name1, Name2, Name3",
+    github: "https://github.com/example1",
     link: "http://www.weather.ca",
   },
 ];
 
 const Projects = () => {
+  const [admin, setAdmin] = useState(true);
+  const [addProjectModal, setAddProjectModal] = useState(false);
   const [projects, setProjects] = useState(project);
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef(null);
@@ -60,6 +68,9 @@ const Projects = () => {
     slideRef.current.style.transition = "all 0.5s ease-in-out";
     slideRef.current.style.transform = `translate(-${currentSlide * 510}px)`;
   }, [currentSlide]);
+  const openModal = () => {
+    setAddProjectModal(true);
+  };
 
   const nextBtnHandler = () => {
     if (currentSlide >= TOTAL_SLIDES) {
@@ -90,16 +101,36 @@ const Projects = () => {
   //   getProjects();
   // }, []);
   return (
-    <div className="ProjectsContainer">
-      <div className="ProjectsTitle">PROJECTs</div>
+    <div className="projectsContainer">
+      <div className="projectsTitleContainer">
+        <div className="projectsTitle">PROJECTs</div>
+        {admin && (
+          <div className="addProject">
+            <button className="addProjectBtn" onClick={openModal}>
+              Add project
+            </button>
+          </div>
+        )}
+      </div>
+
+      {addProjectModal && admin && (
+        <div className="projectModalContainer">
+          <ProjectModal
+            closeModal={addProjectModal}
+            setCloseModal={setAddProjectModal}
+          />
+        </div>
+      )}
+
       <div className="projectButtonContainer">
         <button className="preBtnProject" onClick={preBtnHandler}>
-          <p>&lt;</p>
+          <div className="preProject">&lt;</div>
         </button>
         <button className="nextBtnProject" onClick={nextBtnHandler}>
-          <p>&gt;</p>
+          <div className="nextProject">&gt;</div>
         </button>
       </div>
+
       <div className="sliderContainer" ref={slideRef}>
         <Project projects={projects} />
       </div>
