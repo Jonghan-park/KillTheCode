@@ -9,29 +9,28 @@ const UserList = ({ users }) => {
         <thead>
           <tr className="tableTitle">
             <th>Name</th>
-            <th>Participation</th>
+            <th>Project Cooperater</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="userTableBody">
           {users.map((user, i) => (
             <tr key={user.id}>
               <td>{user.username}</td>
               <td>
-                {user.iscooperation} :
                 <input
                   type="radio"
                   name={i}
                   value="true"
                   checked={user.iscooperation == "true"}
                 ></input>
-                True
+                Yes
                 <input
                   type="radio"
                   name={i}
                   value="false"
                   checked={user.iscooperation == "false"}
                 ></input>
-                False
+                No
               </td>
             </tr>
           ))}

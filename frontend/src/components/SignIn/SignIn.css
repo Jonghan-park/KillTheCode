@@ -121,9 +121,11 @@ margin:10px 0;
 .findPwd{
     text-decoration: none;
     color:#AAAAAA;
+    cursor: pointer;
 }
 .findPwd:hover{
     color:#414141;
+
 }
 .toJoinUs a {
     color:#414141;

@@ -33,7 +33,7 @@ const Admin = () => {
   const [users, setUsers] = useState(userList);
   return (
     <div className="adminWrapper">
-      <div className="title">Admin</div>
+      <div className="titleAdmin">Admin</div>
       <div className="userWrapper">
         <a className="manageBtn" href="/admin">
           Manage User

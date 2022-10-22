@@ -1,9 +1,17 @@
 
 .adminWrapper{
-    color:white;
+    color:#2B3135;
+    background-color:#F0F2F2;
  
 }
 
+.titleAdmin{
+    margin-top:0;
+    font-size:3.5rem;
+    text-align:center;
+    padding-top:5vh;
+    padding-bottom: 5vh;
+}
 .userWrapper{
     display:grid;
     height:60vh;
@@ -28,7 +36,7 @@ justify-content: center;
 .userTableWrapper{
 /* margin:auto; */
 width: 85%;
-min-height:50vh;
+/* min-height:60vh; */
 background-color:#F0F2F2;
 color:black;
 border-radius:15px;
@@ -53,23 +61,50 @@ position:relative;
     background-color:#cbcdcd;
 }
 
-.userTable tbody tr{
+.userTable> tbody> tr{
     border-bottom: 1px solid #cbcdcd;
 }
 
-tbody tr td input{
+.userTableBody> tr>td >input{
 margin-right: 20px;
 margin-left: 20px;
 }
 .saveBtn{
-  position:absolute;
-  right:30px;
-  bottom:30px;
+  /* position:absolute; */
+  /* right:30px;
+  bottom:30px; */
+  display: inline-block;
+margin-left:80%;
+margin-top:5vh;
+margin-bottom: 5vh;
   background-color:#2B3135;
   color:white;
   padding:10px;
   border-radius:10px;
 
 
+}
+
+@media screen and (max-width: 992px){
+
+    .manageBtn{
+        width:60%;
+    height:5vh;
+    }
+
+    
+}
+
+@media screen and (max-width: 792px){
+    .userTableWrapper{
+        margin:auto;
+    }
+    
+    .userWrapper{
+        display:grid;
+        grid-template-columns: 1fr;
+    }
+
+    
 }
 
