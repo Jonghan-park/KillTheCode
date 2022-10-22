@@ -59,7 +59,7 @@ const MyAccount=() => {
                     </div>
                         <button className="myAccountbutton">SAVE</button>
                   </div>
-                <div className="clear"></div>
+            
                 </form>
 
         </div>
