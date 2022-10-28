@@ -41,7 +41,10 @@ function SignIn() {
           </form>
           <div className="existAccount">
             <h2 className="findPwd">
-              <Link to="/forgotPassword">Forgot Password</Link>
+              Forgot
+              <Link to="/forgotPassword"> Password</Link>
+              or
+              <Link to="/forgotPassword"> account</Link>
             </h2>
             <h2 className="toJoinUs">
               <Link to="/joinUs">Don't have an account?</Link>
