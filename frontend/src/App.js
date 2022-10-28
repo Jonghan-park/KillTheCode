@@ -13,7 +13,7 @@ import SignIn from "./components/SignIn/SignIn";
 import JoinUs from "./components/JoinUs/JoinUs";
 import Myaccount from "./components/MyAccount/MyAccount";
 import Admin from "./components/Admin/Admin";
-
+import ForgotPassWord from "./components/forgotPassWord/ForgotPassWord";
 // import context
 import { LightThemeContext } from "./context/LightThemeContext";
 
@@ -35,6 +35,7 @@ function App() {
             <Route path="/signin" element={<SignIn />} />
             <Route path="/joinus" element={<JoinUs />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/forgotPassword" element={<ForgotPassWord />} />
           </Routes>
           <Footer />
         </Router>
