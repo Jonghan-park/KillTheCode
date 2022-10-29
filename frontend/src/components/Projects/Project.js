@@ -11,7 +11,7 @@ const Project = ({ projects }) => {
       {projects ? (
         projects.map((project) => {
           const {
-            id,
+            _id,
             title,
             type,
             language,
@@ -21,7 +21,7 @@ const Project = ({ projects }) => {
             link,
           } = project;
           return (
-            <div key={id} className="projectItem">
+            <div key={_id} className="projectItem">
               <img src={quotation} alt="Quotation mark" />
               <ul className="projectInfo">
                 <li className="projectTitle">

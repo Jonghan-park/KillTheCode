@@ -13,6 +13,7 @@ const connection = require("./database/db");
 // Database connection
 connection();
 
+app.use(express.json());
 app.use(cors());
 
 //Routes

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "./ProjectModal.css";
 
 const ProjectModal = ({ closeModal, setCloseModal }) => {
@@ -9,6 +10,24 @@ const ProjectModal = ({ closeModal, setCloseModal }) => {
   const [contributor, setContributor] = useState("");
   const [github, setGithub] = useState("");
   const [link, setLink] = useState("");
+
+  const handleProjectSubmit = async () => {
+    try {
+      const res = await axios.post("http://localhost:5000/projects/add", {
+        title: title,
+        type: type,
+        language: language,
+        period: period,
+        contributor: contributor,
+        github: github,
+        link: link,
+      });
+      const data = await res.data;
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       {closeModal ? (
@@ -92,8 +111,9 @@ const ProjectModal = ({ closeModal, setCloseModal }) => {
                 />
                 <div className="projectModalButtons">
                   <button
+                    type="submit"
                     className="projectModalButton"
-                    onClick={() => setCloseModal(false)}
+                    onClick={(() => setCloseModal(false), handleProjectSubmit)}
                   >
                     Add
                   </button>
