@@ -70,3 +70,12 @@ margin:10px 0;
   color: #2B3135;
   background-color: #F0F2F2;
 }
+
+@media screen and (max-width:970px){
+  .sliderContainer{
+    display: flex;
+    justify-content: flex-start;
+    scroll-behavior: smooth;
+    z-index: 5;
+  }
+}
