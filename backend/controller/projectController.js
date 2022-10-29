@@ -1,5 +1,6 @@
 const Project = require("../models/project");
 
+// GET all projects
 exports.getAllProjects = async (req, res) => {
   let projects;
   try {
@@ -11,11 +12,14 @@ exports.getAllProjects = async (req, res) => {
 
   return res.status(200).json({ projects });
 };
+
+// GET specific project by id
 exports.getProject = async (req, res) => {
   try {
   } catch (error) {}
 };
 
+// POST project
 exports.addProject = async (req, res) => {
   const { title, type, language, period, contributor, github, link } = req.body;
   const project = new Project({
@@ -36,11 +40,13 @@ exports.addProject = async (req, res) => {
   return res.status(201).json({ project });
 };
 
+// DELETE a project by id
 exports.deleteProject = async (req, res) => {
   try {
   } catch (error) {}
 };
 
+// PUT a project by id
 exports.editProject = async (req, res) => {
   try {
   } catch (error) {}
