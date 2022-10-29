@@ -1,6 +1,6 @@
 const Project = require("../models/project");
 
-const getAllProjects = async (req, res) => {
+exports.getAllProjects = async (req, res) => {
   try {
     const projects = await Project.find({});
     res.json(projects);
@@ -9,5 +9,22 @@ const getAllProjects = async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 };
+exports.getProject = async (req, rex) => {
+  try {
+  } catch (error) {}
+};
 
-module.exports.getAllProjects = getAllProjects;
+exports.addProject = async (req, rex) => {
+  try {
+  } catch (error) {}
+};
+
+exports.deleteProject = async (req, rex) => {
+  try {
+  } catch (error) {}
+};
+
+exports.editProject = async (req, rex) => {
+  try {
+  } catch (error) {}
+};
