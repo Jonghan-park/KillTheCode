@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./ForgotPassWord.css";
 
 export default function Forgot(props) {
-  console.log(props);
+  console.log(props.testWork);
   return (
     <>
       <Tabs defaultActiveKey={props.testWork} className="mb-3 tabsCss ">
