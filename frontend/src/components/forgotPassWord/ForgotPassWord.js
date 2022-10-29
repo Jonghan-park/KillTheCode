@@ -2,10 +2,11 @@ import { Tab, Tabs } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "./ForgotPassWord.css";
 
-export default (forget) => {
+export default function Forgot(props) {
+  console.log(props);
   return (
     <>
-      <Tabs defaultActiveKey="id" className="mb-3 tabsCss ">
+      <Tabs defaultActiveKey={props.testWork} className="mb-3 tabsCss ">
         <Tab eventKey="id" title="Id" className="tabBody ">
           <ul>
             <strong>Find UserName</strong>
@@ -72,4 +73,4 @@ export default (forget) => {
       </Tabs>
     </>
   );
-};
+}

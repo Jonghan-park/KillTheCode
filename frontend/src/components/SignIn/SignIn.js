@@ -42,9 +42,15 @@ function SignIn() {
           <div className="existAccount">
             <h2 className="findPwd">
               Forgot
-              <Link to="/forgotPassword"> Password</Link>
+              <Link to="/forgotPassword" testWork={"id"}>
+                {" "}
+                Password
+              </Link>
               &nbsp; or &nbsp;
-              <Link to="/forgotPassword"> account</Link>
+              <Link to="/forgotPassword" testWork={"password"}>
+                {" "}
+                account
+              </Link>
             </h2>
             <h2 className="toJoinUs">
               <Link to="/joinUs">Don't have an account?</Link>
