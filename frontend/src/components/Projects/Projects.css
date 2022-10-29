@@ -48,7 +48,8 @@ top: 55%;
 }
 .sliderContainer{
   display: flex;
-  
+  justify-content: center;
+  align-items: center;
   scroll-behavior: smooth;
   z-index: 5;
 }
