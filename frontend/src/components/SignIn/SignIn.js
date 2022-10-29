@@ -43,7 +43,7 @@ function SignIn() {
             <h2 className="findPwd">
               Forgot
               <Link to="/forgotPassword"> Password</Link>
-              or
+              &nbsp; or &nbsp;
               <Link to="/forgotPassword"> account</Link>
             </h2>
             <h2 className="toJoinUs">
