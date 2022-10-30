@@ -2,7 +2,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./ProjectEditModal.css";
 
-const ProjectEditModal = ({ closeModal, setCloseModal, id }) => {
+const ProjectEditModal = ({
+  closeModal,
+  setCloseModal,
+  id,
+  selectedProject,
+}) => {
   const [title, setTitle] = useState("");
   const [type, setType] = useState("");
   const [language, setLanguage] = useState("");
@@ -14,22 +19,7 @@ const ProjectEditModal = ({ closeModal, setCloseModal, id }) => {
   const handleEditProjectSubmit = (e) => {
     e.preventDefault();
   };
-  const fetchSpecificProject = async () => {
-    try {
-      const res = await axios.get(`http://localhost:5000/projects/${id}`, {
-        id,
-      });
-      const data = await res.data;
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    fetchSpecificProject().then((data) => {
-      console.log(data);
-    });
-  }, []);
+
   return (
     <>
       {closeModal ? (
@@ -53,7 +43,7 @@ const ProjectEditModal = ({ closeModal, setCloseModal, id }) => {
                   required
                   id="title"
                   placeholder="Enter a title"
-                  value={title}
+                  value={selectedProject.title}
                   onChange={(e) => setTitle(e.target.value)}
                 />
 
@@ -63,7 +53,7 @@ const ProjectEditModal = ({ closeModal, setCloseModal, id }) => {
                   required
                   id="type"
                   placeholder="Enter a type"
-                  value={type}
+                  value={selectedProject.type}
                   onChange={(e) => setType(e.target.value)}
                 />
 
@@ -73,7 +63,7 @@ const ProjectEditModal = ({ closeModal, setCloseModal, id }) => {
                   required
                   id="language"
                   placeholder="Enter a languages"
-                  value={language}
+                  value={selectedProject.language}
                   onChange={(e) => setLanguage(e.target.value)}
                 />
 
@@ -82,7 +72,7 @@ const ProjectEditModal = ({ closeModal, setCloseModal, id }) => {
                   type="date"
                   required
                   id="period"
-                  value={period}
+                  value={selectedProject.period}
                   onChange={(e) => setPeriod(e.target.value)}
                 />
 
@@ -92,7 +82,7 @@ const ProjectEditModal = ({ closeModal, setCloseModal, id }) => {
                   required
                   id="contributor"
                   placeholder="Enter a contributor"
-                  value={contributor}
+                  value={selectedProject.contributor}
                   onChange={(e) => setContributor(e.target.value)}
                 />
 
@@ -102,7 +92,7 @@ const ProjectEditModal = ({ closeModal, setCloseModal, id }) => {
                   required
                   id="github"
                   placeholder="Enter a github"
-                  value={github}
+                  value={selectedProject.github}
                   onChange={(e) => setGithub(e.target.value)}
                 />
 
@@ -112,7 +102,7 @@ const ProjectEditModal = ({ closeModal, setCloseModal, id }) => {
                   required
                   id="link"
                   placeholder="Enter a link"
-                  value={link}
+                  value={selectedProject.link}
                   onChange={(e) => setLink(e.target.value)}
                 />
                 <div className="projectModalButtons">
