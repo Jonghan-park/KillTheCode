@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import quotation from "../../assets/quotation.svg";
 import "./Project.css";
+import ProjectEditModal from "../ProjectModal/ProjectEditModal";
 
 const Project = ({ projects, admin }) => {
   const openLink = (link) => {
@@ -23,41 +24,44 @@ const Project = ({ projects, admin }) => {
             link,
           } = project;
           return (
-            <div key={_id} className="projectItem">
-              <img src={quotation} alt="Quotation mark" />
-              <ul className="projectInfo">
-                <li className="projectTitle">
-                  <p>Title: {title}</p>
-                </li>
-                <li className="projectType">
-                  <p>Type: {type}</p>
-                </li>
-                <li className="projectLanguage">
-                  <p>Language: {language}</p>
-                </li>
-                <li className="projectPeriod">
-                  <p>Period: {period}</p>
-                </li>
-                <li className="projectContributor">
-                  <p>Contributor: {contributor}</p>
-                </li>
-                <li className="projectLink">
-                  <p onClick={() => openLink(github)}>Github: {github}</p>
-                </li>
-                <li className="projectLink">
-                  <p onClick={() => openLink(link)}>Link: {link}</p>
-                </li>
-              </ul>
-              {admin && (
-                <div className="projectEditDelete">
-                  <FontAwesomeIcon
-                    icon={faPenToSquare}
-                    className="projectEdit"
-                  />
-                  <FontAwesomeIcon icon={faTrash} className="projectDelete" />
-                </div>
-              )}
-            </div>
+            <>
+              <div key={_id} className="projectItem">
+                <img src={quotation} alt="Quotation mark" />
+                <ul className="projectInfo">
+                  <li className="projectTitle">
+                    <p>Title: {title}</p>
+                  </li>
+                  <li className="projectType">
+                    <p>Type: {type}</p>
+                  </li>
+                  <li className="projectLanguage">
+                    <p>Language: {language}</p>
+                  </li>
+                  <li className="projectPeriod">
+                    <p>Period: {period}</p>
+                  </li>
+                  <li className="projectContributor">
+                    <p>Contributor: {contributor}</p>
+                  </li>
+                  <li className="projectLink">
+                    <p onClick={() => openLink(github)}>Github: {github}</p>
+                  </li>
+                  <li className="projectLink">
+                    <p onClick={() => openLink(link)}>Link: {link}</p>
+                  </li>
+                </ul>
+                {admin && (
+                  <div className="projectEditDelete">
+                    <FontAwesomeIcon
+                      icon={faPenToSquare}
+                      className="projectEdit"
+                    />
+                    <FontAwesomeIcon icon={faTrash} className="projectDelete" />
+                  </div>
+                )}
+              </div>
+              <ProjectEditModal />
+            </>
           );
         })
       ) : (
