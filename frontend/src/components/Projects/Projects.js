@@ -10,7 +10,7 @@ const Projects = () => {
   const [addProjectModal, setAddProjectModal] = useState(false);
   const [editProjectModal, setEditProjectModal] = useState(false);
   const [editId, setEditId] = useState("");
-  const [clickedProject, setClickedProject] = useState({});
+  const [clickedProject, setClickedProject] = useState();
   const [projects, setProjects] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef(null);
@@ -60,8 +60,8 @@ const Projects = () => {
   const getSpeicificProject = async () => {
     try {
       const res = await axios.get(`http://localhost:5000/projects/${editId}`);
-      const clickedProject = await res.data;
-      setClickedProject(clickedProject);
+      const project = await res.data;
+      setClickedProject(project);
     } catch (error) {
       console.log(error);
     }

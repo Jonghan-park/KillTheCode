@@ -19,6 +19,17 @@ const ProjectEditModal = ({
   const handleEditProjectSubmit = (e) => {
     e.preventDefault();
   };
+  useEffect(() => {
+    if (selectedProject) {
+      setTitle(selectedProject.title);
+      setType(selectedProject.type);
+      setLanguage(selectedProject.language);
+      setPeriod(selectedProject.period);
+      setContributor(selectedProject.contributor);
+      setGithub(selectedProject.github);
+      setLink(selectedProject.link);
+    }
+  }, [selectedProject]);
 
   return (
     <>
@@ -43,7 +54,7 @@ const ProjectEditModal = ({
                   required
                   id="title"
                   placeholder="Enter a title"
-                  value={selectedProject.title}
+                  value={title}
                   onChange={(e) => setTitle(e.target.value)}
                 />
 
@@ -53,7 +64,7 @@ const ProjectEditModal = ({
                   required
                   id="type"
                   placeholder="Enter a type"
-                  value={selectedProject.type}
+                  value={type}
                   onChange={(e) => setType(e.target.value)}
                 />
 
@@ -63,7 +74,7 @@ const ProjectEditModal = ({
                   required
                   id="language"
                   placeholder="Enter a languages"
-                  value={selectedProject.language}
+                  value={language}
                   onChange={(e) => setLanguage(e.target.value)}
                 />
 
@@ -72,7 +83,7 @@ const ProjectEditModal = ({
                   type="date"
                   required
                   id="period"
-                  value={selectedProject.period}
+                  value={period}
                   onChange={(e) => setPeriod(e.target.value)}
                 />
 
@@ -82,7 +93,7 @@ const ProjectEditModal = ({
                   required
                   id="contributor"
                   placeholder="Enter a contributor"
-                  value={selectedProject.contributor}
+                  value={contributor}
                   onChange={(e) => setContributor(e.target.value)}
                 />
 
@@ -92,7 +103,7 @@ const ProjectEditModal = ({
                   required
                   id="github"
                   placeholder="Enter a github"
-                  value={selectedProject.github}
+                  value={github}
                   onChange={(e) => setGithub(e.target.value)}
                 />
 
@@ -102,7 +113,7 @@ const ProjectEditModal = ({
                   required
                   id="link"
                   placeholder="Enter a link"
-                  value={selectedProject.link}
+                  value={link}
                   onChange={(e) => setLink(e.target.value)}
                 />
                 <div className="projectModalButtons">
