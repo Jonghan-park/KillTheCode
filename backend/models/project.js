@@ -29,12 +29,10 @@ const projectSchema = new mongoose.Schema({
   schedule: {
     type: mongoose.Types.ObjectId,
     ref: "Schedule",
-    required: true,
   },
   chatting: {
     type: mongoose.Types.ObjectId,
     ref: "Chatting",
-    required: true,
   },
   users: [
     {
