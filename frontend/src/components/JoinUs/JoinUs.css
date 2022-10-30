@@ -137,6 +137,9 @@ a:hover{
     color:white;
 }
 
+.inputField::placeholder {
+    color: grey;
+}
 @media screen and (max-width: 830px){
     .titleJoin{
         font-size:2rem;
