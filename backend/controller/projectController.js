@@ -15,8 +15,13 @@ exports.getAllProjects = async (req, res) => {
 
 // GET specific project by id
 exports.getProject = async (req, res) => {
+  let project;
   try {
-  } catch (error) {}
+    project = await Project.findById(req.body.id);
+    console.log(project);
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 // POST project

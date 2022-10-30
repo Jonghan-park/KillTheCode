@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import quotation from "../../assets/quotation.svg";
 import "./Project.css";
-import ProjectEditModal from "../ProjectModal/ProjectEditModal";
 
-const Project = ({ projects, admin }) => {
+const Project = ({ projects, admin, sendId }) => {
   const openLink = (link) => {
     window.open(link, "_blank");
+  };
+  const handleOpenEditModal = (id) => {
+    sendId(id);
   };
   return (
     <>
@@ -55,12 +57,12 @@ const Project = ({ projects, admin }) => {
                     <FontAwesomeIcon
                       icon={faPenToSquare}
                       className="projectEdit"
+                      onClick={() => handleOpenEditModal(_id)}
                     />
                     <FontAwesomeIcon icon={faTrash} className="projectDelete" />
                   </div>
                 )}
               </div>
-              <ProjectEditModal />
             </>
           );
         })

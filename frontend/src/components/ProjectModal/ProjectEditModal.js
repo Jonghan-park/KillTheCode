@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import "./ProjectEditModal.css";
 
-const ProjectEditModal = () => {
+const ProjectEditModal = ({ closeModal, setCloseModal, id }) => {
   const [title, setTitle] = useState("");
   const [type, setType] = useState("");
   const [language, setLanguage] = useState("");
@@ -10,15 +11,33 @@ const ProjectEditModal = () => {
   const [github, setGithub] = useState("");
   const [link, setLink] = useState("");
 
-  const [editModal, setEditModal] = useState(true);
-
   const handleEditProjectSubmit = (e) => {
     e.preventDefault();
   };
+  const fetchSpecificProject = async () => {
+    try {
+      const res = await axios.get(`http://localhost:5000/projects/${id}`, {
+        id,
+      });
+      const data = await res.data;
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    fetchSpecificProject().then((data) => {
+      console.log(data);
+    });
+  }, []);
   return (
     <>
-      {editModal ? (
-        <div className="modalContainer" onClick={() => setEditModal(false)}>
+      {closeModal ? (
+        <div
+          className="modalContainer"
+          key={id}
+          onClick={() => setCloseModal(false)}
+        >
           <div
             className="modalContent"
             onClick={(e) => {
@@ -101,14 +120,14 @@ const ProjectEditModal = () => {
                     type="submit"
                     className="projectModalButton"
                     onClick={
-                      (() => setEditModal(false), handleEditProjectSubmit)
+                      (() => setCloseModal(false), handleEditProjectSubmit)
                     }
                   >
                     Add
                   </button>
                   <button
                     className="projectModalButton"
-                    onClick={() => setEditModal(false)}
+                    onClick={() => setCloseModal(false)}
                   >
                     Close
                   </button>
