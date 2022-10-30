@@ -16,10 +16,6 @@ const meetingSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  meetingMonth: {
-    type: Number,
-    required: true,
-  },
   project: {
     type: mongoose.Types.ObjectId,
     ref: "Project",
