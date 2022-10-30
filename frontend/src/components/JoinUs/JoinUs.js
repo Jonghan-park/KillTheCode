@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import "./JoinUs.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
@@ -9,6 +9,10 @@ import {
   faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
 function JoinUs() {
+  const inputRef = useRef();
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
   return (
     <>
       <div className="container">
@@ -17,7 +21,12 @@ function JoinUs() {
           <form>
             <div className="inputGrop">
               <FontAwesomeIcon icon={faUser} className="signInIcon" />
-              <input type="text" className="inputField" placeholder="User ID" />
+              <input
+                ref={inputRef}
+                type="text"
+                className="inputField"
+                placeholder="User ID"
+              />
             </div>
             <div className="inputGrop">
               <FontAwesomeIcon icon={faEnvelope} className="signInIcon" />
