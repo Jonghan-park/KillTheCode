@@ -27,10 +27,10 @@
   padding: 10px;
   
 }
-.projectLink{
+.projectLink p {
   cursor: pointer;
 }
-.projectLink:hover{
+.projectLink p:hover{
   font-size: 20px;
   color: yellow;
   font-weight: 700;
@@ -41,3 +41,22 @@
 
 }
 
+.projectEditDelete{
+  display: flex;
+  justify-content: flex-end;
+  color: #F0F2F2;
+  padding: 0 10px 10px 0;
+  font-size: 30px;
+}
+.projectEdit, 
+.projectDelete{
+  margin: 0 30px 20px 0;
+  cursor: pointer;
+}
+
+.projectEdit:hover{
+  color: yellow;
+}
+.projectDelete:hover{
+  color: red;
+}
