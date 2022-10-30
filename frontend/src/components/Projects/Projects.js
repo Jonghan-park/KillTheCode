@@ -2,11 +2,14 @@ import React, { useRef, useState, useEffect } from "react";
 import axios from "axios";
 import ProjectModal from "../ProjectModal/ProjectModal";
 import Project from "../Projects/Project";
+import ProjectEditModal from "../ProjectModal/ProjectEditModal";
 import "./Projects.css";
 
 const Projects = () => {
   const [admin, setAdmin] = useState(true);
   const [addProjectModal, setAddProjectModal] = useState(false);
+  const [editProjectModal, setEditProjectModal] = useState(false);
+  const [editId, setEditId] = useState("");
   const [projects, setProjects] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
   const slideRef = useRef(null);
@@ -33,6 +36,11 @@ const Projects = () => {
     } else {
       setCurrentSlide(currentSlide - 1);
     }
+  };
+
+  const getId = (id) => {
+    setEditProjectModal(true);
+    setEditId(id);
   };
   // Get projects
   const getProjects = async () => {
@@ -68,6 +76,13 @@ const Projects = () => {
           />
         </div>
       )}
+      {editProjectModal && (
+        <ProjectEditModal
+          id={editId}
+          closeModal={editProjectModal}
+          setCloseModal={setEditProjectModal}
+        />
+      )}
       {projects && (
         <div className="projectButtonContainer">
           <button className="preBtnProject" onClick={preBtnHandler}>
@@ -80,7 +95,7 @@ const Projects = () => {
       )}
 
       <div className="sliderContainer" ref={slideRef}>
-        <Project projects={projects} admin={admin} />
+        <Project projects={projects} admin={admin} sendId={getId} />
       </div>
     </div>
   );
