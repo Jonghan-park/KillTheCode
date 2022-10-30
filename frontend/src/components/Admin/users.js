@@ -3,6 +3,7 @@ import "./admin.css";
 
 const UserList = ({ users }) => {
   // const [userCooperate, setCooperate] = useState;
+
   return (
     <>
       <table className="userTable">
@@ -10,12 +11,14 @@ const UserList = ({ users }) => {
           <tr className="tableTitle">
             <th>Name</th>
             <th>Project Cooperater</th>
+            <th>Change state</th>
           </tr>
         </thead>
         <tbody className="userTableBody">
           {users.map((user, i) => (
             <tr key={user.id}>
               <td>{user.username}</td>
+              <td>{user.iscooperation}</td>
               <td>
                 <input
                   type="radio"
