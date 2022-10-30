@@ -1,8 +1,10 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import quotation from "../../assets/quotation.svg";
 import "./Project.css";
 
-const Project = ({ projects }) => {
+const Project = ({ projects, admin }) => {
   const openLink = (link) => {
     window.open(link, "_blank");
   };
@@ -46,6 +48,15 @@ const Project = ({ projects }) => {
                   <p onClick={() => openLink(link)}>Link: {link}</p>
                 </li>
               </ul>
+              {admin && (
+                <div className="projectEditDelete">
+                  <FontAwesomeIcon
+                    icon={faPenToSquare}
+                    className="projectEdit"
+                  />
+                  <FontAwesomeIcon icon={faTrash} className="projectDelete" />
+                </div>
+              )}
             </div>
           );
         })
