@@ -2,7 +2,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./ProjectEditModal.css";
 
-const ProjectEditModal = ({ closeModal, setCloseModal, id }) => {
+const ProjectEditModal = ({
+  closeModal,
+  setCloseModal,
+  id,
+  selectedProject,
+}) => {
   const [title, setTitle] = useState("");
   const [type, setType] = useState("");
   const [language, setLanguage] = useState("");
@@ -14,22 +19,18 @@ const ProjectEditModal = ({ closeModal, setCloseModal, id }) => {
   const handleEditProjectSubmit = (e) => {
     e.preventDefault();
   };
-  const fetchSpecificProject = async () => {
-    try {
-      const res = await axios.get(`http://localhost:5000/projects/${id}`, {
-        id,
-      });
-      const data = await res.data;
-      return data;
-    } catch (error) {
-      console.log(error);
-    }
-  };
   useEffect(() => {
-    fetchSpecificProject().then((data) => {
-      console.log(data);
-    });
-  }, []);
+    if (selectedProject) {
+      setTitle(selectedProject.title);
+      setType(selectedProject.type);
+      setLanguage(selectedProject.language);
+      setPeriod(selectedProject.period);
+      setContributor(selectedProject.contributor);
+      setGithub(selectedProject.github);
+      setLink(selectedProject.link);
+    }
+  }, [selectedProject]);
+
   return (
     <>
       {closeModal ? (
