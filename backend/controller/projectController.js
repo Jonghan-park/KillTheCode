@@ -53,6 +53,24 @@ exports.deleteProject = async (req, res) => {
 
 // PUT a project by id
 exports.editProject = async (req, res) => {
+  const { title, type, language, period, contributor, github, link } = req.body;
+  const projectId = req.params.id;
+  let project;
   try {
-  } catch (error) {}
+    project = await Project.findByIdAndUpdate(projectId, {
+      title,
+      type,
+      language,
+      period,
+      contributor,
+      github,
+      link,
+    });
+  } catch (error) {
+    return console.log(error);
+  }
+  if (!project) {
+    return res.status(500).json({ message: "Unable To Update The Project" });
+  }
+  return res.status(200).json({ project });
 };
