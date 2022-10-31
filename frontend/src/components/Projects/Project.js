@@ -6,7 +6,7 @@ import "./Project.css";
 
 const Project = ({ projects, admin, sendId }) => {
   const openLink = (link) => {
-    window.open(link, "_blank");
+    window.open(link);
   };
   const handleOpenEditModal = (id) => {
     sendId(id);
