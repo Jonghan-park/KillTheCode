@@ -39,3 +39,7 @@ width: 100%;
 
   background-color: #2B3135;
 }
+.projectModalForm input::placeholder{
+  color: #2B3135;
+  opacity: 0.4;
+}

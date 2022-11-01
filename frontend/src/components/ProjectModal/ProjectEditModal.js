@@ -2,7 +2,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "./ProjectEditModal.css";
 
-const ProjectEditModal = ({ closeModal, setCloseModal, id }) => {
+const ProjectEditModal = ({
+  closeModal,
+  setCloseModal,
+  id,
+  selectedProject,
+}) => {
   const [title, setTitle] = useState("");
   const [type, setType] = useState("");
   const [language, setLanguage] = useState("");
@@ -11,25 +16,36 @@ const ProjectEditModal = ({ closeModal, setCloseModal, id }) => {
   const [github, setGithub] = useState("");
   const [link, setLink] = useState("");
 
-  const handleEditProjectSubmit = (e) => {
-    e.preventDefault();
-  };
-  const fetchSpecificProject = async () => {
+  const handleEditProjectSubmit = async (e) => {
     try {
-      const res = await axios.get(`http://localhost:5000/projects/${id}`, {
-        id,
+      const res = await axios.put(`http://localhost:5000/projects/edit/${id}`, {
+        title: title,
+        type: type,
+        language: language,
+        period: period,
+        contributor: contributor,
+        github: github,
+        link: link,
       });
       const data = await res.data;
       return data;
     } catch (error) {
       console.log(error);
     }
+    setCloseModal(false);
   };
   useEffect(() => {
-    fetchSpecificProject().then((data) => {
-      console.log(data);
-    });
-  }, []);
+    if (selectedProject) {
+      setTitle(selectedProject.title);
+      setType(selectedProject.type);
+      setLanguage(selectedProject.language);
+      setPeriod(selectedProject.period);
+      setContributor(selectedProject.contributor);
+      setGithub(selectedProject.github);
+      setLink(selectedProject.link);
+    }
+  }, [selectedProject]);
+
   return (
     <>
       {closeModal ? (
@@ -119,11 +135,9 @@ const ProjectEditModal = ({ closeModal, setCloseModal, id }) => {
                   <button
                     type="submit"
                     className="projectModalButton"
-                    onClick={
-                      (() => setCloseModal(false), handleEditProjectSubmit)
-                    }
+                    onClick={() => handleEditProjectSubmit()}
                   >
-                    Add
+                    Update
                   </button>
                   <button
                     className="projectModalButton"
