@@ -16,30 +16,34 @@ import Admin from "./components/Admin/Admin";
 import ForgotPassWord from "./components/forgotPassWord/ForgotPassWord";
 // import context
 import { LightThemeContext } from "./context/LightThemeContext";
+import { IdThemeContext } from "./context/IdThemeContext";
 
-function App() {
+function App(props) {
   const [lightTheme, setLightTheme] = useState(false);
+  const [isId, setIsId] = useState(false);
 
   return (
     <LightThemeContext.Provider value={{ lightTheme, setLightTheme }}>
-      <div className="App">
-        <Router>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/notice" element={<Notice />} />
-            <Route path="/notice/:id" element={<NoticeView />} />
-            <Route path="/myaccount" element={<Myaccount />} />
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/joinus" element={<JoinUs />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/forgotPassword" element={<ForgotPassWord />} />
-          </Routes>
-          <Footer />
-        </Router>
-      </div>
+      <IdThemeContext.Provider value={{ isId, setIsId }}>
+        <div className="App">
+          <Router>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Main />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/notice" element={<Notice />} />
+              <Route path="/notice/:id" element={<NoticeView />} />
+              <Route path="/myaccount" element={<Myaccount />} />
+              <Route path="/signin" element={<SignIn />} />
+              <Route path="/joinus" element={<JoinUs />} />
+              <Route path="/admin" element={<Admin />} />
+              <Route path="/forgotPassword" element={<ForgotPassWord />} />
+            </Routes>
+            <Footer />
+          </Router>
+        </div>
+      </IdThemeContext.Provider>
     </LightThemeContext.Provider>
   );
 }

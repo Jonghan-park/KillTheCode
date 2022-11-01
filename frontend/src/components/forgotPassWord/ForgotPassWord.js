@@ -1,12 +1,17 @@
 import { Tab, Tabs } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { IdThemeContext } from "../../context/IdThemeContext";
 import "./ForgotPassWord.css";
+import { useContext } from "react";
+export default function Forgot() {
+  const { isId } = useContext(IdThemeContext);
 
-export default function Forgot(props) {
-  console.log(props.testWork);
   return (
     <>
-      <Tabs defaultActiveKey={props.testWork} className="mb-3 tabsCss ">
+      <Tabs
+        defaultActiveKey={isId ? "id" : "password"}
+        className="mb-3 tabsCss "
+      >
         <Tab eventKey="id" title="Id" className="tabBody ">
           <ul>
             <strong>Find UserName</strong>
