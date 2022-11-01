@@ -6,7 +6,7 @@ const cors = require("cors");
 
 //Import Routes
 const projectRoute = require("./routes/project");
-const meetingRoute = require("./routes/meetingRoutes")
+const meetingRoute = require("./routes/meetingRoutes");
 const userRoute = require("./routes/userRoutes");
 
 //DB
@@ -18,11 +18,11 @@ connection();
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
+
 //Routes
 app.use("/projects", projectRoute);
 app.use("/api/users", userRoute);
-
-app.use("/meeting", meetingRoute)
+app.use("/meeting", meetingRoute);
 
 
 app.listen(port, () => {
