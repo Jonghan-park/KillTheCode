@@ -8,7 +8,7 @@
     "server": "nodemon server.js"
   },
   "keywords": [],
-  "author": "Joseph Park, Elly Lee, Lauren Sung, Kai Lee",
+  "author": "Joseph Park, Elly Lee, Lauren Sung, Kai Lee, Jihoon Oh",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
