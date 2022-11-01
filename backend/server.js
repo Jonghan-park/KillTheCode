@@ -6,6 +6,7 @@ const cors = require("cors");
 
 // Import Routes
 const projectRoute = require("./routes/project");
+const meetingRoute = require("./routes/meetingRoutes")
 
 // DB
 const connection = require("./database/db");
@@ -19,6 +20,11 @@ app.use(cors());
 //Routes
 app.use("/projects", projectRoute);
 
+app.use("/meeting", meetingRoute)
+
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+
