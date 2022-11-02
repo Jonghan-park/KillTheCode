@@ -45,7 +45,20 @@ const registerUser = asyncHandler(async (req, res) => {
 //login controller
 //route /api/user/login
 const loginUser = asyncHandler(async (req, res) => {
-  res.send("Login User");
+  const { email, password } = req.body;
+  const user = await User.findOne({ email: email });
+
+  //check user and password
+  if (user && (await bcrypt.compare(password, user.password))) {
+    res.status(200).json({
+      _id: user._id,
+      username: user.username,
+      email: user.email,
+    });
+  } else {
+    res.status(401);
+    throw new Error("Invalid password or email");
+  }
 });
 
 module.exports = {
