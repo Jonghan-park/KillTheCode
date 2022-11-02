@@ -16,8 +16,23 @@ const ProjectEditModal = ({
   const [github, setGithub] = useState("");
   const [link, setLink] = useState("");
 
-  const handleEditProjectSubmit = (e) => {
-    e.preventDefault();
+  const handleEditProjectSubmit = async (e) => {
+    try {
+      const res = await axios.put(`http://localhost:5000/projects/edit/${id}`, {
+        title: title,
+        type: type,
+        language: language,
+        period: period,
+        contributor: contributor,
+        github: github,
+        link: link,
+      });
+      const data = await res.data;
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+    setCloseModal(false);
   };
   useEffect(() => {
     if (selectedProject) {
@@ -120,11 +135,9 @@ const ProjectEditModal = ({
                   <button
                     type="submit"
                     className="projectModalButton"
-                    onClick={
-                      (() => setCloseModal(false), handleEditProjectSubmit)
-                    }
+                    onClick={() => handleEditProjectSubmit()}
                   >
-                    Add
+                    Update
                   </button>
                   <button
                     className="projectModalButton"

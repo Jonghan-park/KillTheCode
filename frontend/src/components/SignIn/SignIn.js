@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./SignIn.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
+import { IdThemeContext } from "../../context/IdThemeContext";
+
 function SignIn() {
+  const tooggleTheme = () => {
+    setIsId(!isId);
+  };
+  const { isId, setIsId } = useContext(IdThemeContext);
+  console.log(isId);
   return (
     <>
       <div className="container">
@@ -42,12 +49,9 @@ function SignIn() {
           <div className="existAccount">
             <h2 className="findPwd">
               Forgot
-              <Link to="/forgotPassword" testWork={"id"}>
-                {" "}
-                Password
-              </Link>
+              <Link to="/forgotPassword"> Password</Link>
               &nbsp; or &nbsp;
-              <Link to="/forgotPassword" testWork={"password"}>
+              <Link to="/forgotPassword" onClick={tooggleTheme}>
                 {" "}
                 account
               </Link>
