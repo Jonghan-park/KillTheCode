@@ -6,11 +6,15 @@ import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 import { IdThemeContext } from "../../context/IdThemeContext";
 
 function SignIn() {
-  const tooggleTheme = () => {
-    setIsId(!isId);
+  const tooggleID = () => {
+    setIsId("Id");
   };
+  const toogglePassWord = () => {
+    setIsId("Password");
+  };
+
   const { isId, setIsId } = useContext(IdThemeContext);
-  console.log(isId);
+  console.log(isId + "singin");
   return (
     <>
       <div className="container">
@@ -49,9 +53,12 @@ function SignIn() {
           <div className="existAccount">
             <h2 className="findPwd">
               Forgot
-              <Link to="/forgotPassword"> Password</Link>
+              <Link to="/forgotPassword" onClick={toogglePassWord}>
+                {" "}
+                Password
+              </Link>
               &nbsp; or &nbsp;
-              <Link to="/forgotPassword" onClick={tooggleTheme}>
+              <Link to="/forgotPassword" onClick={tooggleID}>
                 {" "}
                 account
               </Link>
