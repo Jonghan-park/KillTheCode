@@ -9,7 +9,7 @@ export default function Forgot() {
   return (
     <>
       <Tabs
-        defaultActiveKey={isId ? "id" : "password"}
+        defaultActiveKey={isId === "Id" ? "id" : "password"}
         className="mb-3 tabsCss "
       >
         <Tab eventKey="id" title="Id" className="tabBody ">
