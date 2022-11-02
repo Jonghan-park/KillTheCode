@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-
+const User = require("../models/user");
 //register controller
 //route /api/user/register
 const registerUser = asyncHandler(async (req, res) => {
