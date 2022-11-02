@@ -14,7 +14,7 @@ function SignIn() {
   };
 
   const { isId, setIsId } = useContext(IdThemeContext);
-  console.log(isId + "singin");
+
   return (
     <>
       <div className="container">

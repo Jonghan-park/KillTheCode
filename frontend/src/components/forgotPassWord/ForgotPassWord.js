@@ -3,79 +3,76 @@ import { Link } from "react-router-dom";
 import { IdThemeContext } from "../../context/IdThemeContext";
 import "./ForgotPassWord.css";
 import { useContext } from "react";
+
+import Container from "react-bootstrap/Container";
+
 export default function Forgot() {
   const { isId } = useContext(IdThemeContext);
 
   return (
     <>
-      <Tabs
-        defaultActiveKey={isId === "Id" ? "id" : "password"}
-        className="mb-3 tabsCss "
-      >
-        <Tab eventKey="id" title="Id" className="tabBody ">
-          <ul>
-            <strong>Find UserName</strong>
-          </ul>
-          <ul className="ulpanel">
-            <li>
-              <ul className="ulpanel">
-                <strong>
-                  <li>"Please enter your name,</li>
-                  <li>birthday, someting</li>
-                  <li>on your *** account "</li>
-                </strong>
-              </ul>
-            </li>
+      <div className="test">
+        <Tabs
+          defaultActiveKey={isId === "Id" ? "id" : "password"}
+          className="mb-3  "
+        >
+          <Tab eventKey="id" title="User Name">
+            <div>
+              <strong>Find UserName</strong>
+            </div>
+            <div>
+              <strong>
+                <p>"Please enter your name,</p>
+                <p>birthday, someting</p>
+                <p>on your *** account "</p>
+              </strong>
 
-            <li>
-              Email
-              <input type="box"></input>
-            </li>
-            <li>
-              <button type="submit">
-                <Link to="/signin"> Cancel</Link>
-              </button>
-              <button type="submit">
-                <span>Continue</span>
-              </button>
-            </li>
-          </ul>
-        </Tab>
+              <p>
+                Email
+                <input type="box"></input>
+              </p>
+              <p>
+                <button type="submit">
+                  <Link to="/signin"> Cancel</Link>
+                </button>
+                <button type="submit">
+                  <span>Continue</span>
+                </button>
+              </p>
+            </div>
+          </Tab>
 
-        <Tab eventKey="password" title="Password" className="tabBody ">
-          <ul>
-            <strong>Find password</strong>
-          </ul>
-          <ul className="ulpanel">
-            <li>
-              <ul className="ulpanel">
-                <strong>
-                  <li>"Please enter your username,</li>
-                  <li>and contact info on your</li>
-                  <li>KTC account.</li>
-                </strong>
-              </ul>
-            </li>
+          <Tab eventKey="password" title="Password">
+            <div>
+              <strong>Find password</strong>
+            </div>
+            <div>
+              <strong>
+                <p>"Please enter your username,</p>
+                <p>and contact info on your</p>
+                <p>KTC account.</p>
+              </strong>
 
-            <li>
-              Email
-              <input type="box"></input>
-            </li>
-            <li>
-              Username
-              <input type="box"></input>
-            </li>
-            <li>
-              <button type="submit">
-                <Link to="/signin"> Cancel</Link>
-              </button>
-              <button type="submit">
-                <span>Continue</span>
-              </button>
-            </li>
-          </ul>
-        </Tab>
-      </Tabs>
+              <p>
+                Email
+                <input type="box"></input>
+              </p>
+              <p>
+                Username
+                <input type="box"></input>
+              </p>
+              <p>
+                <button type="submit">
+                  <Link to="/signin"> Cancel</Link>
+                </button>
+                <button type="submit">
+                  <span>Continue</span>
+                </button>
+              </p>
+            </div>
+          </Tab>
+        </Tabs>
+      </div>
     </>
   );
 }
