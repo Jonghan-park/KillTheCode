@@ -1,8 +1,10 @@
-import exress from 'express';
-
+const express = require("express");
 const meetingRouter = express.Router();
 
-// meetingRouter.get("/",)
+const {addMeeting, getAllMeeting} = require('../controller/meetingController')
+
+meetingRouter.get("/", getAllMeeting)
+meetingRouter.post("/add", addMeeting)
 
 
-export default meetingRouter;
+module.exports = meetingRouter; 
