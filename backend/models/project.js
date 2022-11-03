@@ -15,10 +15,12 @@ const projectSchema = new mongoose.Schema({
   period: {
     type: String,
   },
-  contributor: {
-    type: String,
-    required: true,
-  },
+  contributors: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
   github: {
     type: String,
     required: true,
