@@ -1,3 +1,4 @@
+const { default: mongoose } = require("mongoose");
 const Meeting= require("../models/meeting");
 const Project = require("../models/project");
 
@@ -20,23 +21,32 @@ exports.getAllMeeting = async(req, res)=>{
 
 // post meeting
 exports.addMeeting = async(req, res) => {
-    const {meetingYear, meetingMonth, meetingDate, attendees} = req.body;
-    // const {project} = Project.findById(req.params.id);
-    // let currentProject;    
-    // currentProject = await Project.findById(req.params.id)
-    // 최신 프로젝트인거 확인하거나 아니면 최신프로젝트랑 연관시켜야될듯
+    const {meetingYear, meetingMonth, meetingDate, attendees, project} = req.body;
 
+        // find project 
+        let existingProject;
+        try{
+            existingProject = await Project.findById(project);
+        }catch(err){
+        return console.log(err);
+        }
+        if(!existingProject){
+            return res.status(404).json({message:"unable to find project by this ID"})
+        }
         const meeting = new Meeting({
             meetingYear,
             meetingMonth,
             meetingDate,
             attendees,
-            // project,
-        })
+            project,
+        });
         try {
+            const session = await mongoose.startSession();
+            session.startTransaction();
             await meeting.save();
         }catch(err){
-            return console.log(err);
+           console.log(err);
+            return res.status(500).json({message:err})
         }
         return res.status(201).json({meeting})
     };
