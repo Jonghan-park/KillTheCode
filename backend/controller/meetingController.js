@@ -62,4 +62,21 @@ exports.addMeeting = async(req, res) => {
         return res.status(200).json({meeting});
     }
 
+
+    // get by ID 
+    exports.getById = async(req, res)=>{
+        const id = req.params.id;
+        let meeting;
+        try{
+            meeting = await Meeting.findById(id);
+
+        }catch(err){
+            return console.log(err);
+        }
+        if(!meeting){
+        return res.status(404).json({messaage: "no meeting found"})
+    }
+    return res.status(200).json({meeting});
+}
+    
     
