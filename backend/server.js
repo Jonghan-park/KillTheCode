@@ -24,9 +24,21 @@ app.use("/projects", projectRoute);
 app.use("/api/users", userRoute);
 app.use("/meeting", meetingRoute);
 
-
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
+//Socket server
+const socket = require("socket.io");
+const io = socket(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    credentials: true,
+  },
+});
 
+io.on("connection", (socket) => {
+  socket.on("sendMessage", data => {
+    io.emit("getMessage", data);
+  });
+});
