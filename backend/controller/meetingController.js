@@ -78,5 +78,21 @@ exports.addMeeting = async(req, res) => {
     }
     return res.status(200).json({meeting});
 }
+
+// delete
+exports.deleteMeeting = async(req, res)=>{
+    const id = req.params.id;
+
+    let meeting;
+    try{
+        meeting = await Meeting.findByIdAndRemove(id);
+    }catch(err){
+        console.log(err)
+    }
+    if(!meeting){
+        return res.status(500).json({messaage: "unable to delete"})
+    }
+    return res.status(200).json({message: "successfully delete"});
+}
     
     
