@@ -8,6 +8,7 @@ const cors = require("cors");
 const projectRoute = require("./routes/project");
 const meetingRoute = require("./routes/meetingRoutes");
 const userRoute = require("./routes/userRoutes");
+const chattingRoute = require("./routes/chattingRoutes");
 
 //DB
 const connection = require("./database/db");
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/projects", projectRoute);
 app.use("/api/users", userRoute);
 app.use("/meeting", meetingRoute);
+app.use("/chatting", chattingRoute);
 
 const server = app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
