@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import quotation from "../../assets/quotation.svg";
@@ -67,9 +67,7 @@ const Project = ({ projects, admin, sendId }) => {
           );
         })
       ) : (
-        <div className="noProject">
-          We are just about to start working on a project.
-        </div>
+        <h1>No projects</h1>
       )}
     </>
   );

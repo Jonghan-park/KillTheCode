@@ -12,13 +12,15 @@ const ProjectModal = ({ closeModal, setCloseModal }) => {
   const [link, setLink] = useState("");
 
   const handleProjectSubmit = async () => {
+    const contributors = contributor.split(",");
+    console.log(contributors);
     try {
       const res = await axios.post("http://localhost:5000/projects/add", {
         title: title,
         type: type,
         language: language,
         period: period,
-        contributor: contributor,
+        contributors: contributors,
         github: github,
         link: link,
       });
