@@ -8,6 +8,7 @@ const cors = require("cors");
 const projectRoute = require("./routes/project");
 const meetingRoute = require("./routes/meetingRoutes");
 const userRoute = require("./routes/userRoutes");
+const chattingRoute = require("./routes/chattingRoutes");
 
 //DB
 const connection = require("./database/db");
@@ -23,10 +24,23 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/projects", projectRoute);
 app.use("/api/users", userRoute);
 app.use("/meeting", meetingRoute);
+app.use("/chatting", chattingRoute);
 
-
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
+//Socket server
+const socket = require("socket.io");
+const io = socket(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    credentials: true,
+  },
+});
 
+io.on("connection", (socket) => {
+  socket.on("sendMessage", data => {
+    io.emit("getMessage", data);
+  });
+});
