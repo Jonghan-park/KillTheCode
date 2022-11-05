@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./JoinUs.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
@@ -8,17 +8,45 @@ import {
   faKey,
   faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
+
 function JoinUs() {
+  const [errMsg, setErrMsg] = useState("");
+  const [formData, setFormData] = useState({
+    userId: "",
+    email: "",
+    password: "",
+    passwordCheck: "",
+  });
+
+  const { userId, email, password, passwordCheck } = formData;
   const inputRef = useRef();
+
   useEffect(() => {
     inputRef.current.focus();
   }, []);
+
+  const onChange = (e) => {
+    setFormData((pre) => ({
+      ...pre,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+
+    if (password !== passwordCheck) {
+      toast.error("Password is not match!");
+    }
+  };
+
   return (
     <>
       <div className="container">
         <div className="joinInForm">
           <div className="titleJoin">REGISTER</div>
-          <form>
+          <form onSubmit={onSubmit}>
             <div className="inputGrop">
               <FontAwesomeIcon icon={faUser} className="signInIcon" />
               <input
@@ -26,11 +54,25 @@ function JoinUs() {
                 type="text"
                 className="inputField"
                 placeholder="User ID"
+                id="userId"
+                name="userId"
+                value={userId}
+                onChange={onChange}
+                required
               />
             </div>
             <div className="inputGrop">
               <FontAwesomeIcon icon={faEnvelope} className="signInIcon" />
-              <input type="text" className="inputField" placeholder="Email" />
+              <input
+                type="text"
+                className="inputField"
+                placeholder="Email"
+                id="email"
+                name="email"
+                value={email}
+                onChange={onChange}
+                required
+              />
             </div>
             <div className="inputGrop">
               <FontAwesomeIcon icon={faKey} className="signInIcon" />
@@ -38,15 +80,25 @@ function JoinUs() {
                 type="password"
                 className="inputField"
                 placeholder="Password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={onChange}
+                required
               />
             </div>
             <div className="inputGrop">
               <FontAwesomeIcon icon={faCheckCircle} className="signInIcon" />
               <input
                 icon={faCheckCircle}
-                type="text"
+                type="password"
                 className="inputField"
                 placeholder="Confirm Password"
+                id="passwordCheck"
+                name="passwordCheck"
+                value={passwordCheck}
+                onChange={onChange}
+                required
               />
             </div>
             <button type="submit" className="signUpBtn">
