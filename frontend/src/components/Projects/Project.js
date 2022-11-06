@@ -9,7 +9,10 @@ const Project = ({ projects, admin, sendId }) => {
     window.open(link);
   };
   const handleOpenEditModal = (id) => {
-    sendId(id);
+    sendId(id, "Edit");
+  };
+  const handleDelete = (id) => {
+    sendId(id, "Delete");
   };
   return (
     <>
@@ -59,7 +62,11 @@ const Project = ({ projects, admin, sendId }) => {
                       className="projectEdit"
                       onClick={() => handleOpenEditModal(_id)}
                     />
-                    <FontAwesomeIcon icon={faTrash} className="projectDelete" />
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      className="projectDelete"
+                      onClick={() => handleDelete(_id)}
+                    />
                   </div>
                 )}
               </div>
