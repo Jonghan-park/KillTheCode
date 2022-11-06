@@ -78,7 +78,11 @@ exports.addProject = async (req, res) => {
       link: link,
       users: users,
     });
-
+    await Promise.all(
+      users.map(async (user) => {
+        return user.projects.push(project), await user.save();
+      })
+    );
     await project.save();
   } catch (error) {
     return console.log(error);

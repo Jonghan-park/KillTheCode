@@ -55,7 +55,7 @@ const Projects = () => {
 
   useEffect(() => {
     getProjects();
-  }, []);
+  }, [projects, []]);
 
   const getSpeicificProject = async () => {
     try {
