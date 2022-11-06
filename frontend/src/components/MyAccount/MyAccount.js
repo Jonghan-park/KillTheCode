@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./MyAccount.css";
-import { CurrenUser } from "../../context/currenUserContext";
 
 const usersInfo = [
   {

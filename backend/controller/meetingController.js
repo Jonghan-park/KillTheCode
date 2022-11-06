@@ -5,6 +5,7 @@ const Project = require("../models/project");
 
 // getMeeting(get)-최근 프로젝트
 // addMeeting(update)-최근 프로젝트 
+// 1시간 18분 -> 프로젝트 id 까지 넣는거 가능 
 
 //all get meeting
 exports.getAllMeeting = async(req, res)=>{
@@ -41,8 +42,8 @@ exports.addMeeting = async(req, res) => {
             project,
         });
         try {
-            const session = await mongoose.startSession();
-            session.startTransaction();
+            const meetingSession = await mongoose.startSession();
+            meetingSession.startTransaction();
             await meeting.save();
         }catch(err){
            console.log(err);

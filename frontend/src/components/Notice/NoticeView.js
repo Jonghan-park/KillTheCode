@@ -60,11 +60,11 @@ const NoticeView = () => {
   };
   useEffect(() => {
     for (let i = 0; i < noticeList.length; i++) {
-      if (noticeList[i].id == id) {
+      if (noticeList[i].id === id) {
         setNoticeContent(noticeList[i]);
       }
     }
-  }, []);
+  }, [id]);
   return (
     <div className="noticeContainer">
       <div className="noticePageTitle">NOTICE</div>

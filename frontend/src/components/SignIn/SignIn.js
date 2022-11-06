@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./SignIn.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
@@ -14,6 +14,23 @@ function SignIn() {
   };
 
   const { isId, setIsId } = useContext(IdThemeContext);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const { email, password } = formData;
+
+  const onChange = (e) => {
+    setFormData((pre) => ({
+      ...pre,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <>
@@ -32,10 +49,18 @@ function SignIn() {
 
         <div className="signInForm">
           <div className="loginTitle">LOGIN</div>
-          <form className="loginForm">
+          <form className="loginForm" onSubmit={onSubmit}>
             <div className="inputGrop">
               <FontAwesomeIcon icon={faEnvelope} className="signInIcon" />
-              <input type="text" className="inputField" placeholder="Email" />
+              <input
+                type="text"
+                className="inputField"
+                placeholder="Email"
+                name="email"
+                value={email}
+                onChange={onChange}
+                required
+              />
             </div>
             <div className="inputGrop">
               <FontAwesomeIcon icon={faKey} className="signInIcon" />
@@ -43,6 +68,11 @@ function SignIn() {
                 type="password"
                 className="inputField"
                 placeholder="Password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={onChange}
+                required
               />
             </div>
 
