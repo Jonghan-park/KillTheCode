@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 import { IdThemeContext } from "../../context/IdThemeContext";
+import { useSelector, useDispatch } from "react-redux";
+import { loginUser } from "../../features/auth/authSlice";
 
 function SignIn() {
   const tooggleID = () => {
@@ -21,6 +23,13 @@ function SignIn() {
 
   const { email, password } = formData;
 
+  const dispatch = useDispatch();
+
+  //bring in state from slider
+  const { user, isLoading, isError, isSuccess, isAdmin, message } = useSelector(
+    (state) => state.auth
+  );
+
   const onChange = (e) => {
     setFormData((pre) => ({
       ...pre,
@@ -30,6 +39,11 @@ function SignIn() {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    const userData = {
+      email,
+      password,
+    };
+    dispatch(loginUser(userData));
   };
 
   return (

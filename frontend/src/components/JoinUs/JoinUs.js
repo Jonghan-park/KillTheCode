@@ -9,6 +9,8 @@ import {
   faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
+import { useSelector, useDispatch } from "react-redux";
+import { registerUser } from "../../features/auth/authSlice";
 
 function JoinUs() {
   const [errMsg, setErrMsg] = useState("");
@@ -20,6 +22,14 @@ function JoinUs() {
   });
 
   const { userId, email, password, passwordCheck } = formData;
+
+  const dispatch = useDispatch();
+
+  //bring in state from slider
+  const { user, isLoading, isError, isSuccess, isAdmin, message } = useSelector(
+    (state) => state.auth
+  );
+
   const inputRef = useRef();
 
   useEffect(() => {
@@ -38,6 +48,14 @@ function JoinUs() {
 
     if (password !== passwordCheck) {
       toast.error("Password is not match!");
+    } else {
+      const userData = {
+        userId,
+        email,
+        password,
+      };
+
+      dispatch(registerUser(userData));
     }
   };
 
