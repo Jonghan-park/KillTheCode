@@ -77,7 +77,7 @@ const Notice = () => {
     if (!userLogin) {
       navigate("/");
     }
-  }, []);
+  }, [userLogin, navigate]);
   return (
     <div className="noticeContainer">
       <div className="noticePageTitle">NOTICE</div>

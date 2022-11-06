@@ -14,7 +14,7 @@ const Pagination = ({
       pageNumbers.push(i);
     }
     return pageNumbers;
-  }, [])
+  }, [LAST_PAGE]);
   const onPrevious = () => {
     if (currentPage > 1) {
       onPageChange(currentPage - 1);

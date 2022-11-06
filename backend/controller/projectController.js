@@ -58,23 +58,27 @@ const findUsername = async (contributors) => {
 exports.addProject = async (req, res) => {
   const { title, type, language, period, contributors, github, link } =
     req.body;
-
-  const { users, contributorsName } = findUsername(contributors);
-
-  // Create a new project object with data from req.body
-  const project = new Project({
-    title: title,
-    type: type,
-    language: language,
-    period: period,
-    contributors: contributorsName,
-    github: github,
-    link: link,
-    users: users,
-  });
+  let project;
 
   // Save the project to DB
   try {
+    const users = await Promise.all(
+      contributors.map((contributor) => {
+        return User.findOne({ email: contributor });
+      })
+    );
+
+    project = new Project({
+      title: title,
+      type: type,
+      language: language,
+      period: period,
+      contributors: contributors,
+      github: github,
+      link: link,
+      users: users,
+    });
+
     await project.save();
   } catch (error) {
     return console.log(error);

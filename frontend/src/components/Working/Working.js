@@ -1,16 +1,28 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import Calendar from "../Calendar/Calendar";
 import Chatting from "../Chatting/Chatting";
 import "./Working.css";
 
-const currentProject = {
-  title: "KillTheCode",
-  github: "https://github.com/Jonghan-park/KillTheCode",
-};
-
 const Working = () => {
-  const [project, setProject] = useState(currentProject);
+  const [project, setProject] = useState([]);
+
+  // Get projects
+  const getProjects = async () => {
+    try {
+      const { data } = await axios.get("http://localhost:5000/projects");
+      const currentProject = data.projects[data.projects.length - 1];
+      setProject(currentProject);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getProjects();
+  }, []);
+
   return (
     <div className="workingContainer">
       <div className="workingTitle">
@@ -26,10 +38,10 @@ const Working = () => {
       </div>
       <Row className="mx-2 mx-xl-5">
         <Col lg="7">
-          <Calendar />
+          <Calendar projectId={project._id} />
         </Col>
         <Col lg="5">
-          <Chatting />
+          <Chatting projectId={project._id} />
         </Col>
       </Row>
     </div>
