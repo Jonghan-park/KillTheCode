@@ -101,7 +101,7 @@ exports.deleteProject = async (req, res) => {
       "users"
     );
     console.log(usersInProject);
-    await usersInProject.users.map(async (user) => {
+    usersInProject.users.map(async (user) => {
       user.projects.pull(usersInProject);
       await user.save();
     });

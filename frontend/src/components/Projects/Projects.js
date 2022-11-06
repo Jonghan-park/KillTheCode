@@ -21,6 +21,7 @@ const Projects = () => {
     slideRef.current.style.transition = "all 0.5s ease-in-out";
     slideRef.current.style.transform = `translate(-${currentSlide * 510}px)`;
   }, [currentSlide]);
+
   const openModal = () => {
     setAddProjectModal(true);
   };
@@ -60,7 +61,7 @@ const Projects = () => {
 
   useEffect(() => {
     getProjects();
-  }, [projects, []]);
+  }, [projects]);
 
   const getSpecificProject = async () => {
     try {
