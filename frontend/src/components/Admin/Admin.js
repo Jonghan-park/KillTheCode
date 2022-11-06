@@ -1,7 +1,6 @@
 import "./admin.css";
 import React, { useState } from "react";
 import UserList from "./users";
-import { CurrenUser } from "../../context/currenUserContext";
 
 const userList = [
   {
