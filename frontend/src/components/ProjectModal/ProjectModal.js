@@ -25,6 +25,7 @@ const ProjectModal = ({ closeModal, setCloseModal }) => {
         link: link,
       });
       const data = await res.data;
+      console.log(data);
       return data;
     } catch (error) {
       console.log(error);

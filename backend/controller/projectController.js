@@ -78,7 +78,11 @@ exports.addProject = async (req, res) => {
       link: link,
       users: users,
     });
-
+    await Promise.all(
+      users.map(async (user) => {
+        return user.projects.push(project), await user.save();
+      })
+    );
     await project.save();
   } catch (error) {
     return console.log(error);
@@ -90,8 +94,24 @@ exports.addProject = async (req, res) => {
 
 // DELETE a project by id
 exports.deleteProject = async (req, res) => {
+  const projectId = req.params.id;
+  let usersInProject;
   try {
-  } catch (error) {}
+    usersInProject = await Project.findByIdAndDelete(projectId).populate(
+      "users"
+    );
+    console.log(usersInProject);
+    usersInProject.users.map(async (user) => {
+      user.projects.pull(usersInProject);
+      await user.save();
+    });
+  } catch (error) {
+    return console.log(error);
+  }
+  if (!usersInProject) {
+    return res.status(400).json({ message: "Unable To Delete Project" });
+  }
+  return res.status(202).json({ message: "Successfully delete" });
 };
 
 // PUT a project by id

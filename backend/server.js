@@ -5,7 +5,7 @@ require("dotenv").config();
 const cors = require("cors");
 
 //Import Routes
-const projectRoute = require("./routes/project");
+const projectRoute = require("./routes/projectRoutes");
 const meetingRoute = require("./routes/meetingRoutes");
 const userRoute = require("./routes/userRoutes");
 const chattingRoute = require("./routes/chattingRoutes");
@@ -42,7 +42,7 @@ const io = socket(server, {
 });
 
 io.on("connection", (socket) => {
-  socket.on("sendMessage", data => {
+  socket.on("sendMessage", (data) => {
     io.emit("getMessage", data);
   });
 });

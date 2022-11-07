@@ -10,6 +10,7 @@ const Projects = () => {
   const [addProjectModal, setAddProjectModal] = useState(false);
   const [editProjectModal, setEditProjectModal] = useState(false);
   const [editId, setEditId] = useState("");
+  const [deleteId, setDeleteId] = useState("");
   const [clickedProject, setClickedProject] = useState();
   const [projects, setProjects] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -20,6 +21,7 @@ const Projects = () => {
     slideRef.current.style.transition = "all 0.5s ease-in-out";
     slideRef.current.style.transform = `translate(-${currentSlide * 510}px)`;
   }, [currentSlide]);
+
   const openModal = () => {
     setAddProjectModal(true);
   };
@@ -39,9 +41,13 @@ const Projects = () => {
     }
   };
 
-  const getId = (id) => {
-    setEditProjectModal(true);
-    setEditId(id);
+  const getId = (id, msg) => {
+    if (msg === "Edit") {
+      setEditProjectModal(true);
+      setEditId(id);
+    } else if (msg === "Delete") {
+      setDeleteId(id);
+    }
   };
   // Get projects
   const getProjects = async () => {
@@ -55,9 +61,9 @@ const Projects = () => {
 
   useEffect(() => {
     getProjects();
-  }, []);
+  }, [projects]);
 
-  const getSpeicificProject = async () => {
+  const getSpecificProject = async () => {
     try {
       const res = await axios.get(`http://localhost:5000/projects/${editId}`);
       const project = await res.data;
@@ -68,9 +74,22 @@ const Projects = () => {
   };
   useEffect(() => {
     if (editId) {
-      getSpeicificProject();
+      getSpecificProject();
+      setEditId("");
     }
-  }, [editId]);
+    if (deleteId) {
+      deleteProject();
+      setDeleteId("");
+    }
+  }, [editId, deleteId]);
+
+  const deleteProject = async () => {
+    try {
+      await axios.delete(`http://localhost:5000/projects/delete/${deleteId}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="projectsContainer">
       <div className="projectsTitleContainer">
