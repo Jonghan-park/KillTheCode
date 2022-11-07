@@ -73,3 +73,32 @@ exports.updateSchedule = async(req, res) => {
     }
     return res.status(200).json({schedule});
 }
+
+exports.getById = async(req, res) => {
+    const id = req.params.id;
+    let schedule;
+    try{
+        schedule = await Schedule.findById(id);
+    }catch(err){
+        return console.log(err);
+    }
+    if(!schedule){
+        return res.status(404).json({message: "no schedule found"})
+    }
+    return res.status(200).json({schedule});
+}
+
+exports.deleteSchedule = async(req, res) => {
+    const id = req.params.id;
+
+    let schedule;
+    try{
+        schedule = await Schedule.findByIdAndRemove(id);
+    }catch(err){
+        console.log(err)
+    }
+    if(!schedule){
+        return res.status(500).json({message: "unable to delete"})
+    }
+    return res.status(200).json({message: "successfully delete"})
+}
