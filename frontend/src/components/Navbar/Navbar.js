@@ -1,13 +1,19 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import lightThemeLogo from "../../assets/lightLogo.png";
 import logo from "../../assets/logo.png";
 import { LightThemeContext } from "../../context/LightThemeContext";
 import "./Navbar.css";
+import { useSelector, useDispatch } from "react-redux";
+import { logout, reset } from "../../features/auth/authSlice";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+
   const [toggleMenu, setToggleMenu] = useState(false);
   const { lightTheme, setLightTheme } = useContext(LightThemeContext);
 
@@ -33,6 +39,10 @@ const Navbar = () => {
     }
   }, [window.location.pathname]);
 
+  const onLogout = () => {
+    dispatch(logout());
+    dispatch(reset());
+  };
   return (
     <nav className="navbar" style={backgroundStyle}>
       <div className="logoAndMainLinks">
@@ -66,25 +76,40 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+
       <div className="signInLinks">
-        <div className="navbarLink">
-          <Link
-            onClick={() => setLightTheme(false)}
-            style={linksStyle}
-            to="/signin"
-          >
-            Sign In
-          </Link>
-        </div>
-        <div className="navbarLink">
-          <Link
-            onClick={() => setLightTheme(false)}
-            style={linksStyle}
-            to="/joinus"
-          >
-            Join Us
-          </Link>
-        </div>
+        {user ? (
+          <div className="navbarLink">
+            <Link
+              onClick={(() => setLightTheme(false), onLogout())}
+              style={linksStyle}
+              to="/"
+            >
+              Logout
+            </Link>
+          </div>
+        ) : (
+          <>
+            <div className="navbarLink">
+              <Link
+                onClick={() => setLightTheme(false)}
+                style={linksStyle}
+                to="/signin"
+              >
+                Sign In
+              </Link>
+            </div>
+            <div className="navbarLink">
+              <Link
+                onClick={() => setLightTheme(false)}
+                style={linksStyle}
+                to="/joinus"
+              >
+                Join Us
+              </Link>
+            </div>
+          </>
+        )}
       </div>
 
       <div className="navbarSmallscreen">
