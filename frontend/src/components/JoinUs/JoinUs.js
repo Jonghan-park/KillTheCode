@@ -11,24 +11,25 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
-import { registerUser, reset } from "../../features/auth/authSlice";
+import { register, reset } from "../../features/auth/authSlice";
 import { isRejected } from "@reduxjs/toolkit";
 
 function JoinUs() {
   const [errMsg, setErrMsg] = useState("");
   const [formData, setFormData] = useState({
-    userId: "",
+    username: "",
     email: "",
     password: "",
     passwordCheck: "",
   });
 
-  const { userId, email, password, passwordCheck } = formData;
+  const { username, email, password, passwordCheck } = formData;
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   //bring in state from slider
-  const { user, isLoading, isError, isSuccess, isAdmin, message } = useSelector(
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   );
 
@@ -47,6 +48,7 @@ function JoinUs() {
     }
     dispatch(reset());
   }, [isError, isSuccess, user, message, navigate, dispatch]);
+
   const onChange = (e) => {
     setFormData((pre) => ({
       ...pre,
@@ -61,12 +63,12 @@ function JoinUs() {
       toast.error("Password is not match!");
     } else {
       const userData = {
-        userId,
+        username,
         email,
         password,
       };
 
-      dispatch(registerUser(userData));
+      dispatch(register(userData));
     }
   };
 
@@ -83,9 +85,9 @@ function JoinUs() {
                 type="text"
                 className="inputField"
                 placeholder="User ID"
-                id="userId"
-                name="userId"
-                value={userId}
+                id="username"
+                name="username"
+                value={username}
                 onChange={onChange}
                 required
               />

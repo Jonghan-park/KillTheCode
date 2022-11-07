@@ -2,7 +2,10 @@ import axios from "axios";
 
 // Register user
 const register = async (userData) => {
-  const response = await axios.post("/api/users/register", userData);
+  const response = await axios.post(
+    "http://localhost:5000/api/users/register",
+    userData
+  );
 
   if (response.data) {
     localStorage.setItem("user", JSON.stringify(response.data));
