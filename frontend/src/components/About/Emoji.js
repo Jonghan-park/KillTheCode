@@ -15,7 +15,7 @@ const Emoji = ({ users }) => {
       {users.map((user, index) => {
         return (
           <div key={index} className="emoji" onClick={() => openModal(index)}>
-            {user.emojiInUser}
+            {user.username}
           </div>
         );
       })}

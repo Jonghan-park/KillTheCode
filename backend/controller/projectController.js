@@ -100,7 +100,6 @@ exports.deleteProject = async (req, res) => {
     usersInProject = await Project.findByIdAndDelete(projectId).populate(
       "users"
     );
-    console.log(usersInProject);
     usersInProject.users.map(async (user) => {
       user.projects.pull(usersInProject);
       await user.save();

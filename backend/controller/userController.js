@@ -74,6 +74,21 @@ const getMe = asyncHandler(async (req, res) => {
   res.status(200).json(user);
 });
 
+//get all user data
+//route /api/user/
+const getAllUsers = asyncHandler(async (req, res) => {
+  let users;
+
+  try {
+    users = await User.find();
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+
+  return res.status(200).json({ users });
+});
+
 //Generate token
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET);
@@ -83,4 +98,5 @@ module.exports = {
   registerUser,
   loginUser,
   getMe,
+  getAllUsers,
 };
