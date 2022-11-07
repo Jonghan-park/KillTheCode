@@ -16,11 +16,11 @@ const Modal = ({ user, closeModal, setCloseModal }) => {
           >
             <div className="modalHeader">MODAL TITLE</div>
             <div className="modalBody">
-              <p className="modalEmoji">{user.emojiInUser}</p>
-              <h3 className="modalHello">Hi, my name is {user.name}</h3>
-              <p>Skill: {user.skill}</p>
+              <p className="modalEmoji">{user.username}</p>
+              <h3 className="modalHello">Hi, my name is {user.username}</h3>
+              {/* <p>Skill: {user.skill}</p>
               <p>linkedIn: {user.linkedIn}</p>
-              <p>Github: {user.github}</p>
+              <p>Github: {user.github}</p> */}
               <p>Email: {user.email}</p>
             </div>
             <div className="modalFooter">

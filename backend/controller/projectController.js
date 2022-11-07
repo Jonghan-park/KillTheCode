@@ -78,11 +78,11 @@ exports.addProject = async (req, res) => {
       link: link,
       users: users,
     });
-    await Promise.all(
-      users.map(async (user) => {
-        return user.projects.push(project), await user.save();
-      })
-    );
+
+    users.map(async (user) => {
+      return user.projects.push(project), await user.save();
+    });
+
     await project.save();
   } catch (error) {
     return console.log(error);
@@ -100,7 +100,6 @@ exports.deleteProject = async (req, res) => {
     usersInProject = await Project.findByIdAndDelete(projectId).populate(
       "users"
     );
-    console.log(usersInProject);
     usersInProject.users.map(async (user) => {
       user.projects.pull(usersInProject);
       await user.save();

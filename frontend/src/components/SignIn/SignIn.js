@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { faEnvelope, faKey } from "@fortawesome/free-solid-svg-icons";
 import { IdThemeContext } from "../../context/IdThemeContext";
 import { useSelector, useDispatch } from "react-redux";
-import { loginUser } from "../../features/auth/authSlice";
+import { login } from "../../features/auth/authSlice";
 
 function SignIn() {
   const tooggleID = () => {
@@ -43,7 +43,7 @@ function SignIn() {
       email,
       password,
     };
-    dispatch(loginUser(userData));
+    dispatch(login(userData));
   };
 
   return (
