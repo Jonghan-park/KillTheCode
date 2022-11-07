@@ -1,21 +1,14 @@
 import React, { useState } from "react";
 import "./MyAccount.css";
-
-const usersInfo = [
-  {
-    firstName: "S",
-    lastName: "Lauren",
-    password: "********",
-    email: "test@test.com",
-  },
-];
+import { useSelector, useDispatch } from "react-redux";
 
 const MyAccount = () => {
-  const [userInfo, setUserInfo] = useState(usersInfo);
+  const dispatch = useDispatch();
+
+  //bring in state from slider
+  const { user } = useSelector((state) => state.auth);
 
   const handleChange = (event) => {
-    setUserInfo(event.target.value);
-
     console.log("value is:", event.target.value);
   };
 
@@ -41,7 +34,7 @@ const MyAccount = () => {
                 type="text"
                 className="myAcountFistname"
                 onChange={handleChange}
-                placeholder={userInfo[0].firstName}
+                value={user.username}
               ></input>
               <br></br>
 
@@ -49,7 +42,7 @@ const MyAccount = () => {
               <input
                 type="text"
                 className="myAcountLastname"
-                placeholder={userInfo[0].lastName}
+                value={user.admin}
               ></input>
               <br></br>
 
@@ -57,7 +50,7 @@ const MyAccount = () => {
               <input
                 type="password"
                 className="myAcountPassword"
-                placeholder={userInfo[0].password}
+                value="1111111"
               ></input>
               <br></br>
 
@@ -65,7 +58,7 @@ const MyAccount = () => {
               <input
                 type="email"
                 className="myAcountEmail"
-                placeholder={userInfo[0].email}
+                value={user.email}
               ></input>
               <br></br>
             </div>
