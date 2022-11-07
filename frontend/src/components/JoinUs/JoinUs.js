@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "./JoinUs.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
@@ -10,7 +11,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
-import { registerUser } from "../../features/auth/authSlice";
+import { registerUser, reset } from "../../features/auth/authSlice";
+import { isRejected } from "@reduxjs/toolkit";
 
 function JoinUs() {
   const [errMsg, setErrMsg] = useState("");
@@ -24,7 +26,7 @@ function JoinUs() {
   const { userId, email, password, passwordCheck } = formData;
 
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   //bring in state from slider
   const { user, isLoading, isError, isSuccess, isAdmin, message } = useSelector(
     (state) => state.auth
@@ -36,6 +38,15 @@ function JoinUs() {
     inputRef.current.focus();
   }, []);
 
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+    if (isSuccess || user) {
+      navigate("/");
+    }
+    dispatch(reset());
+  }, [isError, isSuccess, user, message, navigate, dispatch]);
   const onChange = (e) => {
     setFormData((pre) => ({
       ...pre,
