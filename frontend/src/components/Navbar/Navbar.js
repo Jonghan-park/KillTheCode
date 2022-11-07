@@ -78,11 +78,22 @@ const Navbar = () => {
 
       <div className="signInLinks">
         {user ? (
-          <div className="navbarLink">
-            <Link onClick={() => onLogout()} style={linksStyle} to="/">
-              Logout
-            </Link>
-          </div>
+          <>
+            <div className="navbarLink">
+              <Link
+                onClick={() => setLightTheme(true)}
+                style={linksStyle}
+                to="/myaccount"
+              >
+                My Account
+              </Link>
+            </div>
+            <div className="navbarLink">
+              <Link onClick={() => onLogout()} style={linksStyle} to="/">
+                Logout
+              </Link>
+            </div>
+          </>
         ) : (
           <>
             <div className="navbarLink">
