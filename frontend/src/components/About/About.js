@@ -1,53 +1,28 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import Emoji from "./Emoji";
 import "./About.css";
 import { LightThemeContext } from "../../context/LightThemeContext";
-
-const users = [
-  {
-    name: "Joseph",
-    skill: "JS, HTML, CSS, React, NodeJS, MongoDB",
-    linkedIn: "www.linkedin.com",
-    github: "https://github.com/Jonghan-park",
-    email: "pjh843@gmail.com",
-    emojiInUser: "👦🏼",
-  },
-  {
-    name: "Eunji",
-    skill: "JS, HTML, CSS, React, NodeJS, MongoDB",
-    linkedIn: "www.linkedin.com",
-    github: "www.github.com",
-    email: "abc123@gmail.com",
-    emojiInUser: "👩🏻‍🦰",
-  },
-  {
-    name: "Louren",
-    skill: "JS, HTML, CSS, React, NodeJS, MongoDB",
-    linkedIn: "www.linkedin.com",
-    github: "www.github.com",
-    email: "abc123@gmail.com",
-    emojiInUser: "👱🏻‍♀️",
-  },
-  {
-    name: "Kai",
-    skill: "JS, HTML, CSS, React, NodeJS, MongoDB",
-    linkedIn: "www.linkedin.com",
-    github: "www.github.com",
-    email: "abc123@gmail.com",
-    emojiInUser: "👱🏻",
-  },
-  {
-    name: "Jihoon",
-    skill: "JS, HTML, CSS, React, NodeJS, MongoDB",
-    linkedIn: "www.linkedin.com",
-    github: "www.github.com",
-    email: "abc123@gmail.com",
-    emojiInUser: "👱🏻‍♂️",
-  },
-];
+import axios from "axios";
 
 const About = () => {
   const { setLightTheme } = useContext(LightThemeContext);
+  const [users, setUsers] = useState([]);
+
+  // Get users
+  const getUsers = async () => {
+    try {
+      const { data } = await axios.get("http://localhost:5000/api/users");
+      setUsers(data.users);
+      console.log(users);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+
   useEffect(() => {
     if (window.location.pathname !== "/admin") {
       setLightTheme(false);
