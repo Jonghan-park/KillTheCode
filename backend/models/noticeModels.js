@@ -12,11 +12,11 @@ const noticeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  // user: {
-  //   type: mongoose.Types.ObjectId,
-  //   ref: "User",
-  //   required: true,
-  // },
+  user: {
+    type: mongoose.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
 });
 
 const Notice = mongoose.model("Notice", noticeSchema);

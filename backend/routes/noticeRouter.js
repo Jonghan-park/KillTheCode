@@ -1,17 +1,6 @@
-// const { Router } = require("express");
+const { Router } = require("express");
 
-// const { getAllNotice, saveNotice } = require("../controller/noticeController");
-
-// const noticeRouter = Router();
-
-// noticeRouter.get("/notice", getAllNotice);
-
-// noticeRouter.post("/saveNotice", saveNotice);
-
-// module.exports = noticeRouter;
-
-const express = require("express");
-const noticeRouter = express.Router();
+const noticeRouter = Router();
 
 const {
   getAllNotice,

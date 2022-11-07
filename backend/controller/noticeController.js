@@ -4,7 +4,7 @@ module.exports.getAllNotice = async (req, res) => {
   const notice = await NoticeModels.find();
   res.send(notice);
 };
-
+/** create New notice  */
 module.exports.saveNotice = (req, res) => {
   const { title, date, content } = req.body;
 
@@ -17,6 +17,7 @@ module.exports.saveNotice = (req, res) => {
     .catch((err) => console.log(err));
 };
 
+/** update  */
 module.exports.updateNotice = async (req, res) => {
   const { _id, title, date, content } = req.body;
 
