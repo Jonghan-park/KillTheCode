@@ -55,10 +55,6 @@ const MyAccount = () => {
                 onChange={handleChange}
               ></input>
               <br></br>
-
-              <label className="myAccountLabel  mt-3">Role</label>
-              <input type="text" className="isAdmin" value={user.role}></input>
-              <br></br>
             </div>
             <button className="myAccountbutton">SAVE</button>
           </div>

@@ -73,10 +73,25 @@ const Navbar = () => {
               Projects
             </Link>
           </div>
+          {/* show admin if user is admin */}
+          {user && user.role ? (
+            <div className="navbarLink">
+              <Link
+                onClick={() => setLightTheme(true)}
+                style={linksStyle}
+                to="/admin"
+              >
+                admin
+              </Link>
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
 
       <div className="signInLinks">
+        {/* show myaccount & logout when user login */}
         {user ? (
           <>
             <div className="navbarLink">
