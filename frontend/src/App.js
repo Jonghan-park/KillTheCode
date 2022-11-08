@@ -16,6 +16,7 @@ import JoinUs from "./components/JoinUs/JoinUs";
 import Myaccount from "./components/MyAccount/MyAccount";
 import Admin from "./components/Admin/Admin";
 import ForgotPassWord from "./components/forgotPassWord/ForgotPassWord";
+import Working from "./components/Working/Working";
 // import context
 import { LightThemeContext } from "./context/LightThemeContext";
 import { IdThemeContext } from "./context/IdThemeContext";
@@ -32,6 +33,7 @@ function App(props) {
             <Navbar />
             <Routes>
               <Route path="/" element={<Main />} />
+              <Route path="/working" element={<Working />} />
               <Route path="/about" element={<About />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/notice" element={<Notice />} />
