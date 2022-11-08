@@ -44,7 +44,7 @@ function JoinUs() {
       toast.error(message);
     }
     if (isSuccess || user) {
-      navigate("/working");
+      navigate("/");
     }
     dispatch(reset());
   }, [isError, isSuccess, user, message, navigate, dispatch]);

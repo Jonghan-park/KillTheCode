@@ -37,6 +37,8 @@ const registerUser = asyncHandler(async (req, res) => {
       username: user.username,
       email: user.email,
       token: generateToken(user._id),
+      role: user.role,
+      participate: user.participate,
     });
   } else {
     res.status(400);
@@ -56,7 +58,7 @@ const loginUser = asyncHandler(async (req, res) => {
       _id: user._id,
       username: user.username,
       email: user.email,
-      admin: user.role,
+      role: user.role,
       participate: user.participate,
       token: generateToken(user._id),
     });

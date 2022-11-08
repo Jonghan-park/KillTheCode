@@ -43,6 +43,7 @@ const MyAccount = () => {
                 type="password"
                 className="myAcountPassword"
                 value="1111111"
+                onChange={handleChange}
               ></input>
               <br></br>
 
@@ -51,7 +52,12 @@ const MyAccount = () => {
                 type="email"
                 className="myAcountEmail"
                 value={user.email}
+                onChange={handleChange}
               ></input>
+              <br></br>
+
+              <label className="myAccountLabel  mt-3">Role</label>
+              <input type="text" className="isAdmin" value={user.role}></input>
               <br></br>
             </div>
             <button className="myAccountbutton">SAVE</button>
