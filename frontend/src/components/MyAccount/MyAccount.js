@@ -29,20 +29,12 @@ const MyAccount = () => {
         <form className="myAccountForm">
           <div className="myAccountInfo">
             <div className="myAccountInfoGroup">
-              <label className="myAccountLabel">First Name</label>
+              <label className="myAccountLabel">User Name</label>
               <input
                 type="text"
                 className="myAcountFistname"
                 onChange={handleChange}
                 value={user.username}
-              ></input>
-              <br></br>
-
-              <label className="myAccountLabel mt-3">Last Name</label>
-              <input
-                type="text"
-                className="myAcountLastname"
-                value={user.admin}
               ></input>
               <br></br>
 
