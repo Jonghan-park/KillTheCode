@@ -11,6 +11,7 @@ const userRoute = require("./routes/userRoutes");
 const chattingRoute = require("./routes/chattingRoutes");
 const scheduleRoute = require("./routes/scheduleRoutes");
 
+const noticeRoute = require("./routes/noticeRouter");
 //DB
 const connection = require("./database/db");
 
@@ -27,6 +28,7 @@ app.use("/api/users", userRoute);
 app.use("/meeting", meetingRoute);
 app.use("/chatting", chattingRoute);
 app.use("/schedule", scheduleRoute);
+app.use("/notice", noticeRoute);
 
 const server = app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
