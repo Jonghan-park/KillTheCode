@@ -21,10 +21,10 @@ const userSchema = new mongoose.Schema({
     minlength: 8,
   },
   role: {
-    type: Number,
-    required: true,
-    // 0 = user, 1 = admin
-    default: 0,
+    type: Boolean,
+    required: false,
+    // true = user, false = admin
+    default: false,
   },
   participate: {
     type: Boolean,

@@ -29,7 +29,7 @@ const MyAccount = () => {
         <form className="myAccountForm">
           <div className="myAccountInfo">
             <div className="myAccountInfoGroup">
-              <label className="myAccountLabel">First Name</label>
+              <label className="myAccountLabel">User Name</label>
               <input
                 type="text"
                 className="myAcountFistname"
@@ -38,19 +38,12 @@ const MyAccount = () => {
               ></input>
               <br></br>
 
-              <label className="myAccountLabel mt-3">Last Name</label>
-              <input
-                type="text"
-                className="myAcountLastname"
-                value={user.admin}
-              ></input>
-              <br></br>
-
               <label className="myAccountLabel  mt-3">Password</label>
               <input
                 type="password"
                 className="myAcountPassword"
                 value="1111111"
+                onChange={handleChange}
               ></input>
               <br></br>
 
@@ -59,6 +52,7 @@ const MyAccount = () => {
                 type="email"
                 className="myAcountEmail"
                 value={user.email}
+                onChange={handleChange}
               ></input>
               <br></br>
             </div>
