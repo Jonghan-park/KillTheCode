@@ -9,8 +9,7 @@ const noticeList = [
     title: "Welcome to the team KTC",
     admin: "Elly",
     date: "2 Oct, 2022",
-    content: 
-`Lorem ipsum dolor sit amet, ius te populo quodsi assueverit. Utinam electram percipitur eam ne, assum eligendi gloriatur vix et.
+    content: `Lorem ipsum dolor sit amet, ius te populo quodsi assueverit. Utinam electram percipitur eam ne, assum eligendi gloriatur vix et.
  Alterum disputationi sit eu. Dolores nominavi in his. Vix an constituto argumentum adversarium, ne cum aeque habemus epicurei.
 Facilisis evertitur scriptorem te pri, melius urbanitas quo id. Tibique mediocritatem ne sed, et vix omnium alienum recteque.`,
   },
@@ -19,8 +18,7 @@ Facilisis evertitur scriptorem te pri, melius urbanitas quo id. Tibique mediocri
     title: "As a team KTC member",
     admin: "Lauren",
     date: "2 Oct, 2022",
-    content: 
-`Lorem ipsum dolor sit amet, ius te populo quodsi assueverit. Utinam electram percipitur eam ne, assum eligendi gloriatur vix et.
+    content: `Lorem ipsum dolor sit amet, ius te populo quodsi assueverit. Utinam electram percipitur eam ne, assum eligendi gloriatur vix et.
 Alterum disputationi sit eu. Dolores nominavi in his. Vix an constituto argumentum adversarium, ne cum aeque habemus epicurei.
 Facilisis evertitur scriptorem te pri, melius urbanitas quo id. Tibique mediocritatem ne sed, et vix omnium alienum recteque.`,
   },
@@ -29,8 +27,7 @@ Facilisis evertitur scriptorem te pri, melius urbanitas quo id. Tibique mediocri
     title: "Change the team agreement",
     admin: "Joseph",
     date: "5 Oct, 2022",
-    content: 
-`Lorem ipsum dolor sit amet, ius te populo quodsi assueverit. Utinam electram percipitur eam ne, assum eligendi gloriatur vix et.
+    content: `Lorem ipsum dolor sit amet, ius te populo quodsi assueverit. Utinam electram percipitur eam ne, assum eligendi gloriatur vix et.
 Alterum disputationi sit eu. Dolores nominavi in his. Vix an constituto argumentum adversarium, ne cum aeque habemus epicurei.
 Facilisis evertitur scriptorem te pri, melius urbanitas quo id. Tibique mediocritatem ne sed, et vix omnium alienum recteque.`,
   },
@@ -88,29 +85,42 @@ const NoticeView = () => {
               onChange={onNoticeChange}
             />
             <div className="noticeBtns">
-              <button className="noticeRightBtn" onClick={goNotice}>Cancle</button>
+              <button className="noticeRightBtn" onClick={goNotice}>
+                Cancle
+              </button>
               <button className="noticeRightBtn">Update</button>
             </div>
           </form>
         </div>
       ) : (
         <>
-        <Row className="noticeContentHeader">
-          <Col sm="1">No.{noticeContent.id}</Col>
-          <Col sm="6" lg="7" className="noticeContentTitle">{noticeContent.title}</Col>
-          <Col sm="2" lg="2">{noticeContent.admin}</Col>
-          <Col sm="3" lg="2">{noticeContent.date}</Col>
-        </Row>
-        <pre className="noticeContent">{noticeContent.content}</pre>
-        <div className="noticeBtns noticeViewBtns">
-          {isUserAdmin &&
-            <button className="noticeLeftBtn">Delete</button>
-          }
-          <button className="noticeRightBtn" onClick={goList}>Go List</button>
-          {isUserAdmin &&
-            <button className="noticeRightBtn" onClick={()=> setEditing(true)}>Edit</button>
-          }
-        </div>
+          <Row className="noticeContentHeader">
+            <Col sm="1">No.{noticeContent.id}</Col>
+            <Col sm="6" lg="7" className="noticeContentTitle">
+              {noticeContent.title}
+            </Col>
+            <Col sm="2" lg="2">
+              {noticeContent.admin}
+            </Col>
+            <Col sm="3" lg="2">
+              {noticeContent.date}
+            </Col>
+          </Row>
+          <pre className="noticeContent">{noticeContent.content}</pre>
+          <div className="noticeBtns noticeViewBtns">
+            {isUserAdmin && <button className="noticeLeftBtn">Delete</button>}
+            <button className="noticeRightBtn" onClick={goList}>
+              Go List
+            </button>
+            {isUserAdmin && (
+              <button
+                className="noticeRightBtn"
+                onClick={() => setEditing(true)}
+              >
+                Edit
+              </button>
+            )}
+          </div>
         </>
       )}
     </div>

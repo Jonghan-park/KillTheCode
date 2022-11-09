@@ -36,7 +36,7 @@ function App(props) {
               <Route path="/working" element={<Working />} />
               <Route path="/about" element={<About />} />
               <Route path="/projects" element={<Projects />} />
-              <Route path="/notice" element={<Notice />} />
+              <Route path="/notice/*" element={<Notice />} />
               <Route path="/notice/:id" element={<NoticeView />} />
               <Route path="/myaccount" element={<Myaccount />} />
               <Route path="/signin" element={<SignIn />} />
