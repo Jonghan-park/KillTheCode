@@ -22,13 +22,13 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: Boolean,
-    required: false,
+
     // true = user, false = admin
     default: false,
   },
   participate: {
     type: Boolean,
-    required: true,
+
     default: false,
   },
   emoji: {
