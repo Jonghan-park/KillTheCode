@@ -17,7 +17,7 @@ module.exports.saveNotice = (req, res) => {
     .catch((err) => console.log(err));
 };
 
-/** update  */
+/** update  notice */
 module.exports.updateNotice = async (req, res) => {
   const { _id, title, date, content } = req.body;
 
@@ -26,6 +26,7 @@ module.exports.updateNotice = async (req, res) => {
     .catch((err) => console.log(err));
 };
 
+/** delete  */
 module.exports.deleteNotice = async (req, res) => {
   const { _id, title, date, content } = req.body;
 

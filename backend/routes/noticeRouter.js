@@ -10,7 +10,7 @@ const {
 } = require("../controller/noticeController");
 
 noticeRouter.get("/", getAllNotice);
-noticeRouter.post("/saveNotice", saveNotice);
+noticeRouter.post("/save", saveNotice);
 noticeRouter.post("/update", updateNotice);
 noticeRouter.post("/delete", deleteNotice);
 
