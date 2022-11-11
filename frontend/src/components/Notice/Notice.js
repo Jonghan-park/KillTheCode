@@ -10,6 +10,22 @@ const Notice = () => {
   const baseUrl = "http://localhost:5000/notice";
   const [noticeList, setNoticeList] = useState([]);
 
+  const initNotice = {
+    title: "",
+    content: "",
+  };
+  const PAGE_SIZE = 10;
+  const navigate = useNavigate();
+  const [notices, setNotices] = useState([]);
+  console.log(notices);
+  const [writeMode, setWriteMode] = useState(false);
+  const [newNotice, setNewNotice] = useState(initNotice);
+  const [currentPage, setCurrentPage] = useState(1);
+  // The temporary state for displaying a working page based on a user information
+  const [userLogin, setUserLogin] = useState(true);
+  // The temporary state for the calendar based on a user information
+  const [isUserAdmin, setIsUserAdmin] = useState(true);
+
   /** get all data from database */
   const getAllNotice = () => {
     axios.get(baseUrl).then(({ data }) => {
@@ -21,22 +37,11 @@ const Notice = () => {
   useEffect(() => {
     getAllNotice();
   }, []);
-  console.log(noticeList);
-  const initNotice = {
-    title: "",
-    content: "",
-  };
-  const PAGE_SIZE = 10;
-  const navigate = useNavigate();
-  const [notices, setNotices] = useState(noticeList.slice(0).reverse());
 
-  const [writeMode, setWriteMode] = useState(false);
-  const [newNotice, setNewNotice] = useState(initNotice);
-  const [currentPage, setCurrentPage] = useState(1);
-  // The temporary state for displaying a working page based on a user information
-  const [userLogin, setUserLogin] = useState(true);
-  // The temporary state for the calendar based on a user information
-  const [isUserAdmin, setIsUserAdmin] = useState(true);
+  useEffect(() => {
+    setNotices(noticeList.slice(0).reverse());
+  }, [setNotices, noticeList]);
+
   const currentPaginationData = useMemo(() => {
     const offset = (currentPage - 1) * PAGE_SIZE;
     return notices.slice(offset, offset + PAGE_SIZE);
@@ -107,9 +112,9 @@ const Notice = () => {
           </Row>
           {currentPaginationData.map((notice) => {
             return (
-              <Link key={notice.id} to={"/notice/" + notice.id}>
+              <Link key={notice._id} to={"/notice/" + notice._id}>
                 <Row className="notice">
-                  <Col xs="1">{notice.id}</Col>
+                  <Col xs="1">{notice._id}</Col>
                   <Col xs="5" lg="7" className="noticeTitle">
                     {notice.title}
                   </Col>

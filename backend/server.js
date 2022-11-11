@@ -13,6 +13,9 @@ const scheduleRoute = require("./routes/scheduleRoutes");
 
 const noticeRoute = require("./routes/noticeRouter");
 const myAccountRoute = require("./routes/myaccountRoutes");
+const noticeRoute = require("./routes/noticeRoutes");
+const forgotPWRoute = require("./routes/forgotPWRoutes");
+
 //DB
 const connection = require("./database/db");
 
@@ -22,7 +25,8 @@ connection();
 app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
-
+/** send email engine for that need to npm install ejs */
+app.set("view engine", "ejs");
 //Routes
 app.use("/projects", projectRoute);
 app.use("/api/users", userRoute);
@@ -31,6 +35,8 @@ app.use("/chatting", chattingRoute);
 app.use("/schedule", scheduleRoute);
 app.use("/notice", noticeRoute);
 app.use("/myaccount", myAccountRoute);
+app.use("/forgotPassword", forgotPWRoute);
+
 const server = app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
