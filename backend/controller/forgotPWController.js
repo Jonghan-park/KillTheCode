@@ -28,7 +28,20 @@ module.exports.forgotUserName = async (req, res) => {
       }
     );
 
-    const link = `http://localhost:5000/reset-password/${findUser._id}/${token}`;
+    const link = `http://localhost:5000/send_username/${findUser._id}/${token}`;
+    const filePath = path.join(
+      __dirname,
+      "../../frontend/src/emailTemplates/findID.html"
+    );
+    const source = fs.readFileSync(filePath, "utf-8").toString();
+    const template = handlebars.compile(source);
+    const replacements = {
+      username: findUser.username,
+      email: findUser.email,
+      resetLink: link,
+    };
+    const htmlToSend = template(replacements);
+
     var transporter = nodemailer.createTransport({
       service: "Gmail",
       auth: {
@@ -39,9 +52,9 @@ module.exports.forgotUserName = async (req, res) => {
 
     var mailOptions = {
       from: "ktccodeteam5@gmail.com",
-      to: email,
+      to: findUser.email,
       subject: "Password Reset",
-      text: link,
+      html: htmlToSend,
     };
 
     transporter.sendMail(mailOptions, function (error, info) {
@@ -88,7 +101,7 @@ module.exports.forgotPassword = async (req, res) => {
     const source = fs.readFileSync(filePath, "utf-8").toString();
     const template = handlebars.compile(source);
     const replacements = {
-      username: "Darth Vader",
+      username: findUser.username,
       resetLink: link,
     };
     const htmlToSend = template(replacements);
