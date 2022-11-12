@@ -11,6 +11,7 @@ const userRoute = require("./routes/userRoutes");
 const chattingRoute = require("./routes/chattingRoutes");
 const scheduleRoute = require("./routes/scheduleRoutes");
 
+const myAccountRoute = require("./routes/myaccountRoutes");
 const noticeRoute = require("./routes/noticeRoutes");
 const forgotPWRoute = require("./routes/forgotPWRoutes");
 
@@ -32,6 +33,7 @@ app.use("/meeting", meetingRoute);
 app.use("/chatting", chattingRoute);
 app.use("/schedule", scheduleRoute);
 app.use("/notice", noticeRoute);
+app.use("/myaccount", myAccountRoute);
 app.use("/forgotPassword", forgotPWRoute);
 
 const server = app.listen(port, () => {
