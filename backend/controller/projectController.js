@@ -32,33 +32,24 @@ exports.getProject = async (req, res) => {
   return res.status(200).json(project);
 };
 
-// Find contributors username
-const findUsername = async (contributors) => {
-  // Declare arrays
-  let contributorsName = [];
-  let users = [];
-  // Loop contributors for storing user and username to users and contributorsName arrays respectively.
-  await contributors.map(async (contributor) => {
-    let user;
-    try {
-      user = await User.findOne({ email: contributor });
-    } catch (error) {
-      console.log(error);
-      return res.status(400).json("Can't find a user");
-    }
-
-    users.push(user);
-    contributorsName.push(user.username);
-  });
-  console.log(users);
-  return { users, contributorsName };
-};
-
 // POST project
 exports.addProject = async (req, res) => {
   const { title, type, language, period, contributors, github, link } =
     req.body;
   let project;
+
+  const getCircularReplacer = () => {
+    const seen = new WeakSet();
+    return (key, value) => {
+      if (typeof value === "object" && value !== null) {
+        if (seen.has(value)) {
+          return;
+        }
+        seen.add(value);
+      }
+      return value;
+    };
+  };
 
   // Save the project to DB
   try {

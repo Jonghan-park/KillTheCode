@@ -54,9 +54,29 @@ export const login = createAsyncThunk(
 );
 
 //Logout
-export const logout = createAsyncThunk("auth/logout", async () => {
-  await authService.logout();
-});
+export const logout = createAsyncThunk(
+  "auth/logout",
+  async (user, thunkAPI) => {
+    await authService.logout();
+  }
+);
+
+//update my info
+export const updateMyInfo = createAsyncThunk(
+  "auth/update",
+  async (user, thunkAPI) => {
+    try {
+      return await authService.updateMyInfo(user);
+    } catch (err) {
+      const message =
+        (err.response.data.message && err.response.data && err.response) ||
+        err.message ||
+        err.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 export const authSlice = createSlice({
   name: "auth",
@@ -102,6 +122,13 @@ export const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.user = null;
+      })
+      //user profile update
+      .addCase(updateMyInfo.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+
+        state.profile = action.payload;
       });
   },
 });

@@ -1,0 +1,35 @@
+.message {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+.messageTop{
+  font-size: 12px;
+  margin-bottom: 10px;
+  color: #000000;  
+}
+.ownerName{
+  font-size: 18px;
+}
+.chatIcon{
+  padding: 10px 15px 0;
+  color:#000000;
+  font-size: 1.4rem;
+}
+.messageText{
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #F0F2F2;
+  color: #2B3135;
+  max-width: 300px;
+}
+.messageBottom{
+  display: flex;
+}
+.message.own{
+  align-items: flex-end;
+}
+.message.own .messageText{
+  background-color: #FFFD24;
+  color: #2B3135;
+}
