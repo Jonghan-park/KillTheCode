@@ -51,6 +51,7 @@ exports.addProject = async (req, res) => {
     //     return user.username + " ";
     //   })
     // );
+    // console.log(findUsername);
 
     project = new Project({
       title: title,
