@@ -93,6 +93,49 @@ const getAllUsers = asyncHandler(async (req, res) => {
   return res.status(200).json({ users });
 });
 
+//update my profiler
+//put request
+//api/users/me
+const updateMyInfo = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (user) {
+    user.username = req.body.username || user.username;
+    user.email = req.body.email || user.email;
+    if (req.body.password) {
+      user.password = req.body.password;
+    }
+    const updateUser = await user.save();
+
+    res.json({
+      _id: updateUser._id,
+      username: updateUser.username,
+      email: updateUser.email,
+      role: updateUser.role,
+      participate: updateUser.participate,
+      token: generateToken(updateUser._id),
+    });
+  } else {
+    res.status(400);
+    throw new Error("User not found");
+  }
+
+  // if (updateUser) {
+  //   updateUser.username = req.body.username || updateUser.username;
+  //   updateUser.email = req.body.email || updateUser.email;
+  //   if (req.body.password) {
+  //     updateUser.password = req.body.password || updateUser.password;
+  //   }
+  //   const updateSave = await updateUser.save();
+
+  //   res.status(200).json({
+  //     _id: updateSave.id,
+  //     username: updateSave.username,
+  //     email: updateSave.email,
+  //   });
+  // }
+});
+
 //Generate token
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET);
@@ -103,4 +146,5 @@ module.exports = {
   loginUser,
   getMe,
   getAllUsers,
+  updateMyInfo,
 };
