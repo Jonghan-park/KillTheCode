@@ -36,6 +36,7 @@ exports.getProject = async (req, res) => {
 exports.addProject = async (req, res) => {
   const { title, type, language, period, contributors, github, link } =
     req.body;
+  let project;
 
   // Save the project to DB
   try {
@@ -45,18 +46,18 @@ exports.addProject = async (req, res) => {
       })
     );
 
-    const findUsername = await Promise.all(
-      users.map((user) => {
-        return user.username + " ";
-      })
-    );
+    // const findUsername = await Promise.all(
+    //   users.map((user) => {
+    //     return user.username + " ";
+    //   })
+    // );
 
-    const project = new Project({
+    project = new Project({
       title: title,
       type: type,
       language: language,
       period: period,
-      contributors: findUsername,
+      contributors: contributors,
       github: github,
       link: link,
       users: users,
