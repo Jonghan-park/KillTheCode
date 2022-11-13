@@ -1,99 +1,95 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Chatting.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope,faCirclePlus,faFaceSmile, faKey } from "@fortawesome/free-solid-svg-icons";
+import { useSelector } from "react-redux";
+import { io } from "socket.io-client";
+import axios from "axios";
+import Message from "./Message";
 
-const users = [
-  {
-    name: "Joseph",
-    skill: "JS, HTML, CSS, React, NodeJS, MongoDB",
-    linkedIn: "www.linkedin.com",
-    github: "https://github.com/Jonghan-park",
-    email: "pjh843@gmail.com",
-    emojiInUser: "👦🏼",
-  },
-  {
-    name: "Eunji",
-    skill: "JS, HTML, CSS, React, NodeJS, MongoDB",
-    linkedIn: "www.linkedin.com",
-    github: "www.github.com",
-    email: "abc123@gmail.com",
-    emojiInUser: "👩🏻‍🦰",
-  },
- 
-];
+function Chatting({ projectId }) {
+  const { user } = useSelector((state) => state.auth);
+  const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState("");
+  const [arrivalMessage, setArrivalMessage] = useState(null);
+  const socket = useRef();
+  const scrollRef = useRef();
 
-const messageEx = [
-  {
-    message: "",
-    username: "L"
-  }
-];
-
-
-
-
-function Chatting(){
-
-
-  const [word, setWord] = useState(messageEx);
-  const [wordList, setWordList] = useState("");
+  const submitNewChat = async (event) => {
+    event.preventDefault();
+    const message = {
+      userId: user._id,
+      content: newMessage,
+      projectId: projectId
+    };
+    socket.current.emit("sendMessage", {
+      user: user._id,
+      content: newMessage,
+      projectId: projectId
+    });
+    try {
+      const res = await axios.post("http://localhost:5000/chatting/add", message);
+      setMessages([...messages, res.data]);
+      setNewMessage("");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    socket.current = io("ws://localhost:5000");
+    socket.current.on("getMessage", data => {
+      setArrivalMessage({
+        user: data.user,
+        content: data.content,
+        date: data.date
+      });
+    });
+  }, []);
+  useEffect(() => {
+    arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
+  }, [arrivalMessage]);
+  useEffect(() => {
+    const getMessages = async () => {
+      try {
+        const res = await axios.get(`http://localhost:5000/chatting/${projectId}`);
+        setMessages(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
     
-
-  const sendMessage = (e) => {
-    e.preventDefault();
-    setWord(e.target.value)
-    console.log("word:" +word)
-     
-
-    //  await setWordList((list)=>[...list], word)
-}
-// v2
+    if (projectId) {
+      getMessages();
+    }
+  }, [projectId]);
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   return (
     <div className="chattingContainer">
-          
-
-      
       <div className="chat-body">
-
-
-       <div className="dialogbox">
-         <div className="message-body">
-         <span className="tip tip-right"></span>
-             <div className="message">
- 
-           <span className="chat-box comment-box">Hi, How are you?</span></div>
-        </div>
-        <span className="chat-icon ">{users[0].emojiInUser}</span>
+        {messages.map((message, index) => {
+          return (
+            <div key={index} ref={scrollRef}>
+              <Message
+                message={message}
+                owner={message.user === user._id || message.user._id === user._id}
+              />
+            </div>
+          );
+        })}
       </div>
-
-
-        <div>
-       <span className="chat-icon">{users[1].emojiInUser}</span>
-       <span className="chat-box text-box">how are you?</span></div>
-    
-      </div>
-
-        <div className="chat-footer">
-        <FontAwesomeIcon icon={faCirclePlus} className="plusIcon" />
-        <input 
-        type="text" 
-        placeholder="enter text..."
-        className="inputChat"
+      <div className="chat-footer">
+        <input
+          type="text"
+          placeholder="enter text..."
+          className="inputChat"
+          onChange={(e) => setNewMessage(e.target.value)}
+          value={newMessage}
         />
-         <FontAwesomeIcon icon={faFaceSmile} className="smileIcon" />
-      <button className="chatBtn" type="submit">&#9658;</button>
-      
-     {/* <FontAwesomeIcon icon={faCirclePlus} /> */}
-       
+        <button className="chatBtn" onClick={submitNewChat}>&#9658;</button>
       </div>
-      
-  
     </div>
   );
-  
 };
 
 export default Chatting;
-

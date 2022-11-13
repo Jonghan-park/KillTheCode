@@ -1,7 +1,7 @@
 .chattingContainer{
     /* color: white; */
     width: 100%;
-    height: 95%;
+    height: 650px;
     margin: 2% 0% 5% 7%;
     /* text-align:center; */
     /* border: 2px solid rgb(245, 242, 242); */
@@ -10,6 +10,7 @@
     .chat-body{
         height: 85%;
         margin-top: 10%;
+        overflow-y: scroll;
     }
     
     .chatBtn{

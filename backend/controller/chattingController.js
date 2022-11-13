@@ -15,7 +15,22 @@ exports.getChatting = async (req, res) => {
   }
 
   // Return chatting messages as an array to frontend
-  return res.status(200).json({ chatting });
+  return res.status(200).json(chatting);
+};
+
+// GET owner of the chatting message
+exports.getChatOwner = async (req, res) => {
+  let owner;
+
+  try {
+    owner = await User.findById(req.params.userId);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server Error" });
+  }
+
+  // Return the owner
+  return res.status(200).json(owner);
 };
 
 // Function to find the current local time
@@ -57,5 +72,5 @@ exports.addChatting = async (req, res) => {
   }
 
   // Return chatting if successful to frontend
-  return res.status(201).json({ chatting });
+  return res.status(201).json(chatting);
 };
