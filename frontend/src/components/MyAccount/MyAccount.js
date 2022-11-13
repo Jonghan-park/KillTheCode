@@ -1,17 +1,37 @@
 import React, { useState } from "react";
 import "./MyAccount.css";
 import { useSelector, useDispatch } from "react-redux";
+import { updateMyInfo } from "../../features/auth/authSlice";
 
 const MyAccount = () => {
-  const dispatch = useDispatch();
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
 
+  const { username, email, password } = formData;
   //bring in state from slider
   const { user } = useSelector((state) => state.auth);
 
-  const handleChange = (event) => {
-    console.log("value is:", event.target.value);
+  const dispatch = useDispatch();
+
+  const onChange = (e) => {
+    setFormData((pre) => ({
+      ...pre,
+      [e.target.name]: e.target.value,
+    }));
   };
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const updateInfo = {
+      username,
+      password,
+      email,
+    };
+    dispatch(updateMyInfo(updateInfo));
+  };
   return (
     <>
       <div className="title">My Account</div>
@@ -26,15 +46,17 @@ const MyAccount = () => {
           />
         </div>
 
-        <form className="myAccountForm">
+        <form className="myAccountForm" onSubmit={onSubmit}>
           <div className="myAccountInfo">
             <div className="myAccountInfoGroup">
               <label className="myAccountLabel">User Name</label>
               <input
                 type="text"
                 className="myAcountFistname"
-                onChange={handleChange}
-                value={user.username}
+                placeholder={user.username}
+                onChange={onChange}
+                name="username"
+                value={username}
               ></input>
               <br></br>
 
@@ -42,8 +64,10 @@ const MyAccount = () => {
               <input
                 type="password"
                 className="myAcountPassword"
-                value="1111111"
-                onChange={handleChange}
+                value={password}
+                placeholder={user.password}
+                name="password"
+                onChange={onChange}
               ></input>
               <br></br>
 
@@ -51,8 +75,10 @@ const MyAccount = () => {
               <input
                 type="email"
                 className="myAcountEmail"
-                value={user.email}
-                onChange={handleChange}
+                placeholder={user.email}
+                value={email}
+                name="email"
+                onChange={onChange}
               ></input>
               <br></br>
             </div>
