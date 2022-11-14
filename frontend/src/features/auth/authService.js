@@ -30,10 +30,15 @@ const login = async (userData) => {
 const logout = () => localStorage.removeItem("user");
 
 //update my info
-const updateMyInfo = async (userData) => {
+const updateMyInfo = async (userData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
   const response = await axios.put(
-    "http://localhost:5000/api/users/updateprofile",
-    userData
+    "http://localhost:5000/api/users/me",
+    config
   );
 
   if (response.data) {

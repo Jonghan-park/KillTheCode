@@ -38,19 +38,6 @@ exports.addProject = async (req, res) => {
     req.body;
   let project;
 
-  const getCircularReplacer = () => {
-    const seen = new WeakSet();
-    return (key, value) => {
-      if (typeof value === "object" && value !== null) {
-        if (seen.has(value)) {
-          return;
-        }
-        seen.add(value);
-      }
-      return value;
-    };
-  };
-
   // Save the project to DB
   try {
     const users = await Promise.all(
@@ -58,6 +45,13 @@ exports.addProject = async (req, res) => {
         return User.findOne({ email: contributor });
       })
     );
+
+    // const findUsername = await Promise.all(
+    //   users.map((user) => {
+    //     return user.username + " ";
+    //   })
+    // );
+    // console.log(findUsername);
 
     project = new Project({
       title: title,
@@ -70,9 +64,11 @@ exports.addProject = async (req, res) => {
       users: users,
     });
 
-    users.map(async (user) => {
-      return user.projects.push(project), await user.save();
-    });
+    Promise.all(
+      users.map(async (user) => {
+        return await user.projects.push(project), await user.save();
+      })
+    );
 
     await project.save();
   } catch (error) {

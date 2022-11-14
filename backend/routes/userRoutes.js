@@ -15,6 +15,6 @@ userRouter.post("/register", registerUser);
 userRouter.post("/login", loginUser);
 userRouter.get("/me", protect, getMe);
 userRouter.get("/", getAllUsers);
-userRouter.route("/updateprofile").put(protect, updateMyInfo);
+userRouter.put("/me", protect, updateMyInfo);
 
 module.exports = userRouter;

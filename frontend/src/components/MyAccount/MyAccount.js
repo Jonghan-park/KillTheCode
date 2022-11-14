@@ -1,34 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./MyAccount.css";
 import { useSelector, useDispatch } from "react-redux";
 import { updateMyInfo } from "../../features/auth/authSlice";
 
 const MyAccount = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-  });
+  // const [formData, setFormData] = useState({
+  //   username: "",
+  //   email: "",
+  //   password: "",
+  // });
+  const [formUsername, setFormUsername] = useState("");
+  const [formEmail, setFormEmail] = useState("");
+  const [formPassword, setFormPassword] = useState("");
 
-  const { username, email, password } = formData;
+  // const { username, email, password } = formData;
   //bring in state from slider
   const { user } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
 
-  const onChange = (e) => {
-    setFormData((pre) => ({
-      ...pre,
-      [e.target.name]: e.target.value,
-    }));
-  };
+  useEffect(() => {
+    setFormUsername(user.username);
+    setFormEmail(user.email);
+  }, [user]);
 
   const onSubmit = (e) => {
     e.preventDefault();
     const updateInfo = {
-      username,
-      password,
-      email,
+      formUsername,
+      formPassword,
+      formEmail,
     };
     dispatch(updateMyInfo(updateInfo));
   };
@@ -54,9 +55,9 @@ const MyAccount = () => {
                 type="text"
                 className="myAcountFistname"
                 placeholder={user.username}
-                onChange={onChange}
+                onChange={(e) => setFormUsername(e.target.value)}
                 name="username"
-                value={username}
+                value={formUsername}
               ></input>
               <br></br>
 
@@ -64,10 +65,10 @@ const MyAccount = () => {
               <input
                 type="password"
                 className="myAcountPassword"
-                value={password}
+                value={formPassword}
                 placeholder={user.password}
                 name="password"
-                onChange={onChange}
+                onChange={(e) => setFormPassword(e.target.value)}
               ></input>
               <br></br>
 
@@ -76,9 +77,9 @@ const MyAccount = () => {
                 type="email"
                 className="myAcountEmail"
                 placeholder={user.email}
-                value={email}
+                value={formEmail}
                 name="email"
-                onChange={onChange}
+                onChange={(e) => setFormEmail(e.target.value)}
               ></input>
               <br></br>
             </div>

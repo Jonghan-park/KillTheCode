@@ -66,7 +66,8 @@ export const updateMyInfo = createAsyncThunk(
   "auth/update",
   async (user, thunkAPI) => {
     try {
-      return await authService.updateMyInfo(user);
+      const token = thunkAPI.getState().auth.user.token;
+      return await authService.updateMyInfo(user, token);
     } catch (err) {
       const message =
         (err.response.data.message && err.response.data && err.response) ||
@@ -124,11 +125,17 @@ export const authSlice = createSlice({
         state.user = null;
       })
       //user profile update
+      .addCase(updateMyInfo.pending, (state, action) => {
+        state.isLoading = true;
+      })
       .addCase(updateMyInfo.fulfilled, (state, action) => {
         state.isLoading = false;
+        state.isSuccess = true;
+        state.user = action.payload;
+      })
+      .addCase(updateMyInfo.rejected, (state, action) => {
+        state.isLoading = false;
         state.isError = true;
-
-        state.profile = action.payload;
       });
   },
 });

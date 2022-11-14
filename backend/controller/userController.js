@@ -95,7 +95,7 @@ const getAllUsers = asyncHandler(async (req, res) => {
 
 //update my profiler
 //put request
-//api/users/updateprofile
+//api/users/me
 const updateMyInfo = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id);
 
