@@ -24,10 +24,11 @@ const Project = ({ projects, admin, sendId }) => {
             type,
             language,
             period,
-            contributor,
+            contributors,
             github,
             link,
           } = project;
+
           return (
             <>
               <div key={_id} className="projectItem">
@@ -46,7 +47,12 @@ const Project = ({ projects, admin, sendId }) => {
                     <p>Period: {period}</p>
                   </li>
                   <li className="projectContributor">
-                    <p>Contributor: {contributor}</p>
+                    <p>
+                      Contributor:{" "}
+                      {contributors.map((user) => {
+                        return user;
+                      })}
+                    </p>
                   </li>
                   <li className="projectLink">
                     <p onClick={() => openLink(github)}>Github: {github}</p>

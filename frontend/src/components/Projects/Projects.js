@@ -61,6 +61,10 @@ const Projects = () => {
 
   useEffect(() => {
     getProjects();
+    // console.log(slideRef.current.style);
+    if (TOTAL_SLIDES > 2) {
+      slideRef.current.style.justifyContent = "flex-start";
+    }
   }, [projects]);
 
   const getSpecificProject = async () => {
