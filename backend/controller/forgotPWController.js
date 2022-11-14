@@ -160,7 +160,10 @@ module.exports.resetPasswordEmail = async (req, res) => {
 /** reset link page in the email */
 module.exports.resetPasswordLink = async (req, res) => {
   const { id, token } = req.params;
-  const { password } = req.body;
+  const { password, confirmPassword } = req.body;
+
+  console.log(confirmPassword + "id");
+  console.log("id");
   console.log(req.params);
 
   const findUser = await User.findOne({ _id: id });
@@ -172,6 +175,10 @@ module.exports.resetPasswordLink = async (req, res) => {
   }
   const secret = process.env.JWT_SECRET + findUser.password;
   try {
+    if (password != confirmPassword) {
+      return console.log("no");
+    }
+
     const verify = jwt.verify(token, secret);
     const encryptedPassword = await bcrypt.hash(password, 10);
     await User.updateOne(
