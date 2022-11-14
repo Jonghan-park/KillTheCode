@@ -93,7 +93,7 @@ const getAllUsers = asyncHandler(async (req, res) => {
   return res.status(200).json({ users });
 });
 
-//update my profiler
+//update my profile
 //put request
 //api/users/me
 const updateMyInfo = asyncHandler(async (req, res) => {
@@ -116,7 +116,7 @@ const updateMyInfo = asyncHandler(async (req, res) => {
       token: generateToken(updateUser._id),
     });
   } else {
-    res.status(400);
+    res.status(404);
     throw new Error("User not found");
   }
 
