@@ -61,23 +61,28 @@ export const logout = createAsyncThunk(
   }
 );
 
-//update my info
-export const updateMyInfo = createAsyncThunk(
-  "auth/update",
-  async (user, thunkAPI) => {
-    try {
-      const token = thunkAPI.getState().auth.user.token;
-      return await authService.updateMyInfo(user, token);
-    } catch (err) {
-      const message =
-        (err.response.data.message && err.response.data && err.response) ||
-        err.message ||
-        err.toString();
+// update my info
+// export const updateMyInfo = createAsyncThunk(
+//   "auth/updateMyInfo",
+//   async (user, getState, thunkAPI) => {
+//     try {
+//       const token = getState().auth.user.token;
+//       const config = {
+//         headers: {
+//           authorization: `Bearer ${token}`,
+//         },
+//       };
+//       return await authService.updateMyInfo(user, config);
+//     } catch (err) {
+//       const message =
+//         (err.response.data.message && err.response.data && err.response) ||
+//         err.message ||
+//         err.toString();
 
-      return thunkAPI.rejectWithValue(message);
-    }
-  }
-);
+//       return thunkAPI.rejectWithValue(message);
+//     }
+//   }
+// );
 
 export const authSlice = createSlice({
   name: "auth",
@@ -123,20 +128,20 @@ export const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
         state.user = null;
-      })
-      //user profile update
-      .addCase(updateMyInfo.pending, (state, action) => {
-        state.isLoading = true;
-      })
-      .addCase(updateMyInfo.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.isSuccess = true;
-        state.user = action.payload;
-      })
-      .addCase(updateMyInfo.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
       });
+    // user profile update
+    // .addCase(updateMyInfo.pending, (state, action) => {
+    //   state.isLoading = true;
+    // })
+    // .addCase(updateMyInfo.fulfilled, (state, action) => {
+    //   state.isLoading = false;
+    //   state.isSuccess = true;
+    //   state.user = action.payload;
+    // })
+    // .addCase(updateMyInfo.rejected, (state, action) => {
+    //   state.isLoading = false;
+    //   state.isError = true;
+    // });
   },
 });
 
