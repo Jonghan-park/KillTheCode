@@ -2,22 +2,17 @@ const { default: mongoose } = require("mongoose");
 const Meeting= require("../models/meeting");
 const Project = require("../models/project");
 
-
-// getMeeting(get)-최근 프로젝트
-// addMeeting(update)-최근 프로젝트 
-// 1시간 18분 -> 프로젝트 id 까지 넣는거 가능 
-
 //all get meeting
 exports.getAllMeeting = async(req, res)=>{
 
-    let lastProject;
+    let lastMeeting;
     try{
-       lastProject = await Project.find()
+        lastMeeting = await Meeting.find()
        
     }catch(err){
         console.log(err);
     }
-    return res.status(200).json({lastProject});
+    return res.status(200).json({lastMeeting});
  }
 
 // post meeting
@@ -51,6 +46,18 @@ exports.addMeeting = async(req, res) => {
         }
         return res.status(201).json({meeting})
     };
+
+
+        // try {
+        //     const meetingSession = await mongoose.startSession();
+        //     meetingSession.startTransaction();
+        //     await meeting.save();
+        //     existingProject.meeting.push(meeting);
+        //     await sessionStorage.commitTrasaction();
+        // }catch(err){
+        //    console.log(err);
+        //     return res.status(500).json({message:err})
+        // }
 
     // update meeting
     exports.updateMeeting = async(req, res) =>{
