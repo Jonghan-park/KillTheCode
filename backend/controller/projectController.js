@@ -36,7 +36,6 @@ exports.getProject = async (req, res) => {
 exports.addProject = async (req, res) => {
   const { title, type, language, period, contributors, github, link } =
     req.body;
-  let project;
 
   // Save the project to DB
   try {
@@ -53,7 +52,7 @@ exports.addProject = async (req, res) => {
     // );
     // console.log(findUsername);
 
-    project = new Project({
+    let project = new Project({
       title: title,
       type: type,
       language: language,
@@ -71,12 +70,11 @@ exports.addProject = async (req, res) => {
     );
 
     await project.save();
+    // Return project if successful
+    return res.status(201).json({ project });
   } catch (error) {
     return console.log(error);
   }
-
-  // Return project if successful
-  return res.status(201).json({ project });
 };
 
 // DELETE a project by id
