@@ -36,6 +36,10 @@ const projectSchema = new mongoose.Schema({
     type: mongoose.Types.ObjectId,
     ref: "Chatting",
   },
+  meeting: {
+    type: mongoose.Types.ObjectId,
+    ref: "Meeting",
+  },
   users: [
     {
       type: mongoose.Types.ObjectId,
