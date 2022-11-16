@@ -86,7 +86,7 @@ const meeting = [
   },
 ];
 
-const Calendar = (project) => {
+const Calendar = ({projectId}) => {
   const today = {
     year: new Date().getFullYear(),
     month: new Date().getMonth() + 1,
@@ -180,7 +180,7 @@ const Calendar = (project) => {
       <div className="calendarCtrl nextMonth" onClick={nextMonth}>&gt;</div>
       {showScheduleModal && // When clicking "Schedule" btn or colored schedules in calendar cells
         <ScheduleModal
-        project = {project}
+        project = {projectId}
           initSchedule={initSchedule}
           scheduleInfo = {scheduleInfo}
           setShowScheduleModal={setShowScheduleModal}
@@ -189,7 +189,7 @@ const Calendar = (project) => {
       }
       {showMeetingModal && // When clicking "Meeting" btn or yellow meetings in calendar cells
         <MeetingModal
-        project = {project}
+        project = {projectId}
           initMeeting={initMeeting}
           meetingInfo={meetingInfo}
           setShowMeetingModal={setShowMeetingModal}

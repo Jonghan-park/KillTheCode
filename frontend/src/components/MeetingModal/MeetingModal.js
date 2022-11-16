@@ -1,7 +1,10 @@
 import { useState } from "react";
 import "./MeetingModal.css";
+import axios from "axios";
+
 
 const MeetingModal = ({
+  project,
   initMeeting,
   meetingInfo,
   setShowMeetingModal,
@@ -21,6 +24,38 @@ const MeetingModal = ({
       [name]: value,
     })
   };
+  console.log(meetingInfo)
+
+  const divMeetingDate = meetingInfo.dateInfo;
+  const finalMeetingDate = divMeetingDate.split('-');
+  // console.log(`meeting date: ${finalMeetingDate[0]}`)
+  // console.log(`meeting date: ${finalMeetingDate[1]}`)
+  // console.log(`meeting date: ${finalMeetingDate[2]}`)
+  console.log(project, typeof project)
+  
+
+  // -----
+  const sendMeeting = async() =>{
+      
+    const res = await axios.post("http://localhost:5000/meeting/add", {
+        meetingYear: finalMeetingDate[0], 
+        meetingMonth: finalMeetingDate[1], 
+        meetingDate: finalMeetingDate[2],
+        attendees: meetingInfo.attendees,
+        project
+    }).catch(err => console.log(err));
+
+    const data = await res.data;
+    return data;
+  }
+
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    console.log(meetingInfo);
+    sendMeeting().then(()=>closeMeetingModal())
+    .then(data => console.log(data))
+  }
+  
   return ( 
     <div className="modalBackground" onClick={closeMeetingModal}>
       <div className="meetingModal"
@@ -28,7 +63,7 @@ const MeetingModal = ({
           e.stopPropagation();
         }}
       >
-        <form>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="dateInfo">Date</label>
           <input
             type="date"
@@ -56,7 +91,7 @@ const MeetingModal = ({
             <button className="modalRightBtn" onClick={closeMeetingModal}>
               Close
             </button>
-            <button type="submit" className="modalRightBtn">
+            <button type="submit" className="modalRightBtn" onClick={()=>setEditing(!editing)} >
               {editing ? "Update" : "Submit"}
             </button>
           </div>
@@ -67,3 +102,5 @@ const MeetingModal = ({
 };
 
 export default MeetingModal;
+
+
