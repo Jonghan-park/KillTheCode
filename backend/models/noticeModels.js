@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+
 const noticeSchema = new mongoose.Schema({
   title: {
     type: String,
@@ -12,11 +13,11 @@ const noticeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  // user: {
-  //   type: mongoose.Types.ObjectId,
-  //   ref: "User",
-  //   required: true,
-  // },
+  user: {
+    type: mongoose.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
 });
 
 const Notice = mongoose.model("Notice", noticeSchema);

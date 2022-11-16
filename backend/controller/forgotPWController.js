@@ -176,7 +176,7 @@ module.exports.resetPasswordLink = async (req, res) => {
   const secret = process.env.JWT_SECRET + findUser.password;
   try {
     if (password != confirmPassword) {
-      return console.log("no");
+      res.send("Not Verified");
     }
 
     const verify = jwt.verify(token, secret);
@@ -191,11 +191,6 @@ module.exports.resetPasswordLink = async (req, res) => {
         },
       }
     );
-    // res.render("../../frontend/src/emailTemplates/resetPasswordLink", {
-    //   email: verify.email,
-    //   username: verify.username,
-    // });
-  } catch (error) {
-    res.send("Not Verified");
-  }
+    res.send("complete");
+  } catch (error) {}
 };

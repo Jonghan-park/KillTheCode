@@ -6,9 +6,9 @@ module.exports.getAllNotice = async (req, res) => {
 };
 /** create New notice  */
 module.exports.saveNotice = (req, res) => {
-  const { title, date, content } = req.body;
+  const { title, date, content, user } = req.body;
 
-  NoticeModels.create({ title, date, content })
+  NoticeModels.create({ title, date, content, user })
     .then((data) => {
       console.log("Added Successfully...");
       console.log(data);

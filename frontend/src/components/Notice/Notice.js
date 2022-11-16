@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { useSelector } from "react-redux";
 import { Col, Row } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCrown } from "@fortawesome/free-solid-svg-icons";
@@ -7,9 +8,10 @@ import "./Notice.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 const Notice = () => {
+  const { user } = useSelector((state) => state.auth);
   const baseUrl = "http://localhost:5000/notice";
   const [noticeList, setNoticeList] = useState([]);
-
+  console.log(user);
   const initNotice = {
     title: "",
     content: "",
@@ -17,7 +19,7 @@ const Notice = () => {
   const PAGE_SIZE = 10;
   const navigate = useNavigate();
   const [notices, setNotices] = useState([]);
-  console.log(notices);
+
   const [writeMode, setWriteMode] = useState(false);
   const [newNotice, setNewNotice] = useState(initNotice);
   const [currentPage, setCurrentPage] = useState(1);
@@ -29,7 +31,6 @@ const Notice = () => {
   /** get all data from database */
   const getAllNotice = () => {
     axios.get(baseUrl).then(({ data }) => {
-      console.log("data ---> ", data);
       setNoticeList(data);
     });
   };
@@ -62,10 +63,10 @@ const Notice = () => {
     setCurrentPage(pageChange);
   };
   useEffect(() => {
-    if (!userLogin) {
+    if (!user) {
       navigate("/");
     }
-  }, [userLogin, navigate]);
+  }, [user, navigate]);
   return (
     <div className="noticeContainer">
       <div className="noticePageTitle">NOTICE</div>
@@ -114,7 +115,7 @@ const Notice = () => {
             return (
               <Link key={notice._id} to={"/notice/" + notice._id}>
                 <Row className="notice">
-                  <Col xs="1">{notice._id}</Col>
+                  <Col xs="1"></Col>
                   <Col xs="5" lg="7" className="noticeTitle">
                     {notice.title}
                   </Col>
