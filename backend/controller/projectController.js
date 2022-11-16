@@ -45,19 +45,19 @@ exports.addProject = async (req, res) => {
       })
     );
 
-    // const findUsername = await Promise.all(
-    //   users.map((user) => {
-    //     return user.username + " ";
-    //   })
-    // );
-    // console.log(findUsername);
+    const findUsername = await Promise.all(
+      users.map((user) => {
+        return user.username + " ";
+      })
+    );
+    console.log(findUsername);
 
     let project = new Project({
       title: title,
       type: type,
       language: language,
       period: period,
-      contributors: contributors,
+      contributors: findUsername,
       github: github,
       link: link,
       users: users,
