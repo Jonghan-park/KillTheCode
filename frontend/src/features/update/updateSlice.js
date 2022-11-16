@@ -32,6 +32,23 @@ export const getUser = createAsyncThunk(
 );
 
 //update my profile
+export const updateMyInfo = createAsyncThunk(
+  "updateMyinfo/updateMyInfo",
+  async (user, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+
+      return await updateService.updateUser(user, token);
+    } catch (err) {
+      const message =
+        (err.response.data.message && err.response.data && err.response) ||
+        err.message ||
+        err.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
 
 export const updateSlice = createSlice({
   name: "updateMyinfo",
@@ -52,19 +69,19 @@ export const updateSlice = createSlice({
       .addCase(getUser.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
+      })
+      .addCase(updateMyInfo.pending, (state, action) => {
+        state.isLoading = true;
+      })
+      .addCase(updateMyInfo.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.user = action.payload;
+      })
+      .addCase(updateMyInfo.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
       });
-    //   .addCase(updateMyInfo.pending, (state, action) => {
-    //     state.isLoading = true;
-    //   })
-    //   .addCase(updateMyInfo.fulfilled, (state, action) => {
-    //     state.isLoading = false;
-    //     state.isSuccess = true;
-    //     state.user = action.payload;
-    //   })
-    //   .addCase(updateMyInfo.rejected, (state, action) => {
-    //     state.isLoading = false;
-    //     state.isError = true;
-    //   });
   },
 });
 

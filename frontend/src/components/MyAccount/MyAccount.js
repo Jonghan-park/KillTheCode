@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./MyAccount.css";
 import { useSelector, useDispatch } from "react-redux";
-import { updateMyInfo, reset } from "../../features/update/updateService";
+import {
+  getUser,
+  reset,
+  updateMyInfo,
+} from "../../features/update/updateSlice";
 
 const MyAccount = () => {
   // const [formData, setFormData] = useState({
@@ -15,14 +19,16 @@ const MyAccount = () => {
 
   // const { username, email, password } = formData;
   //bring in state from slider
-  const { user } = useSelector((state) => state.updateMyInfo);
+  const { user, isLoading, isError } = useSelector(
+    (state) => state.updateMyInfo
+  );
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     setFormUsername(user.username);
     setFormEmail(user.email);
-  }, [user]);
+  }, [dispatch, user]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -31,7 +37,15 @@ const MyAccount = () => {
       formPassword,
       formEmail,
     };
-    dispatch();
+    //update profile
+    dispatch(
+      updateMyInfo({
+        id: user._id,
+        username: formUsername,
+        password: formPassword,
+        email: formEmail,
+      })
+    );
   };
   return (
     <>

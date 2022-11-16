@@ -18,8 +18,24 @@ const getUser = async (user, token) => {
   return response.data;
 };
 
+const updateUser = async (user, token) => {
+  const userId = user._id;
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.put(
+    `http://localhost:5000/api/users/me/updateinfo`,
+    user,
+    config
+  );
+
+  return response.data;
+};
 const updateService = {
-  // updateMyInfo,
+  updateUser,
   getUser,
 };
 
