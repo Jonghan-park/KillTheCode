@@ -79,7 +79,8 @@ const getMe = asyncHandler(async (req, res) => {
 });
 
 //get all user data
-//route /api/user/
+//route /api/users
+//use in admin page
 const getAllUsers = asyncHandler(async (req, res) => {
   let users;
 
@@ -90,7 +91,7 @@ const getAllUsers = asyncHandler(async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 
-  return res.status(200).json({ users });
+  return res.status(200).json(users);
 });
 
 //update my profile
@@ -119,21 +120,6 @@ const updateMyInfo = asyncHandler(async (req, res) => {
     res.status(404);
     throw new Error("User not found");
   }
-
-  // if (updateUser) {
-  //   updateUser.username = req.body.username || updateUser.username;
-  //   updateUser.email = req.body.email || updateUser.email;
-  //   if (req.body.password) {
-  //     updateUser.password = req.body.password || updateUser.password;
-  //   }
-  //   const updateSave = await updateUser.save();
-
-  //   res.status(200).json({
-  //     _id: updateSave.id,
-  //     username: updateSave.username,
-  //     email: updateSave.email,
-  //   });
-  // }
 });
 
 //Generate token

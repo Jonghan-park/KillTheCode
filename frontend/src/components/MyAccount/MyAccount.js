@@ -7,21 +7,18 @@ import {
   updateMyInfo,
 } from "../../features/update/updateSlice";
 
+//need to be update///////////
+//doesn't display changing result
+//use toast or something that tell progress
+//password bug
+
 const MyAccount = () => {
-  // const [formData, setFormData] = useState({
-  //   username: "",
-  //   email: "",
-  //   password: "",
-  // });
   const [formUsername, setFormUsername] = useState("");
   const [formEmail, setFormEmail] = useState("");
   const [formPassword, setFormPassword] = useState("");
 
-  // const { username, email, password } = formData;
   //bring in state from slider
-  const { user, isLoading, isError } = useSelector(
-    (state) => state.updateMyInfo
-  );
+  const { user, isLoading, isError } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
 
