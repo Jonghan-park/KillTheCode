@@ -6,7 +6,7 @@ import Chatting from "../Chatting/Chatting";
 import "./Working.css";
 
 const Working = () => {
-  const [project, setProject] = useState([]);
+  const [project, setProject] = useState(null);
 
   // Get projects
   const getProjects = async () => {
@@ -25,25 +25,31 @@ const Working = () => {
 
   return (
     <div className="workingContainer">
-      <div className="workingTitle">
-        Working on: {project.title} <span className="toGithub"> / </span>
-        <a
-          href={project.github}
-          target="_blank"
-          rel="noreferrer"
-          className="toGithub"
-        >
-          Github
-        </a>
-      </div>
-      <Row className="mx-2 mx-xl-5">
-        <Col lg="7">
-          <Calendar projectId={project._id} />
-        </Col>
-        <Col lg="5">
-          <Chatting projectId={project._id} />
-        </Col>
-      </Row>
+      {project ? (
+        <>
+          <div className="workingTitle">
+            Working on: {project.title} <span className="toGithub"> / </span>
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+              className="toGithub"
+            >
+              Github
+            </a>
+          </div>
+          <Row className="mx-2 mx-xl-5">
+            <Col lg="7">
+              <Calendar projectId={project._id} />
+            </Col>
+            <Col lg="5">
+              <Chatting projectId={project._id} />
+            </Col>
+          </Row>
+        </>
+      ) : (
+        <div className="noWorking">No project currently working</div>
+      )}      
     </div>
   );
 };
