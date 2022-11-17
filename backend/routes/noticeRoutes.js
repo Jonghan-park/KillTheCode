@@ -12,6 +12,6 @@ const {
 noticeRouter.get("/", getAllNotice);
 noticeRouter.post("/add", addNotice);
 noticeRouter.post("/update/:id", updateNotice);
-noticeRouter.post("/delete/", deleteNotice);
+noticeRouter.post("/delete/:id", deleteNotice);
 
 module.exports = noticeRouter;

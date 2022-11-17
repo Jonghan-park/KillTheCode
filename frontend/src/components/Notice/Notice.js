@@ -92,6 +92,12 @@ const Notice = () => {
     }
   };
 
+  const [openViewPage, setOpenViewPage] = useState(false);
+  const [editObj, setEditObj] = useState({});
+  const openEdit = (notice) => {
+    setOpenViewPage(true);
+    setEditObj(notice);
+  };
   return (
     <div className="noticeContainer">
       <div className="noticePageTitle">NOTICE</div>
@@ -140,7 +146,7 @@ const Notice = () => {
           </Row>
           {currentPaginationData.map((notice) => {
             return (
-              <Link key={notice._id}>
+              <Link key={notice._id} onClick={() => openEdit(notice)}>
                 <Row className="notice">
                   <Col xs="1">{notice.number}</Col>
                   <Col xs="5" lg="7" className="noticeTitle">
@@ -158,6 +164,16 @@ const Notice = () => {
               </Link>
             );
           })}
+          {openViewPage && (
+            <div className="projectModalContainer">
+              <NoticeView
+                userInfo={editObj}
+                setClosePage={setOpenViewPage}
+                loginInfo={user}
+              />
+            </div>
+          )}
+
           {isUserAdmin && (
             <div className="noticeWriteBtn">
               <button onClick={() => setWriteMode(true)}>Write</button>

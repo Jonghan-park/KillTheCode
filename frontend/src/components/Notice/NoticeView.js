@@ -2,36 +2,65 @@ import { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import "./NoticeView.css";
+import axios from "axios";
 
-const NoticeView = () => {
-  const { id } = useParams();
+const NoticeView = ({ userInfo, setClosePage, loginInfo }) => {
   const navigate = useNavigate();
   const [editing, setEditing] = useState(false);
   // The temporary state to get a notice which matchs the id
   const [noticeContent, setNoticeContent] = useState({});
   // The temporary state for the calendar based on a user information
   const [isUserAdmin, setIsUserAdmin] = useState(true);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
 
   const goNotice = () => {
-    navigate("/notice/" + id);
+    navigate("/notice");
   };
   const goList = () => {
     navigate("/notice");
+    setClosePage(false);
   };
-  const onNoticeChange = (e) => {
-    const { name, value } = e.target;
-    setNoticeContent({
-      ...noticeContent,
-      [name]: value,
-    });
+
+  const handleEditNoticeSubmit = async (e) => {
+    try {
+      const res = await axios.post(
+        `http://localhost:5000/notice/update/${userInfo._id}`,
+        {
+          title: title,
+          content: content,
+          username: userInfo.username,
+          loginInfo: loginInfo,
+        }
+      );
+      const data = await res.data;
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
   };
-  // useEffect(() => {
-  //   for (let i = 0; i < noticeList.length; i++) {
-  //     if (noticeList[i].id === id) {
-  //       setNoticeContent(noticeList[i]);
-  //     }
-  //   }
-  // }, [id]);
+
+  const deleteNotice = async (e) => {
+    try {
+      const res = await axios.post(
+        `http://localhost:5000/notice/delete/${userInfo._id}`,
+        { loginInfo: loginInfo, username: userInfo.username }
+      );
+      const data = await res.data;
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (userInfo) {
+      setTitle(userInfo.title);
+
+      setContent(userInfo.content);
+    }
+  }, [userInfo]);
+
   return (
     <div className="noticeContainer">
       <h1>yoyo</h1>
@@ -45,41 +74,50 @@ const NoticeView = () => {
               required
               name="title"
               id="noticeTitle"
-              value={""}
-              onChange={onNoticeChange}
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
             />
             <textarea
               className="noticeTexts"
               required
               name="content"
-              value={""}
-              onChange={onNoticeChange}
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
             />
             <div className="noticeBtns">
               <button className="noticeRightBtn" onClick={goNotice}>
                 Cancle
               </button>
-              <button className="noticeRightBtn">Update</button>
+              <button
+                className="noticeRightBtn"
+                onClick={handleEditNoticeSubmit}
+              >
+                Update
+              </button>
             </div>
           </form>
         </div>
       ) : (
         <>
           <Row className="noticeContentHeader">
-            <Col sm="1">No.{noticeContent.id}</Col>
+            <Col sm="1">No.{userInfo.number}</Col>
             <Col sm="6" lg="7" className="noticeContentTitle">
-              {noticeContent.title}
+              {userInfo.title}
             </Col>
             <Col sm="2" lg="2">
-              {noticeContent.admin}
+              {userInfo.username}
             </Col>
             <Col sm="3" lg="2">
-              {noticeContent.date}
+              {userInfo.date}
             </Col>
           </Row>
-          <pre className="noticeContent">{noticeContent.content}</pre>
+          <pre className="noticeContent">{userInfo.content}</pre>
           <div className="noticeBtns noticeViewBtns">
-            {isUserAdmin && <button className="noticeLeftBtn">Delete</button>}
+            {isUserAdmin && (
+              <button className="noticeLeftBtn" onClick={deleteNotice}>
+                Delete
+              </button>
+            )}
             <button className="noticeRightBtn" onClick={goList}>
               Go List
             </button>

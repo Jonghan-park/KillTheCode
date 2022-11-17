@@ -49,6 +49,7 @@ const Projects = () => {
       setDeleteId(id);
     }
   };
+
   // Get projects
   const getProjects = async () => {
     try {

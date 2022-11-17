@@ -1,6 +1,7 @@
 const NoticeModels = require("../models/noticeModels");
 const User = require("../models/user");
 const noticeModelsCounter = require("../models/noticeModelsCount");
+
 function getCurrentDate() {
   const date = new Date();
   const year = date.getFullYear();
@@ -65,18 +66,28 @@ module.exports.addNotice = async (req, res) => {
 
 /** update  notice */
 module.exports.updateNotice = async (req, res) => {
-  const { _id, title, content, userId } = req.body;
+  const { title, content, username, loginInfo } = req.body;
+  const userId = req.params.id;
+  const date = getCurrentDate();
+  console.log(userId + "params");
+  console.log(loginInfo._id + "loginInfoId");
 
-  NoticeModels.findByIdAndUpdate(_id, { title, date, content })
-    .then(() => res.send("Updated Successfully..."))
-    .catch((err) => console.log(err));
+  if (username === loginInfo.username) {
+    NoticeModels.findByIdAndUpdate(userId, { title, date, content })
+      .then(() => res.send("Updated Successfully..."))
+      .catch((err) => console.log(err));
+  }
 };
 
 /** delete  */
 module.exports.deleteNotice = async (req, res) => {
-  const { _id, title, date, content } = req.body;
+  const { loginInfo, username } = req.body;
+  const userId = req.params.id;
+  console.log(userId);
 
-  NoticeModels.findByIdAndDelete(_id, { title, date, content })
-    .then(() => res.send("Deleted Successfully..."))
-    .catch((err) => console.log(err));
+  if (username === loginInfo.username) {
+    NoticeModels.findByIdAndDelete(userId)
+      .then(() => res.send("Deleted Successfully..."))
+      .catch((err) => console.log(err));
+  }
 };
