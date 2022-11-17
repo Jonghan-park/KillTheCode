@@ -7,11 +7,13 @@ import Pagination from "../Pagination/Pagination";
 import "./Notice.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import NoticeView from "./NoticeView";
+
 const Notice = () => {
   const { user } = useSelector((state) => state.auth);
-  const baseUrl = "http://localhost:5000/notice";
+
   const [noticeList, setNoticeList] = useState([]);
-  console.log(user);
+
   const initNotice = {
     title: "",
     content: "",
@@ -23,17 +25,9 @@ const Notice = () => {
   const [writeMode, setWriteMode] = useState(false);
   const [newNotice, setNewNotice] = useState(initNotice);
   const [currentPage, setCurrentPage] = useState(1);
-  // The temporary state for displaying a working page based on a user information
-  const [userLogin, setUserLogin] = useState(true);
+
   // The temporary state for the calendar based on a user information
   const [isUserAdmin, setIsUserAdmin] = useState(true);
-
-  /** get all data from database */
-  const getAllNotice = () => {
-    axios.get(baseUrl).then(({ data }) => {
-      setNoticeList(data);
-    });
-  };
 
   useEffect(() => {
     getAllNotice();
@@ -55,6 +49,7 @@ const Notice = () => {
       [name]: value,
     });
   };
+
   const onCancle = () => {
     setNewNotice(initNotice);
     setWriteMode(false);
@@ -67,6 +62,36 @@ const Notice = () => {
       navigate("/");
     }
   }, [user, navigate]);
+
+  /** get all data from database */
+
+  const getAllNotice = async () => {
+    try {
+      const { data } = await axios.get("http://localhost:5000/notice");
+
+      setNoticeList(data);
+    } catch (error) {
+      console.log("handleSubmit Error");
+    }
+  };
+
+  const addNotice = async () => {
+    const message = {
+      userId: user._id,
+      content: newNotice.content,
+      title: newNotice.title,
+    };
+
+    try {
+      const res = await axios.post("http://localhost:5000/notice/add", {
+        message,
+      });
+      setNewNotice(initNotice);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="noticeContainer">
       <div className="noticePageTitle">NOTICE</div>
@@ -93,7 +118,9 @@ const Notice = () => {
               <button className="noticeRightBtn" onClick={onCancle}>
                 Cancle
               </button>
-              <button className="noticeRightBtn">Write</button>
+              <button className="noticeRightBtn" onClick={addNotice}>
+                Write
+              </button>
             </div>
           </form>
         </div>
@@ -113,14 +140,15 @@ const Notice = () => {
           </Row>
           {currentPaginationData.map((notice) => {
             return (
-              <Link key={notice._id} to={"/notice/" + notice._id}>
+              <Link key={notice._id}>
                 <Row className="notice">
-                  <Col xs="1"></Col>
+                  <Col xs="1">{notice.number}</Col>
                   <Col xs="5" lg="7" className="noticeTitle">
                     {notice.title}
                   </Col>
                   <Col xs="3" lg="2">
-                    {notice.admin}
+                    {notice.username}
+
                     <FontAwesomeIcon icon={faCrown} className="crown" />
                   </Col>
                   <Col xs="3" lg="2">

@@ -37,12 +37,6 @@ export default function Forgot() {
           email: email,
         }
       );
-      // .then((res) => res.json())
-      // .then((data) => {
-      //   if (data.status == "No") {
-      //     alert("login successful");
-      //   }
-      // });
     } catch (error) {
       console.log("handleSubmit Error");
     }

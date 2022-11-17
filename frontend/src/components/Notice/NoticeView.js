@@ -3,36 +3,6 @@ import { Col, Row } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import "./NoticeView.css";
 
-const noticeList = [
-  {
-    id: 1,
-    title: "Welcome to the team KTC",
-    admin: "Elly",
-    date: "2 Oct, 2022",
-    content: `Lorem ipsum dolor sit amet, ius te populo quodsi assueverit. Utinam electram percipitur eam ne, assum eligendi gloriatur vix et.
- Alterum disputationi sit eu. Dolores nominavi in his. Vix an constituto argumentum adversarium, ne cum aeque habemus epicurei.
-Facilisis evertitur scriptorem te pri, melius urbanitas quo id. Tibique mediocritatem ne sed, et vix omnium alienum recteque.`,
-  },
-  {
-    id: 2,
-    title: "As a team KTC member",
-    admin: "Lauren",
-    date: "2 Oct, 2022",
-    content: `Lorem ipsum dolor sit amet, ius te populo quodsi assueverit. Utinam electram percipitur eam ne, assum eligendi gloriatur vix et.
-Alterum disputationi sit eu. Dolores nominavi in his. Vix an constituto argumentum adversarium, ne cum aeque habemus epicurei.
-Facilisis evertitur scriptorem te pri, melius urbanitas quo id. Tibique mediocritatem ne sed, et vix omnium alienum recteque.`,
-  },
-  {
-    id: 3,
-    title: "Change the team agreement",
-    admin: "Joseph",
-    date: "5 Oct, 2022",
-    content: `Lorem ipsum dolor sit amet, ius te populo quodsi assueverit. Utinam electram percipitur eam ne, assum eligendi gloriatur vix et.
-Alterum disputationi sit eu. Dolores nominavi in his. Vix an constituto argumentum adversarium, ne cum aeque habemus epicurei.
-Facilisis evertitur scriptorem te pri, melius urbanitas quo id. Tibique mediocritatem ne sed, et vix omnium alienum recteque.`,
-  },
-];
-
 const NoticeView = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -55,15 +25,16 @@ const NoticeView = () => {
       [name]: value,
     });
   };
-  useEffect(() => {
-    for (let i = 0; i < noticeList.length; i++) {
-      if (noticeList[i].id === id) {
-        setNoticeContent(noticeList[i]);
-      }
-    }
-  }, [id]);
+  // useEffect(() => {
+  //   for (let i = 0; i < noticeList.length; i++) {
+  //     if (noticeList[i].id === id) {
+  //       setNoticeContent(noticeList[i]);
+  //     }
+  //   }
+  // }, [id]);
   return (
     <div className="noticeContainer">
+      <h1>yoyo</h1>
       <div className="noticePageTitle">NOTICE</div>
       {editing ? (
         <div className="editNoticeForm">
@@ -74,14 +45,14 @@ const NoticeView = () => {
               required
               name="title"
               id="noticeTitle"
-              value={noticeContent.title}
+              value={""}
               onChange={onNoticeChange}
             />
             <textarea
               className="noticeTexts"
               required
               name="content"
-              value={noticeContent.content}
+              value={""}
               onChange={onNoticeChange}
             />
             <div className="noticeBtns">

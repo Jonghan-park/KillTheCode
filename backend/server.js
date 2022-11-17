@@ -16,6 +16,7 @@ const noticeRoute = require("./routes/noticeRoutes");
 const forgotPWRoute = require("./routes/forgotPWRoutes");
 
 //DB
+
 const connection = require("./database/db");
 
 //Database connection
