@@ -4,15 +4,15 @@ const Project = require("../models/project");
 
 //all get meeting
 exports.getAllMeeting = async(req, res)=>{
-
-    let lastMeeting;
+    // console.log(req.params.projectId)
+    let allMeeting;
     try{
-        lastMeeting = await Meeting.find()
-       
+        allMeeting = await Meeting.find({project: req.params.projectId})
+     
     }catch(err){
         console.log(err);
     }
-    return res.status(200).json({lastMeeting});
+    return res.status(200).json(allMeeting);
  }
 
 // post meeting
@@ -44,7 +44,7 @@ exports.addMeeting = async(req, res) => {
            console.log(err);
             return res.status(500).json({message:err})
         }
-        return res.status(201).json({meeting})
+        return res.status(201).json({meeting:"successfully add it"})
     };
 
 
