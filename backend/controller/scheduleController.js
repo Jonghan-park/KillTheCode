@@ -2,15 +2,16 @@ const { default: mongoose } = require("mongoose");
 const Schedule= require("../models/schedule");
 const Project = require("../models/project");
 
-// all get schedules
+// get schedules
 exports.getAllSchedules = async(req, res) => {
-    let schedules
+        // console.log(req.params.projectId)
+    let schedules;
     try{
-        schedules = await Schedule.find()
+        schedules = await Schedule.find({project: req.params.projectId})
 }catch(err){
     console.log(err);
 }
-return res.status(200).json({schedules});
+return res.status(200).json(schedules);
 }
 
 // post schedule
