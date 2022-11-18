@@ -28,9 +28,6 @@ const MeetingModal = ({
 
   const divMeetingDate = meetingInfo.dateInfo;
   const finalMeetingDate = divMeetingDate.split('-');
-  // console.log(`meeting date: ${finalMeetingDate[0]}`)
-  // console.log(`meeting date: ${finalMeetingDate[1]}`)
-  // console.log(`meeting date: ${finalMeetingDate[2]}`)
   console.log(project, typeof project)
   
 
