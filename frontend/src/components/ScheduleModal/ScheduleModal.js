@@ -1,7 +1,9 @@
 import { useState } from "react";
+import axios from "axios";
 import "./ScheduleModal.css";
 
 const ScheduleModal = ({
+  project,
   initSchedule,
   scheduleInfo,
   setShowScheduleModal,
@@ -21,6 +23,44 @@ const ScheduleModal = ({
       [name]: value,
     })
   };
+// console.log(scheduleInfo.issue)
+
+const fromDate = scheduleInfo.fromDateInfo;
+const finalFromDate = fromDate.split('-');
+const toDate = scheduleInfo.toDateInfo;
+const finalToDate = toDate.split('-');
+const issue = scheduleInfo.issue;
+const color = scheduleInfo.color;
+
+// console.log(project, typeof project)
+
+
+const sendSchedule = async() => {
+  const res = await axios.post("http://localhost:5000/schedule/add",{
+    fromYear:finalFromDate[0],
+    fromMonth: finalFromDate[1],
+    fromDate:finalFromDate[2],
+    toYear: finalToDate[0],
+    toMonth:finalToDate[1],
+    toDate:finalToDate[2],
+    issue,
+    color,
+    project
+  }).catch(err => console.log(err))
+
+  const data = await res.data;
+  console.log(data)
+  return data;
+}
+
+const handleSubmit= (e) => {
+  e.preventDefault();
+  console.log(scheduleInfo);
+  sendSchedule().then(()=>closeScheduleModal)
+  .then(data => console.log(data))
+}
+
+
   return ( 
     <div className="modalBackground" onClick={closeScheduleModal}>
       <div className="scheduleModal"
@@ -28,7 +68,7 @@ const ScheduleModal = ({
           e.stopPropagation();
         }}
       >
-        <form>
+        <form onSubmit = {handleSubmit}>
           <label htmlFor="fromDateInfo">From</label>
           <input
             type="date"
@@ -73,7 +113,7 @@ const ScheduleModal = ({
             <button className="modalRightBtn" onClick={closeScheduleModal}>
               Close
             </button>
-            <button type="submit" className="modalRightBtn">
+            <button type="submit" className="modalRightBtn"onClick={()=>setEditing(!editing)}>
               {editing ? "Update" : "Submit"}
             </button>
           </div>
