@@ -11,10 +11,10 @@ const{
 
 } = require("../controller/scheduleController");
 
-scheduleRouter.get("/", getAllSchedules);
+scheduleRouter.get("/:projectId", getAllSchedules);
 scheduleRouter.post("/add", addSchedule);
 scheduleRouter.put("/update/:id", updateSchedule);
-scheduleRouter.get("/:id", getById);
+// scheduleRouter.get("/:id", getById);
 scheduleRouter.delete("/:id", deleteSchedule);
 
 module.exports = scheduleRouter;
