@@ -6,6 +6,7 @@ import axios from "axios";
 
 function Message({ message, owner }) {
   const [ownerName, setOwnerName] = useState("");
+  const dateTime = message.date.slice(0, 10) + " " + message.date.slice(11, 19);
 
   useEffect(() => {
     const getOwner = async () => {
@@ -26,8 +27,8 @@ function Message({ message, owner }) {
   return (
     <div className={owner ? "message own" : "message"}>
       <div className="messageTop">
-        <span className="ownerName">{owner || ownerName}</span> -
-        {message.date}
+        {owner || <><span className="ownerName">{ownerName}</span> / </>}
+        {dateTime}
       </div>
       <div className="messageBottom">
         <FontAwesomeIcon icon={faUser} className="chatIcon" />
