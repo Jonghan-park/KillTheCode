@@ -19,6 +19,7 @@ exports.addSchedule = async(req, res) => {
 
    // find project 
     let existingProject;
+    console.log(project)
     try{
         existingProject = await Project.findById(project);
     }catch(err){
@@ -39,8 +40,8 @@ exports.addSchedule = async(req, res) => {
         project
     });
     try{
-        const sechduleSesstion = await mongoose.startSession();
-        sechduleSesstion.startTransaction();
+        const scheduleSesstion = await mongoose.startSession();
+        scheduleSesstion.startTransaction();
         await schedule.save();
     }catch(err){
         console.log(err);
