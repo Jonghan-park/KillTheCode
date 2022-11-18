@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faCrown, faCaretDown, faBars } from "@fortawesome/free-solid-svg-icons";
 import lightThemeLogo from "../../assets/lightLogo.png";
 import logo from "../../assets/logo.png";
 import { LightThemeContext } from "../../context/LightThemeContext";
@@ -13,6 +13,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
 
+  const [dropDownMenu, setdropDownMenu] = useState(false);
   const [toggleMenu, setToggleMenu] = useState(false);
   const { lightTheme, setLightTheme } = useContext(LightThemeContext);
 
@@ -36,12 +37,13 @@ const Navbar = () => {
     } else {
       setLightTheme(false);
     }
-  }, [window.location.pathname]);
+  }, [setLightTheme]);
 
   const onLogout = () => {
     dispatch(logout());
     dispatch(reset());
   };
+
   return (
     <nav className="navbar" style={backgroundStyle}>
       <div className="logoAndMainLinks">
@@ -73,41 +75,74 @@ const Navbar = () => {
               Projects
             </Link>
           </div>
-          {/* show admin if user is admin */}
-          {user && user.role ? (
+          {user &&
             <div className="navbarLink">
               <Link
-                onClick={() => setLightTheme(true)}
+                onClick={() => setLightTheme(false)}
                 style={linksStyle}
-                to="/admin"
+                to="/notice"
               >
-                admin
+                Notice
               </Link>
             </div>
-          ) : (
-            <></>
-          )}
+          }
         </div>
       </div>
 
-      <div className="signInLinks">
-        {/* show myaccount & logout when user login */}
+      <div className="signInLinks">        
         {user ? (
           <>
-            <div className="navbarLink">
-              <Link
-                onClick={() => setLightTheme(true)}
-                style={linksStyle}
-                to="/myaccount"
+            {/* show myaccount & logout when user login */}
+            <div className="navbarLink" style={linksStyle}>
+              Hello,&nbsp;
+              {user.role && (
+                <FontAwesomeIcon
+                  icon={faCrown}
+                  color="#FFFD24"
+                />
+              )}
+              &nbsp;{user.username} &nbsp;
+              <FontAwesomeIcon
+                icon={faCaretDown}
+                cursor="pointer"
+                size="lg"
+                onClick={() => setdropDownMenu((prev) => !prev)}
+              />
+            </div>
+            {/* Dropdown Menu - My Account, Admin, Logout */}
+            {dropDownMenu && (
+              <div
+                className="dropDownMenu"
+                onClick={() => setdropDownMenu((prev) => !prev)}
               >
-                My Account
-              </Link>
-            </div>
-            <div className="navbarLink">
-              <Link onClick={() => onLogout()} style={linksStyle} to="/">
-                Logout
-              </Link>
-            </div>
+                <div className={lightTheme ? "lightDrop" : "darkDrop"}>
+                  <Link
+                    onClick={() => setLightTheme(true)}
+                    style={linksStyle}
+                    to="/myaccount"
+                  >
+                    My Account
+                  </Link>
+                  {/* show admin if user is admin */}
+                  {user.role && (
+                    <Link
+                      onClick={() => setLightTheme(false)}
+                      style={linksStyle}
+                      to="/admin"
+                    >
+                      Admin
+                    </Link>
+                  )}
+                  <Link
+                    onClick={() => {setLightTheme(false); onLogout();}}
+                    style={linksStyle}
+                    to="/"
+                  >
+                    Logout
+                  </Link>
+                </div>
+              </div>
+            )}
           </>
         ) : (
           <>
@@ -140,7 +175,6 @@ const Navbar = () => {
           icon={faBars}
           style={linksStyle}
         />
-
         {toggleMenu && (
           <div
             className="navbarSmallscreenToggle"
@@ -150,15 +184,44 @@ const Navbar = () => {
               <li className="navbarItem" onClick={() => setToggleAndTheme()}>
                 <Link to="/about">About</Link>
               </li>
-              <li className="navbarItem" onClick={() => setLightTheme(true)}>
+              <li
+                className="navbarItem"
+                onClick={() => {setToggleMenu(false); setLightTheme(true);}}
+              >
                 <Link to="/projects">Projects</Link>
               </li>
-              <li className="navbarItem" onClick={() => setToggleAndTheme()}>
-                <Link to="/signin">Sign In</Link>
-              </li>
-              <li className="navbarItem" onClick={() => setToggleAndTheme()}>
-                <Link to="/joinus">Join Us</Link>
-              </li>
+              {user ? (
+                <>
+                  <li className="navbarItem" onClick={() => setToggleAndTheme()}>
+                    <Link to="/notice">Notice</Link>
+                  </li>
+                  <li
+                    className="navbarItem"
+                    onClick={() => {setToggleMenu(false); setLightTheme(true);}}
+                  >
+                    <Link to="/myaccount">My Account</Link>
+                  </li>
+                  {user.role && (
+                    <li className="navbarItem" onClick={() => setToggleAndTheme()}>
+                      <Link to="/admin">Admin</Link>
+                    </li>
+                  )}
+                  <li className="navbarItem" onClick={() => setToggleAndTheme()}>
+                    <Link onClick={() => onLogout()} to="/">
+                      Logout
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="navbarItem" onClick={() => setToggleAndTheme()}>
+                    <Link to="/signin">Sign In</Link>
+                  </li>
+                  <li className="navbarItem" onClick={() => setToggleAndTheme()}>
+                    <Link to="/joinus">Join Us</Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         )}
