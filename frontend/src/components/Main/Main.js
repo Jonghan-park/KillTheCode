@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import leftIcon from "../../assets/leftMessage.png";
 import leftMouseOver from "../../assets/leftMouseOver.png";
 import rightIcon from "../../assets/rightMessage.png";
 import rightMouseOver from "../../assets/rightMouseOver.png";
-// import Working from "../Working/Working";
+import Working from "../Working/Working";
 import "./Main.css";
 
 const Main = () => {
@@ -11,8 +12,7 @@ const Main = () => {
   const [rightIconClicked, setRightIconClicked] = useState("");
   const [leftMessageIsShown, setLeftMessageIsShown] = useState(false);
   const [rightMessageIsShown, setRightMessageIsShown] = useState(false);
-  // The temporary state for displaying a working page based on a user information
-  // const [userLogin, setUserLogin] = useState(true);
+  const { user } = useSelector((state) => state.auth);
 
   const leftIconHandler = () => {
     if (leftIconClicked === "leftIcon") {
@@ -39,9 +39,9 @@ const Main = () => {
   };
   return (
     <>
-      {/* {userLogin ? (
+      {user ? (
         <Working />
-      ) : ( */}
+      ) : (
       <main className="mainPage">
         <div className="mainContainer">
           <div className="leftIcon">
@@ -90,7 +90,7 @@ const Main = () => {
           </div>
         </div>
       </main>
-      {/* ) } */}
+      )}
     </>
   );
 };

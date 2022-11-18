@@ -8,7 +8,7 @@ import "./Notice.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import NoticeView from "./NoticeView";
-
+import Moment from "moment";
 const Notice = () => {
   const { user } = useSelector((state) => state.auth);
 
@@ -158,7 +158,7 @@ const Notice = () => {
                     <FontAwesomeIcon icon={faCrown} className="crown" />
                   </Col>
                   <Col xs="3" lg="2">
-                    {notice.date}
+                    Moment({notice.date}).format('YYYY-MM-DD')
                   </Col>
                 </Row>
               </Link>
