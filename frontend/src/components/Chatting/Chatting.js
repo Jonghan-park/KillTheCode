@@ -38,12 +38,25 @@ function Chatting({ projectId }) {
   };
 
   useEffect(() => {
+    const getDateTime = () => {
+      const date = new Date();
+      const year = date.getFullYear();
+      const month = date.getMonth();
+      const today = date.getDate();
+      const hours = date.getHours();
+      const minutes = date.getMinutes();
+      const seconds = date.getSeconds();
+      const milliseconds = date.getMilliseconds();
+      let dateTime = new Date(Date.UTC(year, month, today, hours, minutes, seconds, milliseconds));
+      dateTime += "";
+      return dateTime.slice(0, 10) + " " + dateTime.slice(11, 19)
+    };
     socket.current = io("ws://localhost:5000");
-    socket.current.on("getMessage", (data) => {
+    socket.current.on("getMessage", (data) => {      
       setArrivalMessage({
         user: data.user,
         content: data.content,
-        date: data.date,
+        date: getDateTime()
       });
     });
   }, []);
@@ -94,7 +107,7 @@ function Chatting({ projectId }) {
             onChange={(e) => setNewMessage(e.target.value)}
             value={newMessage}
           />
-          <button className="chatBtn">
+          <button className="chatBtn" type="submit">
             &#9658;
           </button>
         </form>
