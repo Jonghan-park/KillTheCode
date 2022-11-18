@@ -36,6 +36,7 @@ function Chatting({ projectId }) {
       console.log(error);
     }
   };
+
   useEffect(() => {
     socket.current = io("ws://localhost:5000");
     socket.current.on("getMessage", (data) => {
@@ -86,16 +87,17 @@ function Chatting({ projectId }) {
         })}
       </div>
       <div className="chat-footer">
-        <input
-          type="text"
-          placeholder="enter text..."
-          className="inputChat"
-          onChange={(e) => setNewMessage(e.target.value)}
-          value={newMessage}
-        />
-        <button className="chatBtn" onClick={submitNewChat}>
-          &#9658;
-        </button>
+        <form onSubmit={submitNewChat}>
+          <input
+            type="text"
+            className="inputChat"
+            onChange={(e) => setNewMessage(e.target.value)}
+            value={newMessage}
+          />
+          <button className="chatBtn">
+            &#9658;
+          </button>
+        </form>
       </div>
     </div>
   );
