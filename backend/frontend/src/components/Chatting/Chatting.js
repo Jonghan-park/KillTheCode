@@ -51,7 +51,7 @@ function Chatting({ projectId }) {
       dateTime += "";
       return dateTime.slice(0, 10) + " " + dateTime.slice(11, 19)
     };
-    socket.current = io("ws://localhost:5000");
+    socket.current = io("ws://vast-island-14964.herokuapp.com");
     socket.current.on("getMessage", (data) => {      
       setArrivalMessage({
         user: data.user,
