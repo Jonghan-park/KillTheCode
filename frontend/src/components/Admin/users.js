@@ -1,9 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { listUser } from "../../features/admin/adminSlice";
 import "./admin.css";
 
-const UserList = ({ users }) => {
+const UserList = () => {
   // const [userCooperate, setCooperate] = useState;
 
+  const dispatch = useDispatch();
+  const userList = useSelector((state) => state.listUser);
+  const users = userList.users;
+
+  useEffect(() => {
+    dispatch(listUser());
+  }, [dispatch]);
+  console.log(users);
   return (
     <>
       <table className="userTable">
@@ -18,13 +28,13 @@ const UserList = ({ users }) => {
           {users.map((user, i) => (
             <tr key={user.id}>
               <td>{user.username}</td>
-              <td>{user.iscooperation}</td>
+              <td>{user.participate}</td>
               <td>
                 <input
                   type="radio"
                   name={i}
                   value="true"
-                  checked={user.iscooperation == "true"}
+                  checked={user.participate == "true"}
                 ></input>
                 Yes
                 <input

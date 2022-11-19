@@ -82,16 +82,8 @@ const getMe = asyncHandler(async (req, res) => {
 //route /api/users
 //use in admin page
 const getAllUsers = asyncHandler(async (req, res) => {
-  let users;
-
-  try {
-    users = await User.find();
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server Error" });
-  }
-
-  return res.status(200).json(users);
+  const users = await User.find({});
+  res.json(users);
 });
 
 //update my profile

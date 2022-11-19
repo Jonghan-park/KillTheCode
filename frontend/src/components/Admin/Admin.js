@@ -1,36 +1,44 @@
 import "./admin.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { listUser } from "../../features/admin/adminSlice";
 import UserList from "./users";
+// import UserList from "./users";
 
-const userList = [
-  {
-    username: "Adam",
-    email: "adam@test.com",
-    iscooperation: "true",
-    id: "1",
-  },
-  {
-    username: "Hong",
-    email: "hong@test.com",
-    iscooperation: "false",
-    id: "2",
-  },
-  {
-    username: "dony",
-    email: "dony@test.com",
-    iscooperation: "true",
-    id: "kSEMggm",
-  },
-  {
-    username: "Jhon",
-    email: "jhon@test.com",
-    iscooperation: "false",
-    id: "4",
-  },
-];
+// const userList = [
+//   {
+//     username: "Adam",
+//     email: "adam@test.com",
+//     iscooperation: "true",
+//     id: "1",
+//   },
+//   {
+//     username: "Hong",
+//     email: "hong@test.com",
+//     iscooperation: "false",
+//     id: "2",
+//   },
+//   {
+//     username: "dony",
+//     email: "dony@test.com",
+//     iscooperation: "true",
+//     id: "kSEMggm",
+//   },
+//   {
+//     username: "Jhon",
+//     email: "jhon@test.com",
+//     iscooperation: "false",
+//     id: "4",
+//   },
+// ];
 
 const Admin = () => {
-  const [users, setUsers] = useState(userList);
+  const [participate, setParticipate] = useState();
+
+  const dispatch = useDispatch();
+
+  const userList = useSelector((state) => state.listUser);
+  const users = userList.users;
   return (
     <div className="adminWrapper">
       <div className="titleAdmin">Admin</div>
