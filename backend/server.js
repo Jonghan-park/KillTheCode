@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 5000;
@@ -10,9 +11,7 @@ const meetingRoute = require("./routes/meetingRoutes");
 const userRoute = require("./routes/userRoutes");
 const chattingRoute = require("./routes/chattingRoutes");
 const scheduleRoute = require("./routes/scheduleRoutes");
-
 const noticeRoute = require("./routes/noticeRoutes");
-
 const forgotPWRoute = require("./routes/forgotPWRoutes");
 
 //DB
@@ -37,6 +36,19 @@ app.use("/notice", noticeRoute);
 
 // app.use("/myaccount", myAccountRoute);
 app.use("/forgotPassword", forgotPWRoute);
+
+// heroku
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "/frontend/build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "frontend", "build", "index.html"));
+  });
+} else {
+  app.get("/", (req, res) => {
+    res.send("API running");
+  });
+};
 
 const server = app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
