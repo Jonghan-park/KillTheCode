@@ -28,7 +28,7 @@ module.exports.forgotUserName = async (req, res) => {
       }
     );
 
-    const link = `http://localhost:5000/send_username/${findUser._id}/${token}`;
+    const link = `http://vast-island-14964.herokuapp.com/send_username/${findUser._id}/${token}`;
     const filePath = path.join(
       __dirname,
       "../../frontend/src/emailTemplates/findID.html"
@@ -92,7 +92,7 @@ module.exports.forgotPassword = async (req, res) => {
       }
     );
 
-    const link = `http://localhost:5000/forgotPassword/reset-password/${findUser._id}/${token}`;
+    const link = `http://vast-island-14964.herokuapp.com/forgotPassword/reset-password/${findUser._id}/${token}`;
 
     const filePath = path.join(
       __dirname,
