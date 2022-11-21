@@ -36,7 +36,6 @@ exports.getProject = async (req, res) => {
 exports.addProject = async (req, res) => {
   const { title, type, language, period, contributors, github, link } =
     req.body;
-
   // Save the project to DB
   try {
     const users = await Promise.all(
@@ -101,9 +100,11 @@ exports.deleteProject = async (req, res) => {
 // PUT a project by id
 exports.editProject = async (req, res) => {
   const { title, type, language, period, contributor, github, link } = req.body;
+
   const projectId = req.params.id;
   let project;
   try {
+    console.log(req);
     project = await Project.findByIdAndUpdate(projectId, {
       title,
       type,

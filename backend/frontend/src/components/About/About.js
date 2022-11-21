@@ -11,9 +11,12 @@ const About = () => {
   // Get users
   const getUsers = async () => {
     try {
-      const { data } = await axios.get("http://vast-island-14964.herokuapp.com/api/users");
-      setUsers(data.users);
-      console.log(users);
+      const { data } = await axios.get(
+        "http://vast-island-14964.herokuapp.com/api/users"
+      );
+      const adminUsers = data.filter((user) => user.role === true);
+
+      setUsers(adminUsers);
     } catch (error) {
       console.log(error);
     }

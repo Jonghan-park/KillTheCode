@@ -14,15 +14,18 @@ const ProjectModal = ({ closeModal, setCloseModal }) => {
   const handleProjectSubmit = async () => {
     const contributors = contributor.split(",");
     try {
-      const res = await axios.post("http://vast-island-14964.herokuapp.com/projects/add", {
-        title: title,
-        type: type,
-        language: language,
-        period: period,
-        contributors: contributors,
-        github: github,
-        link: link,
-      });
+      const res = await axios.post(
+        "http://vast-island-14964.herokuapp.com/projects/add",
+        {
+          title: title,
+          type: type,
+          language: language,
+          period: period,
+          contributors: contributors,
+          github: github,
+          link: link,
+        }
+      );
       const data = await res.data;
       console.log(data);
       return data;
