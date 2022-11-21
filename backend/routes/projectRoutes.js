@@ -13,6 +13,6 @@ projectRouter.get("/", getAllProjects);
 projectRouter.get("/:id", getProject);
 projectRouter.post("/add", addProject);
 projectRouter.delete("/delete/:id", deleteProject);
-projectRouter.put("/edit/:id", editProject);
+projectRouter.put("/edit", editProject);
 
 module.exports = projectRouter;

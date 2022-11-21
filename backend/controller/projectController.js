@@ -99,12 +99,20 @@ exports.deleteProject = async (req, res) => {
 
 // PUT a project by id
 exports.editProject = async (req, res) => {
-  const { title, type, language, period, contributor, github, link } = req.body;
+  const {
+    projectId,
+    title,
+    type,
+    language,
+    period,
+    contributor,
+    github,
+    link,
+  } = req.body;
 
-  const projectId = req.params.id;
   let project;
   try {
-    console.log(req);
+    console.log(projectId);
     project = await Project.findByIdAndUpdate(projectId, {
       title,
       type,

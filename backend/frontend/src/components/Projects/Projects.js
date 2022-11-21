@@ -53,7 +53,9 @@ const Projects = () => {
   // Get projects
   const getProjects = async () => {
     try {
-      const { data } = await axios.get("http://vast-island-14964.herokuapp.com/projects");
+      const { data } = await axios.get(
+        "http://vast-island-14964.herokuapp.com/projects"
+      );
       setProjects(data.projects);
     } catch (error) {
       console.log(error);
@@ -70,9 +72,21 @@ const Projects = () => {
 
   const getSpecificProject = async () => {
     try {
-      const res = await axios.get(`http://vast-island-14964.herokuapp.com/projects/${editId}`);
+      const res = await axios.get(
+        `http://vast-island-14964.herokuapp.com/projects/${editId}`
+      );
       const project = await res.data;
       setClickedProject(project);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteProject = async () => {
+    try {
+      await axios.delete(
+        `http://vast-island-14964.herokuapp.com/projects/delete/${deleteId}`
+      );
     } catch (error) {
       console.log(error);
     }
@@ -88,13 +102,6 @@ const Projects = () => {
     }
   }, [editId, deleteId]);
 
-  const deleteProject = async () => {
-    try {
-      await axios.delete(`http://vast-island-14964.herokuapp.com/projects/delete/${deleteId}`);
-    } catch (error) {
-      console.log(error);
-    }
-  };
   return (
     <div className="projectsContainer">
       <div className="projectsTitleContainer">

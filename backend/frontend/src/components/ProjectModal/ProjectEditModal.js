@@ -18,20 +18,16 @@ const ProjectEditModal = ({
 
   const handleEditProjectSubmit = async (e) => {
     try {
-      console.log("Haha");
-      await axios.put(
-        `http://vast-island-14964.herokuapp.com/projects/edit/${id}`,
-        {
-          id: id,
-          title: title,
-          type: type,
-          language: language,
-          period: period,
-          contributor: contributor,
-          github: github,
-          link: link,
-        }
-      );
+      await axios.put(`http://vast-island-14964.herokuapp.com/projects/edit`, {
+        projectId: id,
+        title: title,
+        type: type,
+        language: language,
+        period: period,
+        contributor: contributor,
+        github: github,
+        link: link,
+      });
     } catch (error) {
       console.log(error);
     }
